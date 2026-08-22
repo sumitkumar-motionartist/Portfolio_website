@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
 
 <title>Sumit Kumar — Motion Artist & Video Editor</title>
 
-<meta name="description" content="Sumit Kumar — Motion Artist, Video Editor and Motion Graphics Designer.">
+<meta name="description" content="Sumit Kumar — Motion Artist, Video Editor and Motion Graphics Designer with 4+ years of experience creating motion graphics, product videos, explainers and visual stories.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -298,19 +299,22 @@ gap:22px;
 overflow-x:auto;
 scroll-behavior:smooth;
 scrollbar-width:none;
-padding-bottom:10px
+padding-bottom:10px;
+scroll-snap-type:x mandatory
 }
 
 .reel-slider::-webkit-scrollbar{
 display:none
 }
 
+/* 4 reels visible on large desktop */
 .reel-card{
-flex:0 0 calc(50% - 11px);
+flex:0 0 calc(25% - 16.5px);
 background:#151515;
 border:1px solid var(--line);
 overflow:hidden;
-position:relative
+position:relative;
+scroll-snap-align:start
 }
 
 .reel-video{
@@ -392,71 +396,58 @@ grid-template-columns:repeat(2,1fr);
 gap:25px
 }
 
+/* Selected Work video card */
 .project{
 position:relative;
 overflow:hidden;
 background:#151515;
-min-height:550px;
 border:1px solid var(--line);
-cursor:pointer
+cursor:pointer;
+transition:.4s
 }
 
-.project-image{
-position:absolute;
-inset:0;
-background:
-radial-gradient(circle at 30% 30%,rgba(215,255,56,.22),transparent 25%),
-linear-gradient(135deg,#242424,#0e0e0e);
-transition:.7s
+.project:hover{
+border-color:rgba(215,255,56,.35);
+transform:translateY(-5px)
 }
 
-.project:nth-child(2) .project-image{
-background:
-radial-gradient(circle at 70% 30%,rgba(120,120,255,.25),transparent 25%),
-linear-gradient(135deg,#202020,#0b0b0b)
+.project-video-wrap{
+position:relative;
+width:100%;
+background:#050505;
+overflow:hidden
 }
 
-.project:nth-child(3) .project-image{
-background:
-radial-gradient(circle at 50% 40%,rgba(255,130,60,.18),transparent 25%),
-linear-gradient(135deg,#242424,#0c0c0c)
-}
-
-.project:hover .project-image{
-transform:scale(1.06)
-}
-
-.project-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(transparent 35%,rgba(0,0,0,.9))
+.project-video{
+width:100%;
+aspect-ratio:16/9;
+display:block;
+border:0
 }
 
 .project-content{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-padding:35px;
-z-index:2
+padding:28px 30px 32px;
+background:#151515
 }
 
 .project-number{
 color:var(--accent);
 font-size:12px;
-margin-bottom:15px
+margin-bottom:12px;
+letter-spacing:.12em
 }
 
 .project-title{
 font-family:Manrope,sans-serif;
-font-size:clamp(28px,4vw,52px);
+font-size:clamp(25px,3vw,40px);
 letter-spacing:-.04em
 }
 
 .project-category{
 color:#999;
 margin-top:12px;
-font-size:13px
+font-size:13px;
+line-height:1.5
 }
 
 
@@ -871,6 +862,17 @@ transform:translateY(0)
 
 /* ================= RESPONSIVE ================= */
 
+/* 3 reels */
+@media(max-width:1200px){
+
+.reel-card{
+flex:0 0 calc(33.333% - 14.7px)
+}
+
+}
+
+
+/* 2 reels */
 @media(max-width:900px){
 
 section{
@@ -945,13 +947,15 @@ min-height:330px
 gap:45px
 }
 
+/* 2 reels on tablet */
 .reel-card{
-flex:0 0 70%
+flex:0 0 calc(50% - 11px)
 }
 
 }
 
 
+/* 1 reel on mobile */
 @media(max-width:600px){
 
 .container{
@@ -980,10 +984,6 @@ margin-top:45px
 
 .reel-card{
 flex:0 0 82%
-}
-
-.project{
-min-height:380px
 }
 
 .project-content{
@@ -1165,7 +1165,7 @@ A collection of motion design, video editing, product animation, explainers, pro
 </div>
 
 <div class="showreel-counter">
-06+ REELS
+08 REELS
 </div>
 
 </div>
@@ -1184,6 +1184,7 @@ A collection of motion design, video editing, product animation, explainers, pro
 class="reel-video"
 src="https://www.youtube.com/embed/v7XyyMkzNnc"
 title="Sumit Kumar Motion Reel 01"
+loading="lazy"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
@@ -1215,6 +1216,7 @@ Motion Graphics · Video Editing
 class="reel-video"
 src="https://www.youtube.com/embed/CMl0SUvVJE0"
 title="Sumit Kumar Motion Reel 02"
+loading="lazy"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
@@ -1246,6 +1248,7 @@ Animation · Visual Storytelling
 class="reel-video"
 src="https://www.youtube.com/embed/UJFius7nz0g"
 title="Sumit Kumar Motion Reel 03"
+loading="lazy"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
@@ -1277,6 +1280,7 @@ Editing · Effects · Post Production
 class="reel-video"
 src="https://www.youtube.com/embed/Az28xI2jtO0"
 title="Sumit Kumar Video 04"
+loading="lazy"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
@@ -1308,6 +1312,7 @@ Motion · Editing · Storytelling
 class="reel-video"
 src="https://www.youtube.com/embed/0AgwLTUyLG4"
 title="Sumit Kumar Video 05"
+loading="lazy"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
@@ -1339,6 +1344,7 @@ Motion Graphics · Editing
 class="reel-video"
 src="https://www.youtube.com/embed/JQvqIqSqD1s"
 title="Sumit Kumar Video 06"
+loading="lazy"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
@@ -1370,6 +1376,7 @@ Promotional Content · Motion Design
 class="reel-video"
 src="https://www.youtube.com/embed/YOUR_VIDEO_ID_7"
 title="Sumit Kumar Video 07"
+loading="lazy"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
@@ -1401,6 +1408,7 @@ Motion Graphics · Video Editing
 class="reel-video"
 src="https://www.youtube.com/embed/YOUR_VIDEO_ID_8"
 title="Sumit Kumar Video 08"
+loading="lazy"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
@@ -1456,7 +1464,7 @@ aria-label="Next reel">
 
 
 
-<!-- ================= WORK ================= -->
+<!-- ================= SELECTED WORK ================= -->
 
 <section id="work">
 
@@ -1479,7 +1487,7 @@ WORK
 </div>
 
 <div class="work-count">
-03 — Featured Projects
+04 — Featured Projects
 </div>
 
 </div>
@@ -1488,11 +1496,22 @@ WORK
 <div class="projects">
 
 
+<!-- PROJECT 01 -->
+
 <article class="project reveal">
 
-<div class="project-image"></div>
+<div class="project-video-wrap">
 
-<div class="project-overlay"></div>
+<iframe
+class="project-video"
+src="https://www.youtube.com/embed/v7XyyMkzNnc"
+title="SaaS Product Video"
+loading="lazy"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen>
+</iframe>
+
+</div>
 
 <div class="project-content">
 
@@ -1503,11 +1522,11 @@ WORK
 <h3 class="project-title">
 SaaS Product
 <br>
-& Feature Launch
+Video
 </h3>
 
 <p class="project-category">
-UI Animation · Product Demo · Motion Design
+Product Demo · UI Animation · Motion Design · SaaS
 </p>
 
 </div>
@@ -1515,12 +1534,22 @@ UI Animation · Product Demo · Motion Design
 </article>
 
 
+<!-- PROJECT 02 -->
 
 <article class="project reveal">
 
-<div class="project-image"></div>
+<div class="project-video-wrap">
 
-<div class="project-overlay"></div>
+<iframe
+class="project-video"
+src="https://www.youtube.com/embed/CMl0SUvVJE0"
+title="Explainer Video Production"
+loading="lazy"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen>
+</iframe>
+
+</div>
 
 <div class="project-content">
 
@@ -1531,11 +1560,11 @@ UI Animation · Product Demo · Motion Design
 <h3 class="project-title">
 Explainer
 <br>
-Video Production
+Video
 </h3>
 
 <p class="project-category">
-2D Animation · Storytelling · B2B
+2D Animation · Storytelling · B2B · Visual Communication
 </p>
 
 </div>
@@ -1543,12 +1572,22 @@ Video Production
 </article>
 
 
+<!-- PROJECT 03 -->
 
 <article class="project reveal">
 
-<div class="project-image"></div>
+<div class="project-video-wrap">
 
-<div class="project-overlay"></div>
+<iframe
+class="project-video"
+src="https://www.youtube.com/embed/UJFius7nz0g"
+title="Brand Marketing Campaign"
+loading="lazy"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen>
+</iframe>
+
+</div>
 
 <div class="project-content">
 
@@ -1557,13 +1596,51 @@ Video Production
 </div>
 
 <h3 class="project-title">
-Corporate &
+Brand &
 <br>
-Marketing Campaigns
+Marketing
 </h3>
 
 <p class="project-category">
 Motion Graphics · Promotional Content · Social Media
+</p>
+
+</div>
+
+</article>
+
+
+<!-- PROJECT 04 -->
+
+<article class="project reveal">
+
+<div class="project-video-wrap">
+
+<iframe
+class="project-video"
+src="https://www.youtube.com/embed/Az28xI2jtO0"
+title="Creative Video Production"
+loading="lazy"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div class="project-content">
+
+<div class="project-number">
+04 / CREATIVE
+</div>
+
+<h3 class="project-title">
+Creative
+<br>
+Video Project
+</h3>
+
+<p class="project-category">
+Video Editing · Motion Graphics · Post Production
 </p>
 
 </div>
@@ -1612,7 +1689,7 @@ MOVE.
 <div class="about-photo-wrap">
 
 <img
-src="sumit.jpg"
+src="https://drive.google.com/uc?export=view&id=1580N2ol3GwooAgRDfq3IBaZPslrGIQYj"
 alt="Sumit Kumar - Motion Artist"
 class="about-photo"
 >
@@ -1647,7 +1724,7 @@ I'm Sumit Kumar, a Motion Artist, Video Editor and Motion Graphics Designer with
 </p>
 
 <p>
-Over the last 4+ years, I've worked with multiple clients and businesses, creating motion graphics, SaaS product videos, product demos, explainer videos, UI animations, promotional campaigns, corporate films and digital marketing content.
+Over the last 4+ years, I've worked with clients and businesses across <strong style="color:#fff">25+ categories and industries</strong>, creating motion graphics, SaaS product videos, product demos, explainer videos, UI animations, promotional campaigns, corporate films and digital marketing content.
 </p>
 
 <p>
@@ -1658,11 +1735,11 @@ I work across the complete production process — from concept development and s
 <div class="client-highlight">
 
 <div class="client-highlight-number">
-18+
+25+
 </div>
 
 <div class="client-highlight-text">
-Clients & Creative Collaborations
+Client Categories & Industries
 </div>
 
 </div>
@@ -1706,11 +1783,11 @@ Years Experience
 <div class="stat">
 
 <div class="stat-number">
-18+
+25+
 </div>
 
 <div class="stat-label">
-Clients Worked With
+Client Categories
 </div>
 
 </div>
@@ -1943,7 +2020,7 @@ Adobe Creative Suite
 <div class="skill">Illustrator</div>
 <div class="skill">Audition</div>
 <div class="skill">Media Encoder</div>
-<div class="skill">Adobe XD</div>
+<div class="skill">Figma</div>
 
 </div>
 
@@ -2254,7 +2331,7 @@ nextReel.addEventListener("click",()=>{
 
 reelSlider.scrollBy({
 
-left: reelSlider.clientWidth * .55,
+left: reelSlider.clientWidth * .85,
 
 behavior:"smooth"
 
@@ -2267,7 +2344,7 @@ prevReel.addEventListener("click",()=>{
 
 reelSlider.scrollBy({
 
-left: -reelSlider.clientWidth * .55,
+left: -reelSlider.clientWidth * .85,
 
 behavior:"smooth"
 
@@ -2298,13 +2375,13 @@ const y =
 ((event.clientY - rect.top) /
 rect.height - .5) * 10;
 
-const image =
-project.querySelector(".project-image");
+const video =
+project.querySelector(".project-video");
 
-if(image){
+if(video){
 
-image.style.transform =
-`scale(1.06) translate(${x}px,${y}px)`;
+video.style.transform =
+`scale(1.02) translate(${x}px,${y}px)`;
 
 }
 
@@ -2313,12 +2390,12 @@ image.style.transform =
 
 project.addEventListener("mouseleave",()=>{
 
-const image =
-project.querySelector(".project-image");
+const video =
+project.querySelector(".project-video");
 
-if(image){
+if(video){
 
-image.style.transform =
+video.style.transform =
 "scale(1)";
 
 }
@@ -2332,3 +2409,4 @@ image.style.transform =
 
 </body>
 </html>
+```
