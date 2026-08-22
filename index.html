@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumit Kumar — Motion Artist & Video Editor</title>
+<meta name="description" content="Sumit Kumar — Motion Artist, Video Editor and Motion Graphics Designer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a0a;color:#f5f5f5;font-family:"DM Sans",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:root{--bg:#0a0a0a;--text:#f5f5f5;--muted:#8c8c8c;--line:rgba(255,255,255,.12);--accent:#d7ff38;--max:1400px}
+.container{width:min(92%,var(--max));margin:auto}
+section{padding:130px 0;position:relative}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:24px}
+.section-title{font-family:Manrope,sans-serif;font-size:clamp(42px,6vw,88px);line-height:.95;letter-spacing:-.05em;font-weight:700}
+.section-description{max-width:600px;margin-top:30px;color:var(--muted);font-size:18px;line-height:1.7}
+
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:25px 0;transition:.3s}
+header.scrolled{background:rgba(10,10,10,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:Manrope,sans-serif;font-weight:800;font-size:19px;letter-spacing:-.04em}
+.nav-links{display:flex;gap:35px;list-style:none}
+.nav-links a{color:#999;font-size:14px;transition:.3s}
+.nav-links a:hover{color:#fff}
+.nav-contact{border:1px solid var(--line);padding:11px 18px;border-radius:50px;font-size:13px;transition:.3s}
+.nav-contact:hover{background:var(--accent);color:#000}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:150px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,#000,transparent);pointer-events:none}
+.hero-glow{position:absolute;width:600px;height:600px;background:rgba(215,255,56,.08);border-radius:50%;filter:blur(100px);right:-200px;top:100px;pointer-events:none}
+.hero-content{position:relative;z-index:2}
+.hero-small{color:#999;font-size:15px;margin-bottom:30px;max-width:600px}
+.hero-title{font-family:Manrope,sans-serif;font-size:clamp(70px,11vw,170px);line-height:.82;letter-spacing:-.075em;font-weight:800;text-transform:uppercase}
+.hero-title .outline{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.5)}
+.hero-title .accent{color:var(--accent)}
+.hero-bottom{display:flex;justify-content:space-between;align-items:end;margin-top:70px;gap:40px}
+.hero-description{max-width:500px;color:#999;line-height:1.7}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 24px;border-radius:50px;font-size:13px;font-weight:600;border:1px solid var(--line);transition:.3s}
+.btn-primary{background:var(--accent);color:#000;border-color:var(--accent)}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 15px 35px rgba(215,255,56,.18)}
+.btn-secondary:hover{background:#fff;color:#000}
+.scroll-indicator{position:absolute;bottom:35px;left:50%;transform:translateX(-50%);color:#666;font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+
+.showreel,.about,.skills{background:#111}
+.video-wrapper{margin-top:70px;width:100%;aspect-ratio:16/9;background:radial-gradient(circle at center,rgba(215,255,56,.1),transparent 40%),#151515;border:1px solid var(--line);position:relative;overflow:hidden}
+.video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px}
+.play-button{width:85px;height:85px;border-radius:50%;border:1px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:25px;transition:.3s}
+.play-button:hover{background:var(--accent);color:#000;border-color:var(--accent);transform:scale(1.08)}
+.video-placeholder span{color:#777;font-size:12px;text-transform:uppercase;letter-spacing:.15em}
+
+.work-header{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:70px}
+.work-count{color:#666;font-size:14px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+.project{position:relative;overflow:hidden;background:#151515;min-height:550px;border:1px solid var(--line);cursor:pointer}
+.project:nth-child(3){grid-column:span 2}
+.project-image{position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(215,255,56,.22),transparent 25%),linear-gradient(135deg,#242424,#0e0e0e);transition:.7s}
+.project:nth-child(2) .project-image{background:radial-gradient(circle at 70% 30%,rgba(120,120,255,.25),transparent 25%),linear-gradient(135deg,#202020,#0b0b0b)}
+.project:nth-child(3) .project-image{background:radial-gradient(circle at 50% 40%,rgba(255,130,60,.18),transparent 25%),linear-gradient(135deg,#242424,#0c0c0c)}
+.project:hover .project-image{transform:scale(1.06)}
+.project-overlay{position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.9))}
+.project-content{position:absolute;bottom:0;left:0;width:100%;padding:35px;z-index:2}
+.project-number{color:var(--accent);font-size:12px;margin-bottom:15px}
+.project-title{font-family:Manrope,sans-serif;font-size:clamp(28px,4vw,52px);letter-spacing:-.04em}
+.project-category{color:#999;margin-top:12px;font-size:13px}
+
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:start}
+.about-text{font-family:Manrope,sans-serif;font-size:clamp(30px,4vw,55px);line-height:1.1;letter-spacing:-.04em}
+.about-text span{color:var(--accent)}
+.about-details{color:#999;line-height:1.8;font-size:17px}
+.about-details p+p{margin-top:25px}
+
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:55px 30px;border-right:1px solid var(--line)}
+.stat:first-child{padding-left:0}.stat:last-child{border-right:none}
+.stat-number{font-family:Manrope,sans-serif;font-size:clamp(45px,6vw,85px);letter-spacing:-.06em}
+.stat-label{color:#777;margin-top:10px;font-size:13px;text-transform:uppercase;letter-spacing:.1em}
+
+.experience-list{margin-top:80px;border-top:1px solid var(--line)}
+.experience-item{display:grid;grid-template-columns:.4fr 1fr 1fr;gap:40px;padding:40px 0;border-bottom:1px solid var(--line);transition:.3s}
+.experience-item:hover{padding-left:15px}
+.experience-date{color:#666;font-size:13px}
+.experience-role{font-family:Manrope,sans-serif;font-size:25px}
+.experience-company{color:#888;margin-top:8px;font-size:14px}
+.experience-description{color:#888;line-height:1.6;font-size:14px}
+
+.skill-block{margin-top:70px}
+.skill-heading{color:#666;font-size:12px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:20px}
+.skill-list{display:flex;flex-wrap:wrap;gap:10px}
+.skill{border:1px solid var(--line);padding:14px 18px;border-radius:50px;color:#ccc;font-size:13px;transition:.3s}
+.skill:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+
+.contact{min-height:100vh;padding:150px 0 60px;display:flex;align-items:center;background:radial-gradient(circle at 80% 30%,rgba(215,255,56,.07),transparent 30%),#0a0a0a}
+.contact-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:60px}
+.contact-title{font-family:Manrope,sans-serif;font-size:clamp(60px,9vw,145px);line-height:.84;letter-spacing:-.075em;text-transform:uppercase;font-weight:800}
+.contact-title span{color:var(--accent)}
+.contact-intro{max-width:390px;color:#888;font-size:16px;line-height:1.7;padding-bottom:8px}
+.contact-card{margin-top:100px;border:1px solid var(--line);background:rgba(255,255,255,.025);display:grid;grid-template-columns:1.25fr .75fr;min-height:390px}
+.contact-card-left{padding:55px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+.contact-label{color:#666;font-size:11px;letter-spacing:.18em;font-weight:600}
+.contact-email{font-family:Manrope,sans-serif;font-size:clamp(24px,3.5vw,48px);letter-spacing:-.045em;margin-top:auto;margin-bottom:30px;display:inline-block;width:fit-content;transition:.3s}
+.contact-email:hover{color:var(--accent)}
+.contact-button{width:fit-content;display:inline-flex;align-items:center;gap:30px;background:var(--accent);color:#000;padding:17px 23px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:.08em;transition:.3s}
+.contact-button span{font-size:18px;line-height:0}
+.contact-button:hover{transform:translateY(-5px);padding-right:30px;box-shadow:0 15px 40px rgba(215,255,56,.15)}
+.contact-card-right{padding:55px;display:flex;flex-direction:column;justify-content:space-between}
+.contact-info{display:flex;flex-direction:column;gap:13px}
+.contact-info span{color:#555;font-size:10px;letter-spacing:.18em}
+.contact-info strong{color:#ddd;font-size:14px;line-height:1.6;font-weight:500}
+.contact-socials{display:flex;flex-wrap:wrap;gap:18px}
+.contact-socials a{color:#aaa;font-size:13px;border-bottom:1px solid #333;padding-bottom:4px;transition:.3s}
+.contact-socials a:hover{color:var(--accent);border-color:var(--accent)}
+.contact-bottom-line{margin-top:45px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#444;font-size:10px;letter-spacing:.12em}
+
+footer{border-top:1px solid var(--line);padding:25px 0}
+.footer-inner{display:flex;justify-content:space-between;color:#555;font-size:12px}
+.reveal{opacity:0;transform:translateY(40px);transition:.9s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+section{padding:90px 0}.nav-links{display:none}.hero-title{font-size:clamp(60px,15vw,110px)}
+.hero-bottom{flex-direction:column;align-items:start}.projects{grid-template-columns:1fr}
+.project:nth-child(3){grid-column:span 1}.project{min-height:450px}
+.about-grid{grid-template-columns:1fr;gap:50px}.stats-grid{grid-template-columns:repeat(2,1fr)}
+.stat{border-bottom:1px solid var(--line)}.stat:nth-child(2){border-right:none}
+.experience-item{grid-template-columns:1fr;gap:15px}.contact{padding:100px 0 50px}
+.contact-heading{flex-direction:column;align-items:flex-start;gap:35px}
+.contact-card{grid-template-columns:1fr;margin-top:65px}
+.contact-card-left{border-right:none;border-bottom:1px solid var(--line);min-height:330px}
+.contact-card-right{gap:45px}
+}
+@media(max-width:600px){
+.container{width:88%}.nav-contact{display:none}.hero{min-height:90vh}.hero-title{font-size:18vw}
+.hero-bottom{margin-top:50px}.video-wrapper{margin-top:45px}.project{min-height:380px}
+.project-content{padding:25px}.stats-grid{grid-template-columns:1fr 1fr}.stat{padding:35px 15px}
+.stat:first-child{padding-left:15px}.contact-title{font-size:17vw}
+.contact-card-left,.contact-card-right{padding:30px}.contact-email{font-size:23px;word-break:break-word}
+.contact-bottom-line{flex-direction:column;gap:12px}.footer-inner{flex-direction:column;gap:10px}
+}
+</style>
+</head>
+
+<body>
+
+<header id="header">
+<div class="container nav">
+<a href="#" class="logo">SUMIT KUMAR</a>
+<ul class="nav-links">
+<li><a href="#work">Work</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#skills">Skills</a></li>
+</ul>
+<a href="#contact" class="nav-contact">Let's Talk</a>
+</div>
+</header>
+
+<main>
+
+<section class="hero">
+<div class="hero-grid"></div>
+<div class="hero-glow"></div>
+<div class="container hero-content">
+<div class="eyebrow">Motion Artist · Video Editor · Motion Designer</div>
+<p class="hero-small">Creative motion graphics designer and video editor transforming complex ideas into compelling visual stories.</p>
+<h1 class="hero-title">
+<span>SUMIT</span><br>
+<span class="outline">KUMAR</span><br>
+<span class="accent">MOTION.</span>
+</h1>
+<div class="hero-bottom">
+<p class="hero-description">4+ years of experience creating motion graphics, product videos, explainers, UI animations, promotional campaigns and digital content.</p>
+<div class="hero-buttons">
+<a href="#work" class="btn btn-primary">View My Work →</a>
+<a href="#contact" class="btn btn-secondary">Let's Talk</a>
+</div>
+</div>
+</div>
+<div class="scroll-indicator">Scroll to explore ↓</div>
+</section>
+
+<section class="showreel">
+<div class="container reveal">
+<div class="eyebrow">01 / Showreel</div>
+<h2 class="section-title">SHOWREEL</h2>
+<p class="section-description">A selection of motion design, product animation, visual storytelling and video work.</p>
+<div class="video-wrapper">
+<div class="video-placeholder">
+<div class="play-button">▶</div>
+<span>Showreel Coming Soon</span>
+</div>
+</div>
+</div>
+</section>
+
+<section id="work">
+<div class="container">
+<div class="work-header reveal">
+<div>
+<div class="eyebrow">02 / Selected Work</div>
+<h2 class="section-title">SELECTED<br>WORK</h2>
+</div>
+<div class="work-count">03 — Featured Projects</div>
+</div>
+<div class="projects">
+
+<article class="project reveal">
+<div class="project-image"></div><div class="project-overlay"></div>
+<div class="project-content">
+<div class="project-number">01 / PRODUCT</div>
+<h3 class="project-title">SaaS Product<br>& Feature Launch</h3>
+<p class="project-category">UI Animation · Product Demo · Motion Design</p>
+</div>
+</article>
+
+<article class="project reveal">
+<div class="project-image"></div><div class="project-overlay"></div>
+<div class="project-content">
+<div class="project-number">02 / EXPLAINER</div>
+<h3 class="project-title">Explainer<br>Video Production</h3>
+<p class="project-category">2D Animation · Storytelling · B2B</p>
+</div>
+</article>
+
+<article class="project reveal">
+<div class="project-image"></div><div class="project-overlay"></div>
+<div class="project-content">
+<div class="project-number">03 / BRAND</div>
+<h3 class="project-title">Corporate &<br>Marketing Campaigns</h3>
+<p class="project-category">Motion Graphics · Promotional Content · Social Media</p>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="about" class="about">
+<div class="container">
+<div class="about-grid reveal">
+<div>
+<div class="eyebrow">03 / About</div>
+<h2 class="section-title">MAKING<br>IDEAS<br><span style="color:var(--accent)">MOVE.</span></h2>
+</div>
+<div>
+<div class="about-text">I transform <span>complex ideas</span> into clear, engaging and memorable visual stories.</div>
+<div class="about-details">
+<p>I'm Sumit Kumar, a Motion Artist, Video Editor and Motion Graphics Designer with 4+ years of experience.</p>
+<p>My work spans SaaS product videos, product demos, explainer videos, UI animations, promotional campaigns, corporate films and digital marketing content.</p>
+<p>I work across the complete production process — from concept development and storyboarding to animation, editing, sound design, color grading and final delivery.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="container">
+<div class="stats-grid reveal">
+<div class="stat"><div class="stat-number">4+</div><div class="stat-label">Years Experience</div></div>
+<div class="stat"><div class="stat-number">150+</div><div class="stat-label">Creative Assets</div></div>
+<div class="stat"><div class="stat-number">18+</div><div class="stat-label">Clients</div></div>
+<div class="stat"><div class="stat-number">30%+</div><div class="stat-label">Production Efficiency</div></div>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="container">
+<div class="reveal">
+<div class="eyebrow">04 / Experience</div>
+<h2 class="section-title">EXPERIENCE</h2>
+</div>
+
+<div class="experience-list">
+
+<div class="experience-item reveal">
+<div class="experience-date">JUN 2025 — PRESENT</div>
+<div><div class="experience-role">Motion Artist & Video Editor</div><div class="experience-company">Vinove Software & Services Pvt. Ltd.</div></div>
+<div class="experience-description">Created motion graphics, SaaS product videos, product demos, explainers, promotional videos and marketing content while managing end-to-end video production.</div>
+</div>
+
+<div class="experience-item reveal">
+<div class="experience-date">JAN 2023 — MAY 2025</div>
+<div><div class="experience-role">Graphic Designer & Motion Artist</div><div class="experience-company">Cynna Technologies Pvt. Ltd.</div></div>
+<div class="experience-description">Designed motion graphics, social media creatives, promotional materials and brand identity assets for 18+ clients across diverse industries.</div>
+</div>
+
+<div class="experience-item reveal">
+<div class="experience-date">JAN 2022 — JAN 2023</div>
+<div><div class="experience-role">Graphic Designer & Motion Artist</div><div class="experience-company">AK Technology Pvt. Ltd.</div></div>
+<div class="experience-description">Created explainer videos, motion graphics, UI animations, e-learning content, social media videos and marketing assets.</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="skills" class="skills">
+<div class="container">
+<div class="reveal">
+<div class="eyebrow">05 / Toolkit</div>
+<h2 class="section-title">MY TOOLKIT</h2>
+<p class="section-description">Creative tools and production skills I use to bring ideas from concept to final delivery.</p>
+</div>
+
+<div class="skill-block reveal">
+<div class="skill-heading">Motion Design</div>
+<div class="skill-list">
+<div class="skill">Motion Graphics</div><div class="skill">2D Animation</div><div class="skill">Kinetic Typography</div><div class="skill">UI Animation</div><div class="skill">Logo Animation</div><div class="skill">Product Demo Videos</div><div class="skill">Explainer Videos</div><div class="skill">Brand Storytelling</div>
+</div>
+</div>
+
+<div class="skill-block reveal">
+<div class="skill-heading">Video Production</div>
+<div class="skill-list">
+<div class="skill">Video Editing</div><div class="skill">Post Production</div><div class="skill">Color Correction</div><div class="skill">Color Grading</div><div class="skill">Sound Design</div><div class="skill">Audio Editing</div><div class="skill">Storyboarding</div><div class="skill">Creative Direction</div>
+</div>
+</div>
+
+<div class="skill-block reveal">
+<div class="skill-heading">Adobe Creative Suite</div>
+<div class="skill-list">
+<div class="skill">After Effects</div><div class="skill">Premiere Pro</div><div class="skill">Photoshop</div><div class="skill">Illustrator</div><div class="skill">Audition</div><div class="skill">Media Encoder</div><div class="skill">Adobe XD</div>
+</div>
+</div>
+
+<div class="skill-block reveal">
+<div class="skill-heading">AI Creative Tools</div>
+<div class="skill-list">
+<div class="skill">ChatGPT</div><div class="skill">Google Veo</div><div class="skill">Sora</div><div class="skill">ElevenLabs</div><div class="skill">Gemini</div><div class="skill">Microsoft Copilot</div><div class="skill">Adobe Firefly</div><div class="skill">Kling AI</div><div class="skill">Leonardo AI</div><div class="skill">VEED</div><div class="skill">Claude</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<div class="container contact-inner reveal">
+
+<div class="eyebrow">06 / Contact</div>
+
+<div class="contact-heading">
+<h2 class="contact-title">LET'S MAKE<br>SOMETHING <span>MOVE.</span></h2>
+<p class="contact-intro">Have a product, brand, campaign or idea that needs to be brought to life? Let's turn it into something people remember.</p>
+</div>
+
+<div class="contact-card">
+
+<div class="contact-card-left">
+<div class="contact-label">HAVE A PROJECT IN MIND?</div>
+<a href="mailto:doneguru5@gmail.com" class="contact-email">doneguru5@gmail.com</a>
+<a href="mailto:doneguru5@gmail.com" class="contact-button">START A PROJECT <span>↗</span></a>
+</div>
+
+<div class="contact-card-right">
+
+<div class="contact-info">
+<span>BASED IN</span>
+<strong>Greater Noida,<br>Uttar Pradesh, India</strong>
+</div>
+
+<div class="contact-info">
+<span>AVAILABLE FOR</span>
+<strong>Freelance · Full-time<br>Creative Collaborations</strong>
+</div>
+
+<div class="contact-info">
+<span>CONNECT</span>
+<div class="contact-socials">
+<a href="https://www.behance.net/doneguru" target="_blank" rel="noopener">Behance ↗</a>
+<a href="https://www.linkedin.com/in/sumit-kumar-3b448b231" target="_blank" rel="noopener">LinkedIn ↗</a>
+<a href="https://www.youtube.com/playlist?list=PLWs5JlEksOaI" target="_blank" rel="noopener">YouTube ↗</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="contact-bottom-line">
+<span>MOTION DESIGN · VIDEO · STORYTELLING</span>
+<span>© 2026 SUMIT KUMAR</span>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-inner">
+<div>© 2026 SUMIT KUMAR</div>
+<div>MOTION · DESIGN · STORYTELLING</div>
+</div>
+</footer>
+
+<script>
+const header=document.getElementById("header");
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY>50) header.classList.add("scrolled");
+else header.classList.remove("scrolled");
+});
+
+const revealElements=document.querySelectorAll(".reveal");
+
+const revealObserver=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting) entry.target.classList.add("active");
+});
+},{threshold:.12});
+
+revealElements.forEach(element=>revealObserver.observe(element));
+
+const heroGlow=document.querySelector(".hero-glow");
+
+document.addEventListener("mousemove",(event)=>{
+const x=(event.clientX/window.innerWidth-.5)*40;
+const y=(event.clientY/window.innerHeight-.5)*40;
+if(heroGlow) heroGlow.style.transform=`translate(${x}px,${y}px)`;
+});
+
+const projects=document.querySelectorAll(".project");
+
+projects.forEach(project=>{
+project.addEventListener("mousemove",(event)=>{
+const rect=project.getBoundingClientRect();
+const x=((event.clientX-rect.left)/rect.width-.5)*10;
+const y=((event.clientY-rect.top)/rect.height-.5)*10;
+const image=project.querySelector(".project-image");
+if(image) image.style.transform=`scale(1.06) translate(${x}px,${y}px)`;
+});
+
+project.addEventListener("mouseleave",()=>{
+const image=project.querySelector(".project-image");
+if(image) image.style.transform="scale(1)";
+});
+});
+</script>
+
+</body>
+</html>
