@@ -1,2457 +1,5195 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sumit Kumar — Motion Artist & Video Editor</title>
-
-<meta name="description" content="Sumit Kumar — Motion Artist, Video Editor and Motion Graphics Designer with 4+ years of experience creating motion graphics, product videos, explainers and visual stories.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box
-}
-
-html{
-scroll-behavior:smooth
-}
-
-body{
-background:#0a0a0a;
-color:#f5f5f5;
-font-family:"DM Sans",sans-serif;
-overflow-x:hidden
-}
-
-a{
-color:inherit;
-text-decoration:none
-}
-
-:root{
---bg:#0a0a0a;
---text:#f5f5f5;
---muted:#8c8c8c;
---line:rgba(255,255,255,.12);
---accent:#d7ff38;
---max:1400px
-}
-
-.container{
-width:min(92%,var(--max));
-margin:auto
-}
-
-section{
-padding:130px 0;
-position:relative
-}
-
-.eyebrow{
-color:var(--accent);
-font-size:12px;
-font-weight:700;
-letter-spacing:.18em;
-text-transform:uppercase;
-margin-bottom:24px
-}
-
-.section-title{
-font-family:Manrope,sans-serif;
-font-size:clamp(42px,6vw,88px);
-line-height:.95;
-letter-spacing:-.05em;
-font-weight:700
-}
-
-.section-description{
-max-width:600px;
-margin-top:30px;
-color:var(--muted);
-font-size:18px;
-line-height:1.7
-}
-
-
-/* ================= HEADER ================= */
-
-header{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:1000;
-padding:25px 0;
-transition:.3s
-}
-
-header.scrolled{
-background:rgba(10,10,10,.88);
-backdrop-filter:blur(20px);
-border-bottom:1px solid var(--line)
-}
-
-.nav{
-display:flex;
-justify-content:space-between;
-align-items:center
-}
-
-.logo{
-font-family:Manrope,sans-serif;
-font-weight:800;
-font-size:19px;
-letter-spacing:-.04em
-}
-
-.nav-links{
-display:flex;
-gap:35px;
-list-style:none
-}
-
-.nav-links a{
-color:#999;
-font-size:14px;
-transition:.3s
-}
-
-.nav-links a:hover{
-color:#fff
-}
-
-.nav-contact{
-border:1px solid var(--line);
-padding:11px 18px;
-border-radius:50px;
-font-size:13px;
-transition:.3s
-}
-
-.nav-contact:hover{
-background:var(--accent);
-color:#000
-}
-
-
-/* ================= HERO ================= */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding-top:150px;
-overflow:hidden
-}
-
-.hero-grid{
-position:absolute;
-inset:0;
-background-image:
-linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-background-size:80px 80px;
-mask-image:linear-gradient(to bottom,#000,transparent);
-pointer-events:none
-}
-
-.hero-glow{
-position:absolute;
-width:600px;
-height:600px;
-background:rgba(215,255,56,.08);
-border-radius:50%;
-filter:blur(100px);
-right:-200px;
-top:100px;
-pointer-events:none
-}
-
-.hero-content{
-position:relative;
-z-index:2
-}
-
-.hero-small{
-color:#999;
-font-size:15px;
-margin-bottom:30px;
-max-width:600px
-}
-
-.hero-title{
-font-family:Manrope,sans-serif;
-font-size:clamp(70px,11vw,170px);
-line-height:.82;
-letter-spacing:-.075em;
-font-weight:800;
-text-transform:uppercase
-}
-
-.hero-title .outline{
-color:transparent;
--webkit-text-stroke:1px rgba(255,255,255,.5)
-}
-
-.hero-title .accent{
-color:var(--accent)
-}
-
-.hero-bottom{
-display:flex;
-justify-content:space-between;
-align-items:end;
-margin-top:70px;
-gap:40px
-}
-
-.hero-description{
-max-width:500px;
-color:#999;
-line-height:1.7
-}
-
-.hero-buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:16px 24px;
-border-radius:50px;
-font-size:13px;
-font-weight:600;
-border:1px solid var(--line);
-transition:.3s
-}
-
-.btn-primary{
-background:var(--accent);
-color:#000;
-border-color:var(--accent)
-}
-
-.btn-primary:hover{
-transform:translateY(-4px);
-box-shadow:0 15px 35px rgba(215,255,56,.18)
-}
-
-.btn-secondary:hover{
-background:#fff;
-color:#000
-}
-
-.scroll-indicator{
-position:absolute;
-bottom:35px;
-left:50%;
-transform:translateX(-50%);
-color:#666;
-font-size:11px;
-letter-spacing:.15em;
-text-transform:uppercase
-}
-
-
-/* ================= SHOWREEL ================= */
-
-.showreel,
-.about,
-.skills{
-background:#111
-}
-
-.showreel-header{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:30px
-}
-
-.showreel-counter{
-color:#666;
-font-size:13px;
-letter-spacing:.08em
-}
-
-.reel-slider-wrapper{
-position:relative;
-margin-top:70px
-}
-
-.reel-slider{
-display:flex;
-gap:22px;
-overflow-x:auto;
-scroll-behavior:smooth;
-scrollbar-width:none;
-padding-bottom:10px;
-scroll-snap-type:x mandatory
-}
-
-.reel-slider::-webkit-scrollbar{
-display:none
-}
-
-/* 4 reels visible on large desktop */
-.reel-card{
-flex:0 0 calc(25% - 16.5px);
-background:#151515;
-border:1px solid var(--line);
-overflow:hidden;
-position:relative;
-scroll-snap-align:start
-}
-
-.reel-video{
-width:100%;
-aspect-ratio:9/16;
-background:#050505;
-display:block;
-border:0
-}
-
-.reel-info{
-padding:20px 22px 24px
-}
-
-.reel-number{
-color:var(--accent);
-font-size:11px;
-letter-spacing:.15em;
-text-transform:uppercase;
-margin-bottom:8px
-}
-
-.reel-title{
-font-family:Manrope,sans-serif;
-font-size:20px;
-letter-spacing:-.03em
-}
-
-.reel-subtitle{
-color:#777;
-font-size:12px;
-margin-top:7px
-}
-
-.slider-controls{
-display:flex;
-justify-content:flex-end;
-gap:10px;
-margin-top:25px
-}
-
-.slider-btn{
-width:48px;
-height:48px;
-border-radius:50%;
-border:1px solid var(--line);
-background:transparent;
-color:#fff;
-cursor:pointer;
-font-size:18px;
-transition:.3s
-}
-
-.slider-btn:hover{
-background:var(--accent);
-color:#000;
-border-color:var(--accent)
-}
-
-
-/* ================= WORK ================= */
-
-.work-header{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:30px;
-margin-bottom:70px
-}
-
-.work-count{
-color:#666;
-font-size:14px
-}
-
-.projects{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:25px
-}
-
-/* Selected Work video card */
-.project{
-position:relative;
-overflow:hidden;
-background:#151515;
-border:1px solid var(--line);
-cursor:pointer;
-transition:.4s
-}
-
-.project:hover{
-border-color:rgba(215,255,56,.35);
-transform:translateY(-5px)
-}
-
-.project-video-wrap{
-position:relative;
-width:100%;
-background:#050505;
-overflow:hidden
-}
-
-.project-video{
-width:100%;
-aspect-ratio:16/9;
-display:block;
-border:0
-}
-
-.project-content{
-padding:28px 30px 32px;
-background:#151515
-}
-
-.project-number{
-color:var(--accent);
-font-size:12px;
-margin-bottom:12px;
-letter-spacing:.12em
-}
-
-.project-title{
-font-family:Manrope,sans-serif;
-font-size:clamp(25px,3vw,40px);
-letter-spacing:-.04em
-}
-
-.project-category{
-color:#999;
-margin-top:12px;
-font-size:13px;
-line-height:1.5
-}
-
-
-/* ================= ABOUT ================= */
-
-.about-grid{
-display:grid;
-grid-template-columns:.9fr 1.1fr;
-gap:100px;
-align-items:center
-}
-
-.about-left{
-position:relative
-}
-
-.about-photo-wrap{
-margin-top:45px;
-width:100%;
-max-width:430px;
-position:relative
-}
-
-.about-photo{
-width:100%;
-aspect-ratio:1/1;
-object-fit:cover;
-display:block;
-filter:grayscale(10%);
-border:1px solid var(--line);
-transition:.5s
-}
-
-.about-photo:hover{
-transform:scale(1.02);
-border-color:rgba(215,255,56,.5)
-}
-
-.about-photo-wrap::after{
-content:"";
-position:absolute;
-width:70px;
-height:70px;
-border:1px solid var(--accent);
-right:-15px;
-bottom:-15px;
-z-index:-1
-}
-
-.about-photo-label{
-margin-top:15px;
-color:#666;
-font-size:11px;
-letter-spacing:.15em;
-text-transform:uppercase
-}
-
-.about-text{
-font-family:Manrope,sans-serif;
-font-size:clamp(30px,4vw,55px);
-line-height:1.1;
-letter-spacing:-.04em
-}
-
-.about-text span{
-color:var(--accent)
-}
-
-.about-details{
-color:#999;
-line-height:1.8;
-font-size:17px;
-margin-top:35px
-}
-
-.about-details p+p{
-margin-top:25px
-}
-
-.client-highlight{
-margin-top:40px;
-padding:25px 0;
-border-top:1px solid var(--line);
-border-bottom:1px solid var(--line)
-}
-
-.client-highlight-number{
-font-family:Manrope,sans-serif;
-font-size:50px;
-letter-spacing:-.05em;
-color:var(--accent)
-}
-
-.client-highlight-text{
-color:#777;
-font-size:12px;
-text-transform:uppercase;
-letter-spacing:.12em;
-margin-top:5px
-}
-
-
-/* ================= STATS ================= */
-
-.stats{
-border-top:1px solid var(--line);
-border-bottom:1px solid var(--line)
-}
-
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr)
-}
-
-.stat{
-padding:55px 30px;
-border-right:1px solid var(--line)
-}
-
-.stat:first-child{
-padding-left:0
-}
-
-.stat:last-child{
-border-right:none
-}
-
-.stat-number{
-font-family:Manrope,sans-serif;
-font-size:clamp(45px,6vw,85px);
-letter-spacing:-.06em
-}
-
-.stat-label{
-color:#777;
-margin-top:10px;
-font-size:13px;
-text-transform:uppercase;
-letter-spacing:.1em
-}
-
-
-/* ================= EXPERIENCE ================= */
-
-.experience-list{
-margin-top:80px;
-border-top:1px solid var(--line)
-}
-
-.experience-item{
-display:grid;
-grid-template-columns:.4fr 1fr 1fr;
-gap:40px;
-padding:40px 0;
-border-bottom:1px solid var(--line);
-transition:.3s
-}
-
-.experience-item:hover{
-padding-left:15px
-}
-
-.experience-date{
-color:#666;
-font-size:13px
-}
-
-.experience-role{
-font-family:Manrope,sans-serif;
-font-size:25px
-}
-
-.experience-company{
-color:#888;
-margin-top:8px;
-font-size:14px
-}
-
-.experience-description{
-color:#888;
-line-height:1.6;
-font-size:14px
-}
-
-
-/* ================= SKILLS ================= */
-
-.skill-block{
-margin-top:70px
-}
-
-.skill-heading{
-color:#666;
-font-size:12px;
-letter-spacing:.15em;
-text-transform:uppercase;
-margin-bottom:20px
-}
-
-.skill-list{
-display:flex;
-flex-wrap:wrap;
-gap:10px
-}
-
-.skill{
-border:1px solid var(--line);
-padding:14px 18px;
-border-radius:50px;
-color:#ccc;
-font-size:13px;
-transition:.3s
-}
-
-.skill:hover{
-background:var(--accent);
-color:#000;
-border-color:var(--accent)
-}
-
-
-/* ================= CONTACT ================= */
-
-.contact{
-min-height:100vh;
-padding:150px 0 60px;
-display:flex;
-align-items:center;
-background:
-radial-gradient(circle at 80% 30%,rgba(215,255,56,.07),transparent 30%),
-#0a0a0a
-}
-
-.contact-heading{
-display:flex;
-justify-content:space-between;
-align-items:flex-end;
-gap:60px
-}
-
-.contact-title{
-font-family:Manrope,sans-serif;
-font-size:clamp(60px,9vw,145px);
-line-height:.84;
-letter-spacing:-.075em;
-text-transform:uppercase;
-font-weight:800
-}
-
-.contact-title span{
-color:var(--accent)
-}
-
-.contact-intro{
-max-width:390px;
-color:#888;
-font-size:16px;
-line-height:1.7;
-padding-bottom:8px
-}
-
-.contact-card{
-margin-top:100px;
-border:1px solid var(--line);
-background:rgba(255,255,255,.025);
-display:grid;
-grid-template-columns:1.25fr .75fr;
-min-height:390px
-}
-
-.contact-card-left{
-padding:55px;
-border-right:1px solid var(--line);
-display:flex;
-flex-direction:column;
-justify-content:space-between
-}
-
-.contact-label{
-color:#666;
-font-size:11px;
-letter-spacing:.18em;
-font-weight:600
-}
-
-.contact-email{
-font-family:Manrope,sans-serif;
-font-size:clamp(24px,3.5vw,48px);
-letter-spacing:-.045em;
-margin-top:auto;
-margin-bottom:30px;
-display:inline-block;
-width:fit-content;
-transition:.3s
-}
-
-.contact-email:hover{
-color:var(--accent)
-}
-
-.contact-button{
-width:fit-content;
-display:inline-flex;
-align-items:center;
-gap:30px;
-background:var(--accent);
-color:#000;
-padding:17px 23px;
-border-radius:50px;
-font-size:12px;
-font-weight:700;
-letter-spacing:.08em;
-transition:.3s
-}
-
-.contact-button span{
-font-size:18px;
-line-height:0
-}
-
-.contact-button:hover{
-transform:translateY(-5px);
-padding-right:30px;
-box-shadow:0 15px 40px rgba(215,255,56,.15)
-}
-
-.contact-card-right{
-padding:55px;
-display:flex;
-flex-direction:column;
-justify-content:space-between
-}
-
-.contact-info{
-display:flex;
-flex-direction:column;
-gap:13px
-}
-
-.contact-info span{
-color:#555;
-font-size:10px;
-letter-spacing:.18em
-}
-
-.contact-info strong{
-color:#ddd;
-font-size:14px;
-line-height:1.6;
-font-weight:500
-}
-
-.contact-socials{
-display:flex;
-flex-wrap:wrap;
-gap:18px
-}
-
-.contact-socials a{
-color:#aaa;
-font-size:13px;
-border-bottom:1px solid #333;
-padding-bottom:4px;
-transition:.3s
-}
-
-.contact-socials a:hover{
-color:var(--accent);
-border-color:var(--accent)
-}
-
-.contact-bottom-line{
-margin-top:45px;
-padding-top:20px;
-border-top:1px solid var(--line);
-display:flex;
-justify-content:space-between;
-color:#444;
-font-size:10px;
-letter-spacing:.12em
-}
-
-
-/* ================= FOOTER ================= */
-
-footer{
-border-top:1px solid var(--line);
-padding:25px 0
-}
-
-.footer-inner{
-display:flex;
-justify-content:space-between;
-color:#555;
-font-size:12px
-}
-
-
-/* ================= ANIMATION ================= */
-
-.reveal{
-opacity:0;
-transform:translateY(40px);
-transition:.9s ease
-}
-
-.reveal.active{
-opacity:1;
-transform:translateY(0)
-}
-
-
-/* ================= RESPONSIVE ================= */
-
-/* 3 reels */
-@media(max-width:1200px){
-
-.reel-card{
-flex:0 0 calc(33.333% - 14.7px)
-}
-
-}
-
-
-/* 2 reels */
-@media(max-width:900px){
-
-section{
-padding:90px 0
-}
-
-.nav-links{
-display:none
-}
-
-.hero-title{
-font-size:clamp(60px,15vw,110px)
-}
-
-.hero-bottom{
-flex-direction:column;
-align-items:start
-}
-
-.projects{
-grid-template-columns:1fr
-}
-
-.about-grid{
-grid-template-columns:1fr;
-gap:60px
-}
-
-.about-photo-wrap{
-max-width:500px
-}
-
-.stats-grid{
-grid-template-columns:repeat(2,1fr)
-}
-
-.stat{
-border-bottom:1px solid var(--line)
-}
-
-.stat:nth-child(2){
-border-right:none
-}
-
-.experience-item{
-grid-template-columns:1fr;
-gap:15px
-}
-
-.contact{
-padding:100px 0 50px
-}
-
-.contact-heading{
-flex-direction:column;
-align-items:flex-start;
-gap:35px
-}
-
-.contact-card{
-grid-template-columns:1fr;
-margin-top:65px
-}
-
-.contact-card-left{
-border-right:none;
-border-bottom:1px solid var(--line);
-min-height:330px
-}
-
-.contact-card-right{
-gap:45px
-}
-
-/* 2 reels on tablet */
-.reel-card{
-flex:0 0 calc(50% - 11px)
-}
-
-}
-
-
-/* 1 reel on mobile */
-@media(max-width:600px){
-
-.container{
-width:88%
-}
-
-.nav-contact{
-display:none
-}
-
-.hero{
-min-height:90vh
-}
-
-.hero-title{
-font-size:18vw
-}
-
-.hero-bottom{
-margin-top:50px
-}
-
-.reel-slider-wrapper{
-margin-top:45px
-}
-
-.reel-card{
-flex:0 0 82%
-}
-
-.project-content{
-padding:25px
-}
-
-.stats-grid{
-grid-template-columns:1fr 1fr
-}
-
-.stat{
-padding:35px 15px
-}
-
-.stat:first-child{
-padding-left:15px
-}
-
-.contact-title{
-font-size:17vw
-}
-
-.contact-card-left,
-.contact-card-right{
-padding:30px
-}
-
-.contact-email{
-font-size:23px;
-word-break:break-word
-}
-
-.contact-bottom-line{
-flex-direction:column;
-gap:12px
-}
-
-.footer-inner{
-flex-direction:column;
-gap:10px
-}
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sumit Kumar — Motion Artist & Video Editor</title>
+
+  <meta
+    name="description"
+    content="Sumit Kumar — Motion Artist, Video Editor and Motion Graphics Designer with 4+ years of experience."
+  >
+
+  <!-- INTER FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       ROOT
+    ========================================================= */
+
+    :root {
+      --bg: #070707;
+      --bg-soft: #0d0d0d;
+      --card: #111111;
+      --card-hover: #171717;
+
+      --text: #f5f5f5;
+      --muted: #8e8e8e;
+
+      --border: rgba(255,255,255,0.09);
+
+      /* HIGHLIGHT COLOR */
+      --yellow: #FFC100;
+      --yellow-light: #FFD34D;
+
+      --container: 1240px;
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+
+    /* =========================================================
+       CUSTOM CURSOR
+    ========================================================= */
+
+    .cursor {
+      position: fixed;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--yellow);
+      pointer-events: none;
+      z-index: 99999;
+
+      transform: translate(-50%, -50%);
+
+      box-shadow:
+        0 0 10px rgba(255,193,0,.9),
+        0 0 25px rgba(255,193,0,.6),
+        0 0 50px rgba(255,193,0,.25);
+
+      transition:
+        width .25s ease,
+        height .25s ease,
+        background .25s ease;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,193,0,.55);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+
+      transform: translate(-50%, -50%);
+
+      transition:
+        width .25s ease,
+        height .25s ease,
+        border-color .25s ease;
+    }
+
+    .cursor.active {
+      width: 22px;
+      height: 22px;
+    }
+
+    .cursor-ring.active {
+      width: 65px;
+      height: 65px;
+      border-color: rgba(255,193,0,.9);
+    }
+
+
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+    .page-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+
+      border-radius: 50%;
+
+      background: rgba(255,193,0,.025);
+
+      filter: blur(120px);
+
+      top: -250px;
+      right: -200px;
+
+      pointer-events: none;
+      z-index: -2;
+
+      animation: glowPulse 8s ease-in-out infinite;
+    }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+
+      pointer-events: none;
+
+      opacity: .025;
+
+      background-image:
+        linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+
+      background-size: 70px 70px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 75%
+        );
+
+      z-index: -3;
+
+      animation: gridDrift 50s linear infinite;
+    }
+
+
+    /* =========================================================
+       CONTAINER
+    ========================================================= */
+
+    .container {
+      width: min(
+        var(--container),
+        calc(100% - 48px)
+      );
+
+      margin: auto;
+    }
+
+
+    .yellow {
+      color: var(--yellow);
+    }
+
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    .navbar {
+      position: fixed;
+
+      top: 18px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: min(
+        1180px,
+        calc(100% - 32px)
+      );
+
+      z-index: 5000;
+
+      background:
+        rgba(10,10,10,.78);
+
+      border:
+        1px solid var(--border);
+
+      backdrop-filter: blur(20px);
+
+      border-radius: 18px;
+    }
+
+
+    .nav-inner {
+      height: 68px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 0 22px;
+    }
+
+
+    .logo {
+      font-size: 20px;
+
+      font-weight: 800;
+
+      letter-spacing: -.06em;
+    }
+
+
+    .logo span {
+      color: var(--yellow);
+    }
+
+
+    .nav-links {
+      display: flex;
+
+      gap: 28px;
+
+      list-style: none;
+    }
+
+
+    .nav-links a {
+      font-size: 12px;
+
+      color: #aaa;
+
+      transition: .25s ease;
+    }
+
+
+    .nav-links a:hover {
+      color: var(--yellow);
+    }
+
+
+    .nav-cta {
+      background: var(--yellow);
+
+      color: #050505;
+
+      padding: 11px 17px;
+
+      border-radius: 10px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+
+    .menu-btn {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border:
+        1px solid var(--border);
+
+      background: transparent;
+
+      color: white;
+
+      border-radius: 10px;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+
+      align-items: center;
+
+      padding:
+        150px 0
+        80px;
+    }
+
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.1fr
+        .9fr;
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+
+    .hero-eyebrow {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      margin-bottom: 25px;
+
+      font-size: 11px;
+
+      color: var(--muted);
+
+      text-transform: uppercase;
+
+      letter-spacing: .14em;
+    }
+
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--yellow);
+
+      box-shadow:
+        0 0 15px
+        rgba(255,193,0,.9);
+
+      animation: pulseDot 2.2s ease-in-out infinite;
+    }
+
+
+    .hero h1 {
+      font-size:
+        clamp(
+          55px,
+          7.5vw,
+          105px
+        );
+
+      line-height: .92;
+
+      letter-spacing: -.075em;
+
+      font-weight: 800;
+    }
+
+
+    .hero-description {
+      max-width: 620px;
+
+      margin-top: 30px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.9;
+    }
+
+
+    .hero-buttons {
+      display: flex;
+
+      gap: 12px;
+
+      margin-top: 35px;
+    }
+
+
+    .btn {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 9px;
+
+      padding:
+        14px 20px;
+
+      border-radius: 10px;
+
+      border:
+        1px solid var(--border);
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      transition: .3s ease;
+    }
+
+
+    .btn-primary {
+      background:
+        var(--yellow);
+
+      color: #050505;
+
+      border-color:
+        var(--yellow);
+    }
+
+
+    .btn-primary:hover {
+      background:
+        var(--yellow-light);
+
+      transform:
+        translateY(-3px);
+    }
+
+
+    .btn-secondary:hover {
+      border-color:
+        rgba(255,193,0,.5);
+
+      color:
+        var(--yellow);
+
+      transform:
+        translateY(-3px);
+    }
+
+
+    .hero-stats {
+      display: flex;
+
+      gap: 40px;
+
+      margin-top: 55px;
+    }
+
+
+    .stat strong {
+      display: block;
+
+      font-size: 30px;
+
+      line-height: 1;
+    }
+
+
+    .stat span {
+      display: block;
+
+      margin-top: 8px;
+
+      font-size: 10px;
+
+      color: var(--muted);
+
+      text-transform: uppercase;
+
+      letter-spacing: .1em;
+    }
+
+
+    /* =========================================================
+       HERO IMAGE
+    ========================================================= */
+
+    .hero-visual {
+      position: relative;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      min-height: 560px;
+    }
+
+
+    .hero-frame {
+      width: min(430px,100%);
+
+      aspect-ratio:
+        4 / 5;
+
+      overflow: hidden;
+
+      border-radius: 25px;
+
+      border:
+        1px solid var(--border);
+
+      background:
+        #151515;
+
+      position: relative;
+    }
+
+
+    .hero-frame img {
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+
+    .floating-tag {
+      position: absolute;
+
+      padding:
+        11px 14px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 11px;
+
+      background:
+        rgba(10,10,10,.88);
+
+      backdrop-filter:
+        blur(12px);
+
+      font-size: 10px;
+
+      color: #ccc;
+
+      animation: floatShape 5s ease-in-out infinite;
+    }
+
+
+    .tag-one {
+      left: -35px;
+
+      top: 100px;
+
+      animation-delay: 0s;
+    }
+
+
+    .tag-two {
+      right: -35px;
+
+      bottom: 110px;
+
+      animation-delay: -2.5s;
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    section {
+      padding:
+        110px 0;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.055);
+    }
+
+
+    .section-heading {
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        flex-end;
+
+      gap: 40px;
+
+      margin-bottom:
+        45px;
+    }
+
+
+    .section-number {
+      color:
+        var(--yellow);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: .15em;
+
+      margin-bottom:
+        13px;
+    }
+
+
+    .section-title {
+      font-size:
+        clamp(
+          38px,
+          5vw,
+          68px
+        );
+
+      line-height: .98;
+
+      letter-spacing:
+        -.065em;
+
+      font-weight:
+        800;
+    }
+
+
+    .section-description {
+      max-width: 400px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+
+      line-height:
+        1.8;
+    }
+
+
+    /* =========================================================
+       REELS
+    ========================================================= */
+
+    .reel-wrapper {
+      position: relative;
+    }
+
+
+    .reel-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(10, minmax(270px,1fr));
+
+      gap: 15px;
+
+      overflow-x: auto;
+
+      scroll-snap-type:
+        x mandatory;
+
+      padding-bottom:
+        18px;
+
+      scrollbar-width:
+        thin;
+
+      scrollbar-color:
+        var(--yellow)
+        #181818;
+    }
+
+
+    .reel-grid::-webkit-scrollbar {
+      height: 5px;
+    }
+
+
+    .reel-grid::-webkit-scrollbar-track {
+      background:
+        #151515;
+    }
+
+
+    .reel-grid::-webkit-scrollbar-thumb {
+      background:
+        var(--yellow);
+
+      border-radius:
+        20px;
+    }
+
+
+    .reel-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: flex-end;
+    }
+
+    .reel-nav button {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .25s ease, background .25s ease, color .25s ease, transform .25s ease;
+    }
+
+    .reel-nav button:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+      background: rgba(255,193,0,.08);
+      transform: translateY(-2px);
+    }
+
+
+    .video-card {
+      position: relative;
+
+      aspect-ratio:
+        9 / 14;
+
+      overflow: hidden;
+
+      border-radius: 17px;
+
+      background:
+        #141414;
+
+      border:
+        1px solid var(--border);
+
+      cursor: pointer;
+
+      scroll-snap-align:
+        start;
+
+      min-width: 270px;
+    }
+
+
+    .video-thumb {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          145deg,
+          #292929,
+          #101010
+        );
+
+      transition:
+        transform .6s
+        cubic-bezier(
+          .2,.8,.2,1
+        );
+    }
+
+
+    .video-card:hover
+    .video-thumb {
+      transform:
+        scale(1.06);
+    }
+
+
+    .video-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.9),
+          transparent 60%
+        );
+    }
+
+
+    .play-btn {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%,-50%);
+
+      width: 58px;
+      height: 58px;
+
+      border-radius:
+        50%;
+
+      border: 0;
+
+      background:
+        var(--yellow);
+
+      color:
+        #050505;
+
+      font-size: 17px;
+
+      display: grid;
+
+      place-items:
+        center;
+
+      padding-left:
+        3px;
+
+      transition:
+        .3s ease;
+    }
+
+
+    .video-card:hover
+    .play-btn {
+      transform:
+        translate(-50%,-50%)
+        scale(1.12);
+    }
+
+
+    .video-info {
+      position: absolute;
+
+      left: 17px;
+      right: 17px;
+      bottom: 16px;
+
+      z-index: 5;
+    }
+
+
+    .video-info small {
+      color:
+        var(--yellow);
+
+      font-size:
+        9px;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        .12em;
+    }
+
+
+    .video-info h3 {
+      font-size:
+        15px;
+
+      line-height:
+        1.25;
+
+      margin-top:
+        4px;
+    }
+
+
+    .reel-note {
+      margin-top:
+        18px;
+
+      color:
+        #686868;
+
+      font-size:
+        10px;
+
+      text-align:
+        right;
+    }
+
+
+    /* =========================================================
+       SELECTED WORK
+    ========================================================= */
+
+    .project-list {
+      display: grid;
+
+      gap: 24px;
+    }
+
+
+    .project {
+      display: grid;
+
+      grid-template-columns:
+        1.25fr
+        .75fr;
+
+      gap: 40px;
+
+      padding:
+        18px;
+
+      background:
+        var(--card);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        24px;
+
+      transition:
+        .35s ease;
+    }
+
+
+    .project:hover {
+      background:
+        var(--card-hover);
+
+      border-color:
+        rgba(255,193,0,.25);
+
+      transform:
+        translateY(-3px);
+    }
+
+
+    .project-video {
+      position: relative;
+
+      aspect-ratio:
+        16 / 9;
+
+      overflow: hidden;
+
+      border-radius:
+        16px;
+
+      background:
+        #191919;
+
+      cursor: pointer;
+    }
+
+
+    .project-video img {
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform .6s ease;
+    }
+
+
+    .project-video:hover img {
+      transform:
+        scale(1.05);
+    }
+
+
+    .project-content {
+      padding:
+        25px 15px;
+
+      display: flex;
+
+      flex-direction:
+        column;
+
+      justify-content:
+        center;
+    }
+
+
+    .project-index {
+      color:
+        var(--yellow);
+
+      font-size:
+        10px;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        .15em;
+
+      margin-bottom:
+        18px;
+    }
+
+
+    .project-content h3 {
+      font-size:
+        clamp(
+          27px,
+          3vw,
+          42px
+        );
+
+      line-height:
+        1;
+
+      letter-spacing:
+        -.055em;
+    }
+
+
+    .project-content p {
+      margin:
+        18px 0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+
+      line-height:
+        1.8;
+    }
+
+
+    .tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 7px;
+
+      margin-bottom:
+        22px;
+    }
+
+
+    .tag {
+      padding:
+        6px 10px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        100px;
+
+      font-size:
+        9px;
+
+      color:
+        #aaa;
+    }
+
+
+    .watch-link {
+      color:
+        var(--yellow);
+
+      font-size:
+        11px;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        .05em;
+    }
+
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns:
+        .75fr
+        1.25fr;
+
+      gap:
+        80px;
+    }
+
+
+    .about-title {
+      font-size:
+        clamp(
+          38px,
+          4vw,
+          58px
+        );
+
+      line-height:
+        1;
+
+      letter-spacing:
+        -.06em;
+    }
+
+
+    .about-text {
+      color:
+        var(--muted);
+
+      font-size:
+        15px;
+
+      line-height:
+        1.9;
+    }
+
+
+    .about-text p + p {
+      margin-top:
+        20px;
+    }
+
+
+    .stats-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      margin-top:
+        45px;
+
+      border-top:
+        1px solid
+        var(--border);
+
+      border-bottom:
+        1px solid
+        var(--border);
+    }
+
+
+    .big-stat {
+      padding:
+        25px 15px;
+
+      border-right:
+        1px solid
+        var(--border);
+    }
+
+
+    .big-stat:last-child {
+      border-right: 0;
+    }
+
+
+    .big-stat strong {
+      display: block;
+
+      color:
+        var(--yellow);
+
+      font-size:
+        40px;
+
+      line-height:
+        1;
+
+      letter-spacing:
+        -.07em;
+    }
+
+
+    .big-stat span {
+      display: block;
+
+      margin-top:
+        8px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        9px;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .1em;
+    }
+
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
+
+    .services-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:
+        15px;
+    }
+
+
+    .service {
+      min-height:
+        250px;
+
+      padding:
+        28px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        20px;
+
+      background:
+        var(--card);
+
+      transition:
+        .3s ease;
+    }
+
+
+    .service:hover {
+      transform:
+        translateY(-5px);
+
+      border-color:
+        rgba(255,193,0,.35);
+    }
+
+
+    .service-number {
+      color:
+        var(--yellow);
+
+      font-size:
+        10px;
+
+      font-weight:
+        700;
+    }
+
+
+    .service h3 {
+      margin-top:
+        65px;
+
+      font-size:
+        21px;
+
+      letter-spacing:
+        -.035em;
+    }
+
+
+    .service p {
+      margin-top:
+        9px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+
+      line-height:
+        1.7;
+    }
+
+
+    /* =========================================================
+       INDUSTRIES
+    ========================================================= */
+
+    .industry-wrapper {
+      padding:
+        50px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        24px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #111,
+          #090909
+        );
+    }
+
+
+    .industry-intro {
+      max-width:
+        600px;
+
+      color:
+        var(--muted);
+
+      margin-bottom:
+        30px;
+
+      font-size:
+        14px;
+    }
+
+
+    .industry-list {
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        9px;
+    }
+
+
+    .industry {
+      padding:
+        11px 16px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        100px;
+
+      color:
+        #bbb;
+
+      font-size:
+        11px;
+
+      transition:
+        .25s ease;
+    }
+
+
+    .industry:hover {
+      color:
+        var(--yellow);
+
+      border-color:
+        rgba(255,193,0,.5);
+
+      background:
+        rgba(255,193,0,.04);
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+    ========================================================= */
+
+    .experience-list {
+      border-top:
+        1px solid
+        var(--border);
+    }
+
+
+    .experience-item {
+      display: grid;
+
+      grid-template-columns:
+        .35fr
+        1fr
+        .8fr;
+
+      gap:
+        30px;
+
+      padding:
+        35px 0;
+
+      border-bottom:
+        1px solid
+        var(--border);
+    }
+
+
+    .experience-date {
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+    }
+
+
+    .experience-role {
+      font-size:
+        23px;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        -.04em;
+    }
+
+
+    .experience-company {
+      color:
+        var(--yellow);
+
+      font-size:
+        12px;
+
+      margin-top:
+        5px;
+    }
+
+
+    .experience-description {
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+
+      line-height:
+        1.8;
+    }
+
+
+    /* =========================================================
+       SKILLS
+    ========================================================= */
+
+    .skills-grid {
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:
+        15px;
+    }
+
+
+    .skill-box {
+      padding:
+        30px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        20px;
+
+      background:
+        var(--card);
+    }
+
+
+    .skill-box h3 {
+      color:
+        var(--yellow);
+
+      font-size:
+        10px;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .12em;
+
+      margin-bottom:
+        20px;
+    }
+
+
+    .skill-items {
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        8px;
+    }
+
+
+    .skill-item {
+      padding:
+        8px 10px;
+
+      background:
+        #191919;
+
+      border-radius:
+        8px;
+
+      color:
+        #c5c5c5;
+
+      font-size:
+        10px;
+    }
+
+
+    /* =========================================================
+       PROCESS
+    ========================================================= */
+
+    .process-grid {
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      gap:
+        1px;
+
+      background:
+        var(--border);
+
+      border:
+        1px solid
+        var(--border);
+    }
+
+
+    .process {
+      min-height:
+        180px;
+
+      padding:
+        25px;
+
+      background:
+        var(--bg);
+    }
+
+
+    .process span {
+      color:
+        var(--yellow);
+
+      font-size:
+        10px;
+
+      font-weight:
+        700;
+    }
+
+
+    .process h3 {
+      margin-top:
+        60px;
+
+      font-size:
+        17px;
+    }
+
+
+    .process p {
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      margin-top:
+        5px;
+    }
+
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact-box {
+      padding:
+        80px;
+
+      border-radius:
+        30px;
+
+      border:
+        1px solid
+        rgba(255,193,0,.2);
+
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(255,193,0,.1),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #151515,
+          #090909
+        );
+    }
+
+
+    .contact-box h2 {
+      max-width:
+        850px;
+
+      font-size:
+        clamp(
+          45px,
+          7vw,
+          90px
+        );
+
+      line-height:
+        .92;
+
+      letter-spacing:
+        -.075em;
+    }
+
+
+    .contact-box p {
+      max-width:
+        560px;
+
+      margin:
+        25px 0 30px;
+
+      color:
+        var(--muted);
+    }
+
+
+    .contact-details {
+      display:
+        flex;
+
+      flex-wrap:
+        wrap;
+
+      gap:
+        25px;
+
+      margin-top:
+        45px;
+    }
+
+
+    .contact-details a {
+      color:
+        #bbb;
+
+      font-size:
+        12px;
+    }
+
+
+    .contact-details a:hover {
+      color:
+        var(--yellow);
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      padding:
+        30px 0;
+
+      border-top:
+        1px solid
+        var(--border);
+    }
+
+
+    .footer-inner {
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
+    }
+
+
+    .footer-inner p,
+    .footer-links a {
+      color:
+        #666;
+
+      font-size:
+        10px;
+    }
+
+
+    .footer-links {
+      display:
+        flex;
+
+      gap:
+        20px;
+    }
+
+
+    /* =========================================================
+       MODAL
+    ========================================================= */
+
+    .modal {
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      z-index:
+        9000;
+
+      display:
+        none;
+
+      place-items:
+        center;
+
+      padding:
+        25px;
+
+      background:
+        rgba(0,0,0,.92);
+
+      backdrop-filter:
+        blur(10px);
+    }
+
+
+    .modal.active {
+      display:
+        grid;
+    }
+
+
+    .modal-content {
+      position:
+        relative;
+
+      width:
+        min(1000px,100%);
+
+      aspect-ratio:
+        16 / 9;
+
+      background:
+        #000;
+
+      border-radius:
+        15px;
+
+      overflow:
+        hidden;
+    }
+
+
+    .modal-content iframe {
+      width:
+        100%;
+
+      height:
+        100%;
+
+      border:
+        0;
+    }
+
+
+    .close-modal {
+      position:
+        absolute;
+
+      right:
+        0;
+
+      top:
+        -50px;
+
+      width:
+        40px;
+
+      height:
+        40px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        50%;
+
+      background:
+        #111;
+
+      color:
+        white;
+
+      font-size:
+        20px;
+    }
+
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity:
+        0;
+
+      transform:
+        translateY(25px);
+
+      transition:
+        opacity .8s cubic-bezier(.16,.84,.32,1),
+        transform .8s cubic-bezier(.16,.84,.32,1);
+    }
+
+
+    .reveal.visible {
+      opacity:
+        1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =========================================================
+       TEXT ANIMATION (split words)
+    ========================================================= */
+
+    .split-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(65%) rotate(3deg);
+      transition:
+        transform .85s cubic-bezier(.16,.84,.32,1),
+        opacity .7s ease;
+      will-change: transform, opacity;
+    }
+
+    .reveal.visible .split-word {
+      opacity: 1;
+      transform: translateY(0) rotate(0deg);
+    }
+
+
+    /* =========================================================
+       SHAPE / DECORATIVE ANIMATION
+    ========================================================= */
+
+    @keyframes pulseDot {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(255,193,0,.9);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 26px rgba(255,193,0,1);
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes floatShape {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-12px) rotate(-1.2deg);
+      }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        opacity: .55;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.12);
+      }
+    }
+
+    @keyframes gridDrift {
+      0% {
+        background-position: 0 0, 0 0;
+      }
+      100% {
+        background-position: 70px 70px, 70px 70px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .split-word,
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .eyebrow-dot,
+      .floating-tag,
+      .page-glow,
+      .grid-bg {
+        animation: none !important;
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media(max-width:1050px) {
+
+      .hero-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .hero-visual {
+        min-height:
+          480px;
+      }
+
+      .services-grid,
+      .skills-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .process-grid {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .experience-item {
+        grid-template-columns:
+          .3fr 1fr;
+      }
+
+      .experience-description {
+        grid-column:
+          2;
+      }
+    }
+
+
+    @media(max-width:760px) {
+
+      body {
+        cursor:
+          auto;
+      }
+
+      .cursor,
+      .cursor-ring {
+        display:
+          none;
+      }
+
+      .container {
+        width:
+          calc(100% - 30px);
+      }
+
+      .navbar {
+        top:
+          10px;
+
+        width:
+          calc(100% - 20px);
+      }
+
+      .nav-links {
+        display:
+          none;
+
+        position:
+          absolute;
+
+        top:
+          68px;
+
+        left:
+          0;
+
+        right:
+          0;
+
+        padding:
+          20px;
+
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+
+        background:
+          #0d0d0d;
+
+        border:
+          1px solid
+          var(--border);
+
+        border-radius:
+          15px;
+      }
+
+      .nav-links.active {
+        display:
+          flex;
+      }
+
+      .nav-cta {
+        display:
+          none;
+      }
+
+      .menu-btn {
+        display:
+          block;
+      }
+
+      .hero {
+        padding:
+          120px 0 70px;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(
+            50px,
+            15vw,
+            75px
+          );
+      }
+
+      .hero-buttons {
+        flex-direction:
+          column;
+      }
+
+      .hero-buttons .btn {
+        width:
+          100%;
+      }
+
+      .hero-stats {
+        gap:
+          25px;
+      }
+
+      .hero-visual {
+        min-height:
+          400px;
+      }
+
+      .hero-frame {
+        width:
+          min(
+            330px,
+            90%
+          );
+      }
+
+      .tag-one {
+        left:
+          0;
+      }
+
+      .tag-two {
+        right:
+          0;
+      }
+
+      section {
+        padding:
+          75px 0;
+      }
+
+      .section-heading {
+        display:
+          block;
+      }
+
+      .section-description {
+        margin-top:
+          20px;
+      }
+
+      .reel-grid {
+        grid-template-columns:
+          repeat(
+            10,
+            minmax(
+              240px,
+              1fr
+            )
+          );
+      }
+
+      .video-card {
+        min-width:
+          240px;
+      }
+
+      .project {
+        grid-template-columns:
+          1fr;
+      }
+
+      .about-grid {
+        grid-template-columns:
+          1fr;
+
+        gap:
+          40px;
+      }
+
+      .services-grid,
+      .skills-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .industry-wrapper {
+        padding:
+          25px;
+      }
+
+      .experience-item {
+        grid-template-columns:
+          1fr;
+
+        gap:
+          10px;
+      }
+
+      .experience-description {
+        grid-column:
+          auto;
+      }
+
+      .process-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .contact-box {
+        padding:
+          45px 25px;
+      }
+
+      .contact-details {
+        flex-direction:
+          column;
+
+        gap:
+          12px;
+      }
+
+      .footer-inner {
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+
+        gap:
+          15px;
+      }
+    }
+
+
+    @media(max-width:480px) {
+
+      .stats-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .big-stat {
+        border-right:
+          0;
+
+        border-bottom:
+          1px solid
+          var(--border);
+      }
+
+      .big-stat:last-child {
+        border-bottom:
+          0;
+      }
+
+      .process-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+    }
+
+  </style>
 </head>
 
 
 <body>
 
+  <!-- =========================================================
+       CUSTOM CURSOR
+  ========================================================= -->
 
-<!-- ================= HEADER ================= -->
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
 
-<header id="header">
-
-<div class="container nav">
-
-<a href="#" class="logo">SUMIT KUMAR</a>
-
-<ul class="nav-links">
-
-<li>
-<a href="#showreel">Showreel</a>
-</li>
-
-<li>
-<a href="#work">Work</a>
-</li>
-
-<li>
-<a href="#about">About</a>
-</li>
-
-<li>
-<a href="#experience">Experience</a>
-</li>
-
-<li>
-<a href="#skills">Skills</a>
-</li>
-
-</ul>
-
-<a href="#contact" class="nav-contact">
-Let's Talk
-</a>
-
-</div>
-
-</header>
+  <div class="page-glow"></div>
+  <div class="grid-bg"></div>
 
 
-<main>
+  <!-- =========================================================
+       NAVBAR
+  ========================================================= -->
+
+  <header class="navbar">
+
+    <div class="nav-inner">
+
+      <a href="#home" class="logo">
+        SUMIT<span>.</span>
+      </a>
 
 
-<!-- ================= HERO ================= -->
+      <nav>
 
-<section class="hero">
+        <ul class="nav-links" id="navLinks">
 
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
+          <li>
+            <a href="#showreel">
+              Showreel
+            </a>
+          </li>
 
-    <div class="container hero-content">
+          <li>
+            <a href="#work">
+              Work
+            </a>
+          </li>
 
-        <!-- TOP TAGLINE -->
-        <div class="eyebrow">
-            MOTION ARTIST · VIDEO EDITOR · STORYTELLING
-        </div>
+          <li>
+            <a href="#about">
+              About
+            </a>
+          </li>
 
-        <div class="hero-layout">
+          <li>
+            <a href="#services">
+              Services
+            </a>
+          </li>
 
-            <!-- LEFT CONTENT -->
-            <div class="hero-copy">
+          <li>
+            <a href="#experience">
+              Experience
+            </a>
+          </li>
 
-                <div class="hero-intro">
-                    Hi, I'm
-                </div>
+          <li>
+            <a href="#contact">
+              Contact
+            </a>
+          </li>
 
-                <h1 class="hero-title">
-                    Sumit Kumar
-                </h1>
+        </ul>
 
-                <h2 class="hero-role">
-                    Motion Designer & Video Editor
-                </h2>
+      </nav>
 
-                <p class="hero-small">
-                    Creative motion graphics designer and video editor
-                    transforming complex ideas into compelling visual stories.
-                </p>
+
+      <a
+        href="#contact"
+        class="nav-cta"
+      >
+        Let's Talk
+      </a>
+
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <section
+      class="hero"
+      id="home"
+    >
+
+      <div class="container">
+
+        <div class="hero-grid">
+
+
+          <div class="hero-content reveal">
+
+            <div class="hero-eyebrow">
+
+              <span class="eyebrow-dot"></span>
+
+              Available for creative projects
 
             </div>
 
 
-            <!-- RIGHT SIDE -->
-            <div class="hero-right">
+            <h1>
 
-                <!-- TEMPORARY IMAGE -->
-                <div class="hero-image-wrap">
+              Motion that
 
-                    <img 
-                        src="your-image.png"
-                        alt="Sumit Kumar Motion Designer"
-                        class="hero-image"
-                    >
+              <span class="yellow">
+                moves
+              </span>
 
-                </div>
+              ideas.
+
+            </h1>
 
 
-                <!-- BUTTONS -->
-                <div class="hero-buttons">
+            <p class="hero-description">
 
-                    <a href="#showreel" class="btn btn-primary">
-                        View My Work →
-                    </a>
+              I'm <strong>Sumit Kumar</strong> —
+              a Motion Artist, Video Editor and
+              Motion Graphics Designer creating
+              product videos, explainers, motion
+              graphics and visual stories for brands
+              and businesses.
 
-                    <a href="#contact" class="btn btn-secondary">
-                        Let's Talk
-                    </a>
+            </p>
 
-                </div>
+
+            <div class="hero-buttons">
+
+              <a
+                href="#showreel"
+                class="btn btn-primary"
+              >
+                Watch Showreel
+                ↗
+              </a>
+
+
+              <a
+                href="#work"
+                class="btn btn-secondary"
+              >
+                Selected Work
+              </a>
 
             </div>
 
+
+            <div class="hero-stats">
+
+              <div class="stat">
+
+                <strong class="yellow">
+                  4+
+                </strong>
+
+                <span>
+                  Years Experience
+                </span>
+
+              </div>
+
+
+              <div class="stat">
+
+                <strong>
+                  150+
+                </strong>
+
+                <span>
+                  Projects
+                </span>
+
+              </div>
+
+
+              <div class="stat">
+
+                <strong>
+                  25+
+                </strong>
+
+                <span>
+                  Categories
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- HERO IMAGE -->
+
+          <div class="hero-visual reveal">
+
+            <div class="floating-tag tag-one">
+              Motion Graphics
+            </div>
+
+
+            <div class="hero-frame">
+
+              <img
+                src="sumit-portrait.png"
+                alt="Sumit Kumar"
+              >
+
+            </div>
+
+
+            <div class="floating-tag tag-two">
+              Video Editor · Motion Artist
+            </div>
+
+          </div>
+
         </div>
 
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         SHOWREEL
+    ========================================================= -->
+
+    <section id="showreel">
+
+      <div class="container">
+
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <div class="section-number">
+              01 / SHOWREEL
+            </div>
+
+            <h2 class="section-title">
+
+              Selected
+
+              <span class="yellow">
+                Reels.
+              </span>
+
+            </h2>
+
+          </div>
+
+
+          <div>
+
+            <p class="section-description">
+
+              Motion graphics, editing,
+              product videos, UI animation
+              and visual storytelling.
+
+            </p>
+
+
+            <div class="reel-nav">
+
+              <button
+                type="button"
+                id="reelPrev"
+                aria-label="Scroll reels left"
+              >
+                ←
+              </button>
+
+              <button
+                type="button"
+                id="reelNext"
+                aria-label="Scroll reels right"
+              >
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="reel-wrapper">
+
+
+          <!-- Each data-video attribute below is a DUMMY placeholder.
+               Replace the "REPLACE_REEL_XX_ID" part with your real
+               YouTube video ID once you have the final reel. -->
+
+          <div
+            class="reel-grid"
+            id="reelGrid"
+          >
+
+
+            <!-- REEL 01 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_01_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80"
+                  alt="Motion Graphics Reel"
+                >
+
+              </div>
+
+
+              <div class="video-overlay"></div>
+
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+
+              <div class="video-info">
+
+                <small>
+                  01 / REEL
+                </small>
+
+                <h3>
+                  Motion Graphics
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 02 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_02_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80"
+                  alt="Video Editing Reel"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  02 / REEL
+                </small>
+
+                <h3>
+                  Video Editing
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 03 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_03_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=800&q=80"
+                  alt="SaaS Product Reel"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  03 / REEL
+                </small>
+
+                <h3>
+                  SaaS Product
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 04 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_04_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80"
+                  alt="Creative Reel"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  04 / REEL
+                </small>
+
+                <h3>
+                  Creative Reel
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 05 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_05_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80"
+                  alt="Motion Design"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  05 / REEL
+                </small>
+
+                <h3>
+                  Motion Design
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 06 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_06_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1579109650508-7c6e6f6b9f9e?auto=format&fit=crop&w=800&q=80"
+                  alt="2D Animation"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  06 / REEL
+                </small>
+
+                <h3>
+                  2D Animation
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 07 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_07_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80"
+                  alt="UI Animation"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  07 / REEL
+                </small>
+
+                <h3>
+                  UI Animation
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 08 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_08_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+                  alt="Corporate Video"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  08 / REEL
+                </small>
+
+                <h3>
+                  Corporate Video
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 09 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_09_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80"
+                  alt="Marketing Video"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  09 / REEL
+                </small>
+
+                <h3>
+                  Marketing Video
+                </h3>
+
+              </div>
+
+            </article>
+
+
+
+            <!-- REEL 10 -->
+
+            <article
+              class="video-card reveal"
+              data-video="https://www.youtube.com/embed/REPLACE_REEL_10_ID"
+            >
+
+              <div class="video-thumb">
+
+                <img
+                  src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80"
+                  alt="Showcase Reel"
+                >
+
+              </div>
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+              <div class="video-info">
+
+                <small>
+                  10 / REEL
+                </small>
+
+                <h3>
+                  Showcase Reel
+                </h3>
+
+              </div>
+
+            </article>
+
+
+          </div>
+
+
+          <div class="reel-note">
+            ← Drag / Scroll to explore all 10 reels →
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         SELECTED WORK
+    ========================================================= -->
+
+    <section id="work">
+
+      <div class="container">
+
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <div class="section-number">
+              02 / SELECTED WORK
+            </div>
+
+            <h2 class="section-title">
+
+              Work that
+
+              <span class="yellow">
+                speaks.
+              </span>
+
+            </h2>
+
+          </div>
+
+
+          <p class="section-description">
+
+            Featured long-form projects
+            showcasing editing, motion design,
+            product videos and storytelling.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="project-list">
+
+
+          <!-- PROJECT 01 -->
+
+          <article class="project reveal">
+
+
+            <div
+              class="project-video"
+              data-video="https://www.youtube.com/embed/Az28xI2jtO0"
+            >
+
+              <img
+                src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1200&q=85"
+                alt="SaaS Product Video"
+              >
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-index">
+                PROJECT 01
+              </div>
+
+
+              <h3>
+
+                SaaS Product
+
+                <span class="yellow">
+                  Demo
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                UI-focused product videos that
+                translate complex software features
+                into intuitive and engaging visual
+                walkthroughs.
+
+              </p>
+
+
+              <div class="tags">
+
+                <span class="tag">
+                  Motion Design
+                </span>
+
+                <span class="tag">
+                  UI Animation
+                </span>
+
+                <span class="tag">
+                  Video Editing
+                </span>
+
+              </div>
+
+
+              <a
+                href="https://youtu.be/Az28xI2jtO0"
+                target="_blank"
+                class="watch-link"
+              >
+                WATCH PROJECT ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 02 -->
+
+          <article class="project reveal">
+
+            <div
+              class="project-video"
+              data-video="https://www.youtube.com/embed/Az28xI2jtO0"
+            >
+
+              <img
+                src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85"
+                alt="Explainer Video"
+              >
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-index">
+                PROJECT 02
+              </div>
+
+
+              <h3>
+
+                Explainer
+
+                <span class="yellow">
+                  Video
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                Animated storytelling created
+                to simplify complex B2B concepts
+                for customers and internal teams.
+
+              </p>
+
+
+              <div class="tags">
+
+                <span class="tag">
+                  2D Animation
+                </span>
+
+                <span class="tag">
+                  Storytelling
+                </span>
+
+                <span class="tag">
+                  Kinetic Type
+                </span>
+
+              </div>
+
+
+              <a
+                href="https://youtu.be/Az28xI2jtO0"
+                target="_blank"
+                class="watch-link"
+              >
+                WATCH PROJECT ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 03 -->
+
+          <article class="project reveal">
+
+            <div
+              class="project-video"
+              data-video="https://www.youtube.com/embed/Az28xI2jtO0"
+            >
+
+              <img
+                src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=85"
+                alt="Marketing Video"
+              >
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-index">
+                PROJECT 03
+              </div>
+
+
+              <h3>
+
+                Corporate &
+
+                <span class="yellow">
+                  Marketing
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                Promotional campaigns, social
+                media content and motion-heavy
+                brand stories for digital audiences.
+
+              </p>
+
+
+              <div class="tags">
+
+                <span class="tag">
+                  Marketing
+                </span>
+
+                <span class="tag">
+                  Motion Graphics
+                </span>
+
+                <span class="tag">
+                  Editing
+                </span>
+
+              </div>
+
+
+              <a
+                href="https://youtu.be/Az28xI2jtO0"
+                target="_blank"
+                class="watch-link"
+              >
+                WATCH PROJECT ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 04 -->
+
+          <article class="project reveal">
+
+            <div
+              class="project-video"
+              data-video="https://www.youtube.com/embed/Az28xI2jtO0"
+            >
+
+              <img
+                src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1200&q=85"
+                alt="Motion Design Project"
+              >
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-index">
+                PROJECT 04
+              </div>
+
+
+              <h3>
+
+                Motion
+
+                <span class="yellow">
+                  Design
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                High-impact motion graphics combining
+                typography, transitions, visual effects
+                and sound design.
+
+              </p>
+
+
+              <div class="tags">
+
+                <span class="tag">
+                  After Effects
+                </span>
+
+                <span class="tag">
+                  Motion Design
+                </span>
+
+                <span class="tag">
+                  Sound Design
+                </span>
+
+              </div>
+
+
+              <a
+                href="https://youtu.be/Az28xI2jtO0"
+                target="_blank"
+                class="watch-link"
+              >
+                WATCH PROJECT ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+
+          <!-- Projects 05-08 use DUMMY placeholder video IDs.
+               Replace "REPLACE_PROJECT_0X_ID" with your real
+               YouTube video ID for each case study. -->
+
+          <!-- PROJECT 05 -->
+
+          <article class="project reveal">
+
+            <div
+              class="project-video"
+              data-video="https://www.youtube.com/embed/REPLACE_PROJECT_05_ID"
+            >
+
+              <img
+                src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=85"
+                alt="Brand Reel Project"
+              >
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-index">
+                PROJECT 05
+              </div>
+
+
+              <h3>
+
+                Brand
+
+                <span class="yellow">
+                  Reel
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                Fast-paced brand reels built for social
+                platforms, combining bold typography with
+                punchy cuts to hold attention.
+
+              </p>
+
+
+              <div class="tags">
+
+                <span class="tag">
+                  Social Media
+                </span>
+
+                <span class="tag">
+                  Motion Design
+                </span>
+
+                <span class="tag">
+                  Editing
+                </span>
+
+              </div>
+
+
+              <a
+                href="#"
+                target="_blank"
+                class="watch-link"
+              >
+                WATCH PROJECT ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 06 -->
+
+          <article class="project reveal">
+
+            <div
+              class="project-video"
+              data-video="https://www.youtube.com/embed/REPLACE_PROJECT_06_ID"
+            >
+
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85"
+                alt="UI Animation Project"
+              >
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-index">
+                PROJECT 06
+              </div>
+
+
+              <h3>
+
+                UI
+
+                <span class="yellow">
+                  Animation
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                Interface-driven motion work that brings
+                app flows, transitions and micro-interactions
+                to life for product teams.
+
+              </p>
+
+
+              <div class="tags">
+
+                <span class="tag">
+                  UI Animation
+                </span>
+
+                <span class="tag">
+                  Prototyping
+                </span>
+
+                <span class="tag">
+                  After Effects
+                </span>
+
+              </div>
+
+
+              <a
+                href="#"
+                target="_blank"
+                class="watch-link"
+              >
+                WATCH PROJECT ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 07 -->
+
+          <article class="project reveal">
+
+            <div
+              class="project-video"
+              data-video="https://www.youtube.com/embed/REPLACE_PROJECT_07_ID"
+            >
+
+              <img
+                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
+                alt="Corporate Video Project"
+              >
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-index">
+                PROJECT 07
+              </div>
+
+
+              <h3>
+
+                Corporate
+
+                <span class="yellow">
+                  Video
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                Polished corporate storytelling for
+                internal communications, recruitment
+                and company culture content.
+
+              </p>
+
+
+              <div class="tags">
+
+                <span class="tag">
+                  Corporate
+                </span>
+
+                <span class="tag">
+                  Video Editing
+                </span>
+
+                <span class="tag">
+                  Color Grading
+                </span>
+
+              </div>
+
+
+              <a
+                href="#"
+                target="_blank"
+                class="watch-link"
+              >
+                WATCH PROJECT ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+
+          <!-- PROJECT 08 -->
+
+          <article class="project reveal">
+
+            <div
+              class="project-video"
+              data-video="https://www.youtube.com/embed/REPLACE_PROJECT_08_ID"
+            >
+
+              <img
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+                alt="Client Campaign Project"
+              >
+
+              <div class="video-overlay"></div>
+
+              <button class="play-btn">
+                ▶
+              </button>
+
+            </div>
+
+
+            <div class="project-content">
+
+              <div class="project-index">
+                PROJECT 08
+              </div>
+
+
+              <h3>
+
+                Client
+
+                <span class="yellow">
+                  Campaign
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                A full campaign edit blending live footage,
+                motion graphics and sound design into one
+                cohesive story.
+
+              </p>
+
+
+              <div class="tags">
+
+                <span class="tag">
+                  Campaign
+                </span>
+
+                <span class="tag">
+                  Storytelling
+                </span>
+
+                <span class="tag">
+                  Post Production
+                </span>
+
+              </div>
+
+
+              <a
+                href="#"
+                target="_blank"
+                class="watch-link"
+              >
+                WATCH PROJECT ↗
+              </a>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================= -->
+
+    <section id="about">
+
+      <div class="container">
+
+
+        <div class="about-grid">
+
+
+          <div class="reveal">
+
+            <div class="section-number">
+              03 / ABOUT ME
+            </div>
+
+
+            <h2 class="about-title">
+
+              Making ideas
+
+              <span class="yellow">
+                move.
+              </span>
+
+            </h2>
+
+          </div>
+
+
+          <div class="reveal">
+
+            <div class="about-text">
+
+              <p>
+
+                I'm a
+                <strong>
+                  Motion Artist and Video Editor
+                </strong>
+                with 4+ years of experience creating
+                motion graphics, product videos,
+                explainers, promotional campaigns,
+                corporate videos and digital content.
+
+              </p>
+
+
+              <p>
+
+                I work across the complete production
+                process — from
+
+                <span class="yellow">
+                  concept development and storyboarding
+                </span>
+
+                to animation, editing, sound design,
+                color grading and final delivery.
+
+              </p>
+
+
+              <p>
+
+                My focus is simple:
+                turn complex ideas into compelling
+                visual stories that communicate clearly
+                and keep audiences engaged.
+
+              </p>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+              <div class="big-stat">
+
+                <strong>
+                  4+
+                </strong>
+
+                <span>
+                  Years Experience
+                </span>
+
+              </div>
+
+
+              <div class="big-stat">
+
+                <strong>
+                  150+
+                </strong>
+
+                <span>
+                  Creative Projects
+                </span>
+
+              </div>
+
+
+              <div class="big-stat">
+
+                <strong>
+                  25+
+                </strong>
+
+                <span>
+                  Client Categories
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         SERVICES
+    ========================================================= -->
+
+    <section id="services">
+
+      <div class="container">
+
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <div class="section-number">
+              04 / SERVICES
+            </div>
+
+            <h2 class="section-title">
+
+              What I
+
+              <span class="yellow">
+                do.
+              </span>
+
+            </h2>
+
+          </div>
+
+
+          <p class="section-description">
+
+            From concept to final frame,
+            I create visual content designed
+            to communicate and engage.
+
+          </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+          <article class="service reveal">
+
+            <span class="service-number">
+              01
+            </span>
+
+            <h3>
+              Motion Graphics
+            </h3>
+
+            <p>
+              2D animation, kinetic typography,
+              logo animation and visual storytelling.
+            </p>
+
+          </article>
+
+
+          <article class="service reveal">
+
+            <span class="service-number">
+              02
+            </span>
+
+            <h3>
+              Video Editing
+            </h3>
+
+            <p>
+              Professional editing, pacing,
+              color correction, sound design
+              and post-production.
+            </p>
+
+          </article>
+
+
+          <article class="service reveal">
+
+            <span class="service-number">
+              03
+            </span>
+
+            <h3>
+              SaaS Product Videos
+            </h3>
+
+            <p>
+              Product demos, feature launches,
+              UI animations and software walkthroughs.
+            </p>
+
+          </article>
+
+
+          <article class="service reveal">
+
+            <span class="service-number">
+              04
+            </span>
+
+            <h3>
+              Explainer Videos
+            </h3>
+
+            <p>
+              Complex concepts transformed
+              into simple animated stories.
+            </p>
+
+          </article>
+
+
+          <article class="service reveal">
+
+            <span class="service-number">
+              05
+            </span>
+
+            <h3>
+              Corporate & Marketing
+            </h3>
+
+            <p>
+              Promotional campaigns, corporate
+              films and social media content.
+            </p>
+
+          </article>
+
+
+          <article class="service reveal">
+
+            <span class="service-number">
+              06
+            </span>
+
+            <h3>
+              AI Video Content
+            </h3>
+
+            <p>
+              AI-assisted ideation, visuals,
+              voice generation and content creation.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         INDUSTRIES
+    ========================================================= -->
+
+    <section>
+
+      <div class="container">
+
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <div class="section-number">
+              05 / INDUSTRIES
+            </div>
+
+            <h2 class="section-title">
+
+              Built for
+
+              <span class="yellow">
+                different
+              </span>
+
+              worlds.
+
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="industry-wrapper reveal">
+
+          <p class="industry-intro">
+
+            I've created visual content for
+            clients and projects across 25+
+            categories and industries.
+
+          </p>
+
+
+          <div class="industry-list">
+
+            <span class="industry">SaaS</span>
+            <span class="industry">Technology</span>
+            <span class="industry">AI</span>
+            <span class="industry">Healthcare</span>
+            <span class="industry">Fitness</span>
+            <span class="industry">Education</span>
+            <span class="industry">Finance</span>
+            <span class="industry">Real Estate</span>
+            <span class="industry">E-commerce</span>
+            <span class="industry">Marketing</span>
+            <span class="industry">Construction</span>
+            <span class="industry">Legal</span>
+            <span class="industry">Travel</span>
+            <span class="industry">Food</span>
+            <span class="industry">Automotive</span>
+            <span class="industry">Corporate</span>
+            <span class="industry">Social Media</span>
+            <span class="industry">E-learning</span>
+            <span class="industry">Startups</span>
+            <span class="industry">B2B</span>
+            <span class="industry">B2C</span>
+            <span class="industry">Product</span>
+            <span class="industry">Digital Marketing</span>
+            <span class="industry">Branding</span>
+            <span class="industry">Entertainment</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         EXPERIENCE
+    ========================================================= -->
+
+    <section id="experience">
+
+      <div class="container">
+
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <div class="section-number">
+              06 / EXPERIENCE
+            </div>
+
+            <h2 class="section-title">
+
+              Where I've
+
+              <span class="yellow">
+                worked.
+              </span>
+
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="experience-list">
+
+
+          <article class="experience-item reveal">
+
+            <div class="experience-date">
+              JUN 2025 — PRESENT
+            </div>
+
+
+            <div>
+
+              <div class="experience-role">
+                Motion Artist & Video Editor
+              </div>
+
+              <div class="experience-company">
+                Vinove Software & Services Pvt. Ltd.
+              </div>
+
+            </div>
+
+
+            <div class="experience-description">
+
+              Motion graphics, SaaS product videos,
+              product demos, explainers, promotional
+              content, UI animations and end-to-end
+              video production.
+
+            </div>
+
+          </article>
+
+
+
+          <article class="experience-item reveal">
+
+            <div class="experience-date">
+              JAN 2023 — MAY 2025
+            </div>
+
+
+            <div>
+
+              <div class="experience-role">
+                Graphic Designer & Motion Artist
+              </div>
+
+              <div class="experience-company">
+                Cynna Technologies Pvt. Ltd.
+              </div>
+
+            </div>
+
+
+            <div class="experience-description">
+
+              Motion graphics, social media creatives,
+              promotional materials, branding and
+              digital campaigns for multiple clients.
+
+            </div>
+
+          </article>
+
+
+
+          <article class="experience-item reveal">
+
+            <div class="experience-date">
+              JAN 2022 — JAN 2023
+            </div>
+
+
+            <div>
+
+              <div class="experience-role">
+                Graphic Designer & Motion Artist
+              </div>
+
+              <div class="experience-company">
+                AK Technology Pvt. Ltd.
+              </div>
+
+            </div>
+
+
+            <div class="experience-description">
+
+              Explainer videos, motion graphics,
+              UI animations, e-learning content,
+              social media videos and post-production.
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         TOOLKIT
+    ========================================================= -->
+
+    <section>
+
+      <div class="container">
+
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <div class="section-number">
+              07 / TOOLKIT
+            </div>
+
+            <h2 class="section-title">
+
+              My creative
+
+              <span class="yellow">
+                stack.
+              </span>
+
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+
+          <div class="skill-box reveal">
+
+            <h3>
+              Adobe Creative Suite
+            </h3>
+
+            <div class="skill-items">
+
+              <span class="skill-item">
+                After Effects
+              </span>
+
+              <span class="skill-item">
+                Premiere Pro
+              </span>
+
+              <span class="skill-item">
+                Photoshop
+              </span>
+
+              <span class="skill-item">
+                Illustrator
+              </span>
+
+              <span class="skill-item">
+                Audition
+              </span>
+
+              <span class="skill-item">
+                Media Encoder
+              </span>
+
+              <span class="skill-item">
+                XD
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="skill-box reveal">
+
+            <h3>
+              Motion & Video
+            </h3>
+
+            <div class="skill-items">
+
+              <span class="skill-item">
+                Motion Graphics
+              </span>
+
+              <span class="skill-item">
+                2D Animation
+              </span>
+
+              <span class="skill-item">
+                Kinetic Typography
+              </span>
+
+              <span class="skill-item">
+                UI Animation
+              </span>
+
+              <span class="skill-item">
+                Video Editing
+              </span>
+
+              <span class="skill-item">
+                Color Grading
+              </span>
+
+              <span class="skill-item">
+                Sound Design
+              </span>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="skill-box reveal">
+
+            <h3>
+              AI Creative Tools
+            </h3>
+
+            <div class="skill-items">
+
+              <span class="skill-item">
+                ChatGPT
+              </span>
+
+              <span class="skill-item">
+                Google Veo
+              </span>
+
+              <span class="skill-item">
+                Sora
+              </span>
+
+              <span class="skill-item">
+                ElevenLabs
+              </span>
+
+              <span class="skill-item">
+                Gemini
+              </span>
+
+              <span class="skill-item">
+                Firefly
+              </span>
+
+              <span class="skill-item">
+                Kling AI
+              </span>
+
+              <span class="skill-item">
+                Leonardo AI
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PROCESS
+    ========================================================= -->
+
+    <section>
+
+      <div class="container">
+
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <div class="section-number">
+              08 / PROCESS
+            </div>
+
+            <h2 class="section-title">
+
+              From idea to
+
+              <span class="yellow">
+                final frame.
+              </span>
+
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="process-grid">
+
+
+          <div class="process reveal">
+            <span>01</span>
+            <h3>Discover</h3>
+            <p>Understand the goal and audience.</p>
+          </div>
+
+
+          <div class="process reveal">
+            <span>02</span>
+            <h3>Concept</h3>
+            <p>Develop the creative direction.</p>
+          </div>
+
+
+          <div class="process reveal">
+            <span>03</span>
+            <h3>Storyboard</h3>
+            <p>Plan the visual sequence.</p>
+          </div>
+
+
+          <div class="process reveal">
+            <span>04</span>
+            <h3>Design</h3>
+            <p>Create the visual language.</p>
+          </div>
+
+
+          <div class="process reveal">
+            <span>05</span>
+            <h3>Animate</h3>
+            <p>Bring designs to life.</p>
+          </div>
+
+
+          <div class="process reveal">
+            <span>06</span>
+            <h3>Edit</h3>
+            <p>Build the final sequence.</p>
+          </div>
+
+
+          <div class="process reveal">
+            <span>07</span>
+            <h3>Sound + Color</h3>
+            <p>Polish audio and visuals.</p>
+          </div>
+
+
+          <div class="process reveal">
+            <span>08</span>
+            <h3>Deliver</h3>
+            <p>Export production-ready content.</p>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================= -->
+
+    <section
+      id="contact"
+      class="contact-section"
+    >
+
+      <div class="container">
+
+
+        <div class="contact-box reveal">
+
+
+          <div class="section-number">
+            09 / CONTACT
+          </div>
+
+
+          <h2>
+
+            Have an idea?
+
+            <span class="yellow">
+              Let's make it move.
+            </span>
+
+          </h2>
+
+
+          <p>
+
+            Need a SaaS product video,
+            motion graphics, explainer,
+            marketing video or professional
+            editing?
+
+            Let's create something impactful.
+
+          </p>
+
+
+          <a
+            href="mailto:doneguru5@gmail.com"
+            class="btn btn-primary"
+          >
+            Start a Project ↗
+          </a>
+
+
+          <div class="contact-details">
+
+            <a href="mailto:doneguru5@gmail.com">
+              doneguru5@gmail.com
+            </a>
+
+            <a href="tel:+919718735122">
+              +91 9718735122
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/sumit-kumar-3b448b231"
+              target="_blank"
+              rel="noopener"
+            >
+              LinkedIn ↗
+            </a>
+
+            <a
+              href="https://www.behance.net/doneguru"
+              target="_blank"
+              rel="noopener"
+            >
+              Behance ↗
+            </a>
+
+            <a
+              href="https://www.youtube.com/playlist?list=PLWs5JlEksOaI"
+              target="_blank"
+              rel="noopener"
+            >
+              YouTube ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-inner">
+
+        <p>
+          © 2026 Sumit Kumar. All rights reserved.
+        </p>
+
+
+        <div class="footer-links">
+
+          <a
+            href="https://www.linkedin.com/in/sumit-kumar-3b448b231"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            href="https://www.behance.net/doneguru"
+            target="_blank"
+          >
+            Behance
+          </a>
+
+          <a
+            href="https://www.youtube.com/playlist?list=PLWs5JlEksOaI"
+            target="_blank"
+          >
+            YouTube
+          </a>
+
+        </div>
+
+      </div>
+
     </div>
 
+  </footer>
 
-    <div class="scroll-indicator">
-        Scroll to explore ↓
+
+
+  <!-- =========================================================
+       VIDEO MODAL
+  ========================================================= -->
+
+  <div
+    class="modal"
+    id="videoModal"
+  >
+
+    <div class="modal-content">
+
+      <button
+        class="close-modal"
+        id="closeModal"
+      >
+        ×
+      </button>
+
+
+      <iframe
+        id="videoFrame"
+        src=""
+        title="Portfolio Video"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+
     </div>
 
-</section>
+  </div>
 
-</p>
 
-<div class="hero-buttons">
 
-<a href="#showreel" class="btn btn-primary">
-View My Work →
-</a>
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================= -->
 
-<a href="#contact" class="btn btn-secondary">
-Let's Talk
-</a>
+  <script>
 
-</div>
 
-</div>
+    /* =========================================================
+       SHARED FLAGS
+    ========================================================= */
 
-</div>
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
-<div class="scroll-indicator">
-Scroll to explore ↓
-</div>
 
-</section>
 
+    /* =========================================================
+       REELS MANUAL NAV
+    ========================================================= */
 
+    const reelGrid =
+      document.getElementById("reelGrid");
 
-<!-- ================= SHOWREEL ================= -->
+    const reelPrev =
+      document.getElementById("reelPrev");
 
-<section id="showreel" class="showreel">
+    const reelNext =
+      document.getElementById("reelNext");
 
-<div class="container reveal">
 
-<div class="showreel-header">
+    function scrollReels(dir) {
 
-<div>
+      if (!reelGrid) return;
 
-<div class="eyebrow">
-01 / Showreel
-</div>
+      const card = reelGrid.querySelector(".video-card");
 
-<h2 class="section-title">
-SHOWREEL
-</h2>
+      const step =
+        card
+          ? card.getBoundingClientRect().width + 15
+          : 290;
 
-<p class="section-description">
-A collection of motion design, video editing, product animation, explainers, promotional content and visual storytelling.
-</p>
+      reelGrid.scrollBy({
+        left: dir * step,
+        behavior: "smooth"
+      });
 
-</div>
+    }
 
-<div class="showreel-counter">
-08 REELS
-</div>
 
-</div>
+    if (reelPrev) {
+      reelPrev.addEventListener("click", () => scrollReels(-1));
+    }
 
+    if (reelNext) {
+      reelNext.addEventListener("click", () => scrollReels(1));
+    }
 
-<div class="reel-slider-wrapper">
 
-<div class="reel-slider" id="reelSlider">
 
+    /* =========================================================
+       STAT COUNT-UP ANIMATION
+    ========================================================= */
 
-<!-- ================= VIDEO 01 ================= -->
+    function animateCount(el) {
 
-<article class="reel-card">
+      const raw = el.textContent.trim();
 
-<iframe
-class="reel-video"
-src="https://www.youtube.com/embed/v7XyyMkzNnc"
-title="Sumit Kumar Motion Reel 01"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+      const match = raw.match(/[\d,.]+/);
 
-<div class="reel-info">
+      if (!match) return;
 
-<div class="reel-number">
-01 / MOTION
-</div>
+      const suffix = raw.slice(match.index + match[0].length);
+      const prefix = raw.slice(0, match.index);
 
-<h3 class="reel-title">
-Motion Design Reel
-</h3>
+      const target =
+        parseFloat(match[0].replace(/,/g, ""));
 
-<p class="reel-subtitle">
-Motion Graphics · Video Editing
-</p>
+      const duration = 1300;
+      const start = performance.now();
 
-</div>
+      function tick(now) {
 
-</article>
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = Math.round(target * eased);
 
+        el.textContent = prefix + val + suffix;
 
-<!-- ================= VIDEO 02 ================= -->
+        if (p < 1) requestAnimationFrame(tick);
 
-<article class="reel-card">
+      }
 
-<iframe
-class="reel-video"
-src="https://www.youtube.com/embed/CMl0SUvVJE0"
-title="Sumit Kumar Motion Reel 02"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+      requestAnimationFrame(tick);
 
-<div class="reel-info">
+    }
 
-<div class="reel-number">
-02 / MOTION
-</div>
 
-<h3 class="reel-title">
-Creative Motion Reel
-</h3>
+    const countTargets =
+      document.querySelectorAll(
+        ".stat strong, .big-stat strong"
+      );
 
-<p class="reel-subtitle">
-Animation · Visual Storytelling
-</p>
 
-</div>
+    if ("IntersectionObserver" in window && !prefersReducedMotion) {
 
-</article>
+      const countObserver =
+        new IntersectionObserver(
+          entries => {
 
+            entries.forEach(entry => {
 
-<!-- ================= VIDEO 03 ================= -->
+              if (entry.isIntersecting) {
 
-<article class="reel-card">
+                animateCount(entry.target);
 
-<iframe
-class="reel-video"
-src="https://www.youtube.com/embed/UJFius7nz0g"
-title="Sumit Kumar Motion Reel 03"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+                countObserver.unobserve(entry.target);
 
-<div class="reel-info">
+              }
 
-<div class="reel-number">
-03 / EDITING
-</div>
+            });
 
-<h3 class="reel-title">
-Video Editing Reel
-</h3>
+          },
+          { threshold: .6 }
+        );
 
-<p class="reel-subtitle">
-Editing · Effects · Post Production
-</p>
+      countTargets.forEach(
+        el => countObserver.observe(el)
+      );
 
-</div>
+    }
 
-</article>
 
 
-<!-- ================= VIDEO 04 ================= -->
+    /* =========================================================
+       CUSTOM GLOW CURSOR
+    ========================================================= */
 
-<article class="reel-card">
+    const cursor =
+      document.querySelector(".cursor");
 
-<iframe
-class="reel-video"
-src="https://www.youtube.com/embed/Az28xI2jtO0"
-title="Sumit Kumar Video 04"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+    const cursorRing =
+      document.querySelector(".cursor-ring");
 
-<div class="reel-info">
 
-<div class="reel-number">
-04 / VIDEO
-</div>
+    let mouseX = 0;
+    let mouseY = 0;
 
-<h3 class="reel-title">
-Selected Video Work
-</h3>
+    let ringX = 0;
+    let ringY = 0;
 
-<p class="reel-subtitle">
-Motion · Editing · Storytelling
-</p>
 
-</div>
+    document.addEventListener(
+      "mousemove",
+      (e) => {
 
-</article>
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
+        cursor.style.left =
+          mouseX + "px";
 
-<!-- ================= VIDEO 05 ================= -->
+        cursor.style.top =
+          mouseY + "px";
 
-<article class="reel-card">
+      }
+    );
 
-<iframe
-class="reel-video"
-src="https://www.youtube.com/embed/0AgwLTUyLG4"
-title="Sumit Kumar Video 05"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
 
-<div class="reel-info">
+    function animateCursor() {
 
-<div class="reel-number">
-05 / VIDEO
-</div>
+      ringX +=
+        (mouseX - ringX) * .14;
 
-<h3 class="reel-title">
-Creative Video Project
-</h3>
+      ringY +=
+        (mouseY - ringY) * .14;
 
-<p class="reel-subtitle">
-Motion Graphics · Editing
-</p>
 
-</div>
+      cursorRing.style.left =
+        ringX + "px";
 
-</article>
+      cursorRing.style.top =
+        ringY + "px";
 
 
-<!-- ================= VIDEO 06 ================= -->
+      requestAnimationFrame(
+        animateCursor
+      );
+    }
 
-<article class="reel-card">
 
-<iframe
-class="reel-video"
-src="https://www.youtube.com/embed/JQvqIqSqD1s"
-title="Sumit Kumar Video 06"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+    animateCursor();
 
-<div class="reel-info">
 
-<div class="reel-number">
-06 / BRAND
-</div>
+    const interactiveElements =
+      document.querySelectorAll(
+        "a, button, .video-card, .project-video, .industry, .service"
+      );
 
-<h3 class="reel-title">
-Brand & Marketing Work
-</h3>
 
-<p class="reel-subtitle">
-Promotional Content · Motion Design
-</p>
+    interactiveElements.forEach(
+      element => {
 
-</div>
+        element.addEventListener(
+          "mouseenter",
+          () => {
 
-</article>
+            cursor.classList.add(
+              "active"
+            );
 
+            cursorRing.classList.add(
+              "active"
+            );
 
-<!-- ================= VIDEO 07 ================= -->
+          }
+        );
 
-<article class="reel-card">
 
-<iframe
-class="reel-video"
-src="https://www.youtube.com/embed/YOUR_VIDEO_ID_7"
-title="Sumit Kumar Video 07"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+        element.addEventListener(
+          "mouseleave",
+          () => {
 
-<div class="reel-info">
+            cursor.classList.remove(
+              "active"
+            );
 
-<div class="reel-number">
-07 / PROJECT
-</div>
+            cursorRing.classList.remove(
+              "active"
+            );
 
-<h3 class="reel-title">
-New Client Project
-</h3>
+          }
+        );
 
-<p class="reel-subtitle">
-Motion Graphics · Video Editing
-</p>
+      }
+    );
 
-</div>
 
-</article>
 
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
 
-<!-- ================= VIDEO 08 ================= -->
+    const menuBtn =
+      document.getElementById(
+        "menuBtn"
+      );
 
-<article class="reel-card">
+    const navLinks =
+      document.getElementById(
+        "navLinks"
+      );
 
-<iframe
-class="reel-video"
-src="https://www.youtube.com/embed/YOUR_VIDEO_ID_8"
-title="Sumit Kumar Video 08"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
 
-<div class="reel-info">
+    menuBtn.addEventListener(
+      "click",
+      () => {
 
-<div class="reel-number">
-08 / PROJECT
-</div>
+        navLinks.classList.toggle(
+          "active"
+        );
 
-<h3 class="reel-title">
-Latest Creative Work
-</h3>
+      }
+    );
 
-<p class="reel-subtitle">
-Animation · Editing · Storytelling
-</p>
 
-</div>
+    document
+      .querySelectorAll(
+        ".nav-links a"
+      )
+      .forEach(
+        link => {
 
-</article>
+          link.addEventListener(
+            "click",
+            () => {
 
+              navLinks.classList.remove(
+                "active"
+              );
 
-</div>
+            }
+          );
 
+        }
+      );
 
-<!-- ================= SLIDER BUTTONS ================= -->
 
-<div class="slider-controls">
 
-<button
-class="slider-btn"
-id="prevReel"
-aria-label="Previous reel">
-←
-</button>
+    /* =========================================================
+       VIDEO MODAL
+    ========================================================= */
 
-<button
-class="slider-btn"
-id="nextReel"
-aria-label="Next reel">
-→
-</button>
+    const modal =
+      document.getElementById(
+        "videoModal"
+      );
 
-</div>
+    const videoFrame =
+      document.getElementById(
+        "videoFrame"
+      );
 
+    const closeModal =
+      document.getElementById(
+        "closeModal"
+      );
 
-</div>
 
-</div>
+    document
+      .querySelectorAll(
+        "[data-video]"
+      )
+      .forEach(
+        card => {
 
-</section>
+          card.addEventListener(
+            "click",
+            () => {
 
+              const video =
+                card.getAttribute(
+                  "data-video"
+                );
 
 
-<!-- ================= SELECTED WORK ================= -->
+              videoFrame.src =
+                video +
+                "?autoplay=1";
 
-<section id="work">
 
-<div class="container">
+              modal.classList.add(
+                "active"
+              );
 
-<div class="work-header reveal">
+              document.body.style.overflow =
+                "hidden";
 
-<div>
+            }
+          );
 
-<div class="eyebrow">
-02 / Selected Work
-</div>
+        }
+      );
 
-<h2 class="section-title">
-SELECTED
-<br>
-WORK
-</h2>
 
-</div>
+    function closeVideo() {
 
-<div class="work-count">
-04 — Featured Projects
-</div>
+      modal.classList.remove(
+        "active"
+      );
 
-</div>
+      videoFrame.src =
+        "";
 
+      document.body.style.overflow =
+        "";
 
-<div class="projects">
+    }
 
 
-<!-- PROJECT 01 -->
+    closeModal.addEventListener(
+      "click",
+      closeVideo
+    );
 
-<article class="project reveal">
 
-<div class="project-video-wrap">
+    modal.addEventListener(
+      "click",
+      e => {
 
-<iframe
-class="project-video"
-src="https://www.youtube.com/embed/v7XyyMkzNnc"
-title="SaaS Product Video"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+        if (
+          e.target === modal
+        ) {
 
-</div>
+          closeVideo();
 
-<div class="project-content">
+        }
 
-<div class="project-number">
-01 / PRODUCT
-</div>
+      }
+    );
 
-<h3 class="project-title">
-SaaS Product
-<br>
-Video
-</h3>
 
-<p class="project-category">
-Product Demo · UI Animation · Motion Design · SaaS
-</p>
+    document.addEventListener(
+      "keydown",
+      e => {
 
-</div>
+        if (
+          e.key === "Escape"
+        ) {
 
-</article>
+          closeVideo();
 
+        }
 
-<!-- PROJECT 02 -->
+      }
+    );
 
-<article class="project reveal">
 
-<div class="project-video-wrap">
 
-<iframe
-class="project-video"
-src="https://www.youtube.com/embed/CMl0SUvVJE0"
-title="Explainer Video Production"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+    /* =========================================================
+       TEXT SPLIT (word-by-word reveal)
+    ========================================================= */
 
-</div>
+    function splitWords(root) {
 
-<div class="project-content">
+      let i = 0;
 
-<div class="project-number">
-02 / EXPLAINER
-</div>
+      function walk(node) {
 
-<h3 class="project-title">
-Explainer
-<br>
-Video
-</h3>
+        Array.from(node.childNodes).forEach(child => {
 
-<p class="project-category">
-2D Animation · Storytelling · B2B · Visual Communication
-</p>
+          if (child.nodeType === Node.TEXT_NODE) {
 
-</div>
+            const text = child.textContent;
 
-</article>
+            if (!text.trim()) return;
 
+            const parts = text.split(/(\s+)/);
 
-<!-- PROJECT 03 -->
+            const frag = document.createDocumentFragment();
 
-<article class="project reveal">
+            parts.forEach(part => {
 
-<div class="project-video-wrap">
+              if (part === "") return;
 
-<iframe
-class="project-video"
-src="https://www.youtube.com/embed/UJFius7nz0g"
-title="Brand Marketing Campaign"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+              if (/^\s+$/.test(part)) {
 
-</div>
+                frag.appendChild(document.createTextNode(part));
 
-<div class="project-content">
+              } else {
 
-<div class="project-number">
-03 / BRAND
-</div>
+                const span = document.createElement("span");
 
-<h3 class="project-title">
-Brand &
-<br>
-Marketing
-</h3>
+                span.className = "split-word";
 
-<p class="project-category">
-Motion Graphics · Promotional Content · Social Media
-</p>
+                span.textContent = part;
 
-</div>
+                span.style.transitionDelay = (i * 0.045) + "s";
 
-</article>
+                i++;
 
+                frag.appendChild(span);
 
-<!-- PROJECT 04 -->
+              }
 
-<article class="project reveal">
+            });
 
-<div class="project-video-wrap">
+            node.replaceChild(frag, child);
 
-<iframe
-class="project-video"
-src="https://www.youtube.com/embed/Az28xI2jtO0"
-title="Creative Video Production"
-loading="lazy"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+          } else if (child.nodeType === Node.ELEMENT_NODE) {
 
-</div>
+            walk(child);
 
-<div class="project-content">
+          }
 
-<div class="project-number">
-04 / CREATIVE
-</div>
+        });
 
-<h3 class="project-title">
-Creative
-<br>
-Video Project
-</h3>
+      }
 
-<p class="project-category">
-Video Editing · Motion Graphics · Post Production
-</p>
+      walk(root);
 
-</div>
+    }
 
-</article>
 
+    document
+      .querySelectorAll("h1, .section-title, .contact-box h2")
+      .forEach(el => splitWords(el));
 
-</div>
 
-</div>
 
-</section>
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
 
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal"
+      );
 
 
-<!-- ================= ABOUT ================= -->
+    const observer =
+      new IntersectionObserver(
+        entries => {
 
-<section id="about" class="about">
+          entries.forEach(
+            entry => {
 
-<div class="container">
+              if (
+                entry.isIntersecting
+              ) {
 
-<div class="about-grid reveal">
+                entry.target.classList.add(
+                  "visible"
+                );
 
+                observer.unobserve(
+                  entry.target
+                );
 
-<!-- LEFT SIDE -->
+              }
 
-<div class="about-left">
+            }
+          );
 
-<div class="eyebrow">
-03 / About
-</div>
+        },
+        {
+          threshold: .12
+        }
+      );
 
-<h2 class="section-title">
-MAKING
-<br>
-IDEAS
-<br>
-<span style="color:var(--accent)">
-MOVE.
-</span>
-</h2>
 
+    revealElements.forEach(
+      element => {
 
-<!-- YOUR PHOTO -->
+        observer.observe(
+          element
+        );
 
-<div class="about-photo-wrap">
+      }
+    );
 
-<img
-src="https://drive.google.com/uc?export=view&id=1580N2ol3GwooAgRDfq3IBaZPslrGIQYj"
-alt="Sumit Kumar - Motion Artist"
-class="about-photo"
->
 
-<div class="about-photo-label">
-Sumit Kumar · Motion Artist
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- RIGHT SIDE -->
-
-<div>
-
-<div class="about-text">
-
-I transform
-<span>complex ideas</span>
-into clear, engaging and memorable visual stories.
-
-</div>
-
-
-<div class="about-details">
-
-<p>
-I'm Sumit Kumar, a Motion Artist, Video Editor and Motion Graphics Designer with <strong style="color:#fff">4+ years of professional experience.</strong>
-</p>
-
-<p>
-Over the last 4+ years, I've worked with clients and businesses across <strong style="color:#fff">25+ categories and industries</strong>, creating motion graphics, SaaS product videos, product demos, explainer videos, UI animations, promotional campaigns, corporate films and digital marketing content.
-</p>
-
-<p>
-I work across the complete production process — from concept development and storyboarding to animation, editing, sound design, color grading and final delivery.
-</p>
-
-
-<div class="client-highlight">
-
-<div class="client-highlight-number">
-25+
-</div>
-
-<div class="client-highlight-text">
-Client Categories & Industries
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= STATS ================= -->
-
-<section class="stats">
-
-<div class="container">
-
-<div class="stats-grid reveal">
-
-
-<div class="stat">
-
-<div class="stat-number">
-4+
-</div>
-
-<div class="stat-label">
-Years Experience
-</div>
-
-</div>
-
-
-
-<div class="stat">
-
-<div class="stat-number">
-25+
-</div>
-
-<div class="stat-label">
-Client Categories
-</div>
-
-</div>
-
-
-
-<div class="stat">
-
-<div class="stat-number">
-150+
-</div>
-
-<div class="stat-label">
-Creative Assets
-</div>
-
-</div>
-
-
-
-<div class="stat">
-
-<div class="stat-number">
-100+
-</div>
-
-<div class="stat-label">
-Projects & Videos
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= EXPERIENCE ================= -->
-
-<section id="experience">
-
-<div class="container">
-
-<div class="reveal">
-
-<div class="eyebrow">
-04 / Experience
-</div>
-
-<h2 class="section-title">
-EXPERIENCE
-</h2>
-
-</div>
-
-
-<div class="experience-list">
-
-
-<div class="experience-item reveal">
-
-<div class="experience-date">
-JUN 2025 — PRESENT
-</div>
-
-<div>
-
-<div class="experience-role">
-Motion Artist & Video Editor
-</div>
-
-<div class="experience-company">
-Vinove Software & Services Pvt. Ltd.
-</div>
-
-</div>
-
-<div class="experience-description">
-Created motion graphics, SaaS product videos, product demos, explainers, promotional videos and marketing content while managing end-to-end video production.
-</div>
-
-</div>
-
-
-
-<div class="experience-item reveal">
-
-<div class="experience-date">
-JAN 2023 — MAY 2025
-</div>
-
-<div>
-
-<div class="experience-role">
-Graphic Designer & Motion Artist
-</div>
-
-<div class="experience-company">
-Cynna Technologies Pvt. Ltd.
-</div>
-
-</div>
-
-<div class="experience-description">
-Designed motion graphics, social media creatives, promotional materials and brand identity assets for multiple clients across diverse industries.
-</div>
-
-</div>
-
-
-
-<div class="experience-item reveal">
-
-<div class="experience-date">
-JAN 2022 — JAN 2023
-</div>
-
-<div>
-
-<div class="experience-role">
-Graphic Designer & Motion Artist
-</div>
-
-<div class="experience-company">
-AK Technology Pvt. Ltd.
-</div>
-
-</div>
-
-<div class="experience-description">
-Created explainer videos, motion graphics, UI animations, e-learning content, social media videos and marketing assets.
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= SKILLS ================= -->
-
-<section id="skills" class="skills">
-
-<div class="container">
-
-<div class="reveal">
-
-<div class="eyebrow">
-05 / Toolkit
-</div>
-
-<h2 class="section-title">
-MY TOOLKIT
-</h2>
-
-<p class="section-description">
-Creative tools and production skills I use to bring ideas from concept to final delivery.
-</p>
-
-</div>
-
-
-
-<div class="skill-block reveal">
-
-<div class="skill-heading">
-Motion Design
-</div>
-
-<div class="skill-list">
-
-<div class="skill">Motion Graphics</div>
-<div class="skill">2D Animation</div>
-<div class="skill">Kinetic Typography</div>
-<div class="skill">UI Animation</div>
-<div class="skill">Logo Animation</div>
-<div class="skill">Product Demo Videos</div>
-<div class="skill">Explainer Videos</div>
-<div class="skill">Brand Storytelling</div>
-
-</div>
-
-</div>
-
-
-
-<div class="skill-block reveal">
-
-<div class="skill-heading">
-Video Production
-</div>
-
-<div class="skill-list">
-
-<div class="skill">Video Editing</div>
-<div class="skill">Post Production</div>
-<div class="skill">Color Correction</div>
-<div class="skill">Color Grading</div>
-<div class="skill">Sound Design</div>
-<div class="skill">Audio Editing</div>
-<div class="skill">Storyboarding</div>
-<div class="skill">Creative Direction</div>
-
-</div>
-
-</div>
-
-
-
-<div class="skill-block reveal">
-
-<div class="skill-heading">
-Adobe Creative Suite
-</div>
-
-<div class="skill-list">
-
-<div class="skill">After Effects</div>
-<div class="skill">Premiere Pro</div>
-<div class="skill">Photoshop</div>
-<div class="skill">Illustrator</div>
-<div class="skill">Audition</div>
-<div class="skill">Media Encoder</div>
-<div class="skill">Figma</div>
-
-</div>
-
-</div>
-
-
-
-<div class="skill-block reveal">
-
-<div class="skill-heading">
-AI Creative Tools
-</div>
-
-<div class="skill-list">
-
-<div class="skill">ChatGPT</div>
-<div class="skill">Google Veo</div>
-<div class="skill">Sora</div>
-<div class="skill">ElevenLabs</div>
-<div class="skill">Gemini</div>
-<div class="skill">Microsoft Copilot</div>
-<div class="skill">Adobe Firefly</div>
-<div class="skill">Kling AI</div>
-<div class="skill">Leonardo AI</div>
-<div class="skill">VEED</div>
-<div class="skill">Claude</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= CONTACT ================= -->
-
-<section id="contact" class="contact">
-
-<div class="container contact-inner reveal">
-
-<div class="eyebrow">
-06 / Contact
-</div>
-
-
-<div class="contact-heading">
-
-<h2 class="contact-title">
-
-LET'S MAKE
-<br>
-
-SOMETHING
-<span>MOVE.</span>
-
-</h2>
-
-
-<p class="contact-intro">
-
-Have a product, brand, campaign or idea that needs to be brought to life? Let's turn it into something people remember.
-
-</p>
-
-</div>
-
-
-
-<div class="contact-card">
-
-
-<div class="contact-card-left">
-
-<div class="contact-label">
-HAVE A PROJECT IN MIND?
-</div>
-
-<a
-href="mailto:doneguru5@gmail.com"
-class="contact-email"
->
-doneguru5@gmail.com
-</a>
-
-<a
-href="mailto:doneguru5@gmail.com"
-class="contact-button"
->
-START A PROJECT
-<span>↗</span>
-</a>
-
-</div>
-
-
-
-<div class="contact-card-right">
-
-
-<div class="contact-info">
-
-<span>
-BASED IN
-</span>
-
-<strong>
-Greater Noida,
-<br>
-Uttar Pradesh, India
-</strong>
-
-</div>
-
-
-
-<div class="contact-info">
-
-<span>
-AVAILABLE FOR
-</span>
-
-<strong>
-Freelance · Full-time
-<br>
-Creative Collaborations
-</strong>
-
-</div>
-
-
-
-<div class="contact-info">
-
-<span>
-CONNECT
-</span>
-
-<div class="contact-socials">
-
-<a
-href="https://www.behance.net/doneguru"
-target="_blank"
-rel="noopener"
->
-Behance ↗
-</a>
-
-<a
-href="https://www.linkedin.com/in/sumit-kumar-3b448b231"
-target="_blank"
-rel="noopener"
->
-LinkedIn ↗
-</a>
-
-<a
-href="https://www.youtube.com/playlist?list=PLWs5JlEksOaI"
-target="_blank"
-rel="noopener"
->
-YouTube ↗
-</a>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<div class="contact-bottom-line">
-
-<span>
-MOTION DESIGN · VIDEO · STORYTELLING
-</span>
-
-<span>
-© 2026 SUMIT KUMAR
-</span>
-
-</div>
-
-</div>
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-<div class="container footer-inner">
-
-<div>
-© 2026 SUMIT KUMAR
-</div>
-
-<div>
-MOTION · DESIGN · STORYTELLING
-</div>
-
-</div>
-
-</footer>
-
-
-
-<script>
-
-
-/* ================= HEADER ================= */
-
-const header = document.getElementById("header");
-
-window.addEventListener("scroll", () => {
-
-if(window.scrollY > 50){
-
-header.classList.add("scrolled");
-
-}else{
-
-header.classList.remove("scrolled");
-
-}
-
-});
-
-
-
-/* ================= REVEAL ANIMATION ================= */
-
-const revealElements =
-document.querySelectorAll(".reveal");
-
-const revealObserver =
-new IntersectionObserver((entries) => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("active");
-
-}
-
-});
-
-},{
-threshold:.12
-});
-
-
-revealElements.forEach(element => {
-
-revealObserver.observe(element);
-
-});
-
-
-
-/* ================= HERO GLOW ================= */
-
-const heroGlow =
-document.querySelector(".hero-glow");
-
-document.addEventListener("mousemove",(event)=>{
-
-const x =
-(event.clientX / window.innerWidth - .5) * 40;
-
-const y =
-(event.clientY / window.innerHeight - .5) * 40;
-
-if(heroGlow){
-
-heroGlow.style.transform =
-`translate(${x}px,${y}px)`;
-
-}
-
-});
-
-
-
-/* ================= SHOWREEL SLIDER ================= */
-
-const reelSlider =
-document.getElementById("reelSlider");
-
-const nextReel =
-document.getElementById("nextReel");
-
-const prevReel =
-document.getElementById("prevReel");
-
-
-nextReel.addEventListener("click",()=>{
-
-reelSlider.scrollBy({
-
-left: reelSlider.clientWidth * .85,
-
-behavior:"smooth"
-
-});
-
-});
-
-
-prevReel.addEventListener("click",()=>{
-
-reelSlider.scrollBy({
-
-left: -reelSlider.clientWidth * .85,
-
-behavior:"smooth"
-
-});
-
-});
-
-
-
-/* ================= PROJECT HOVER ================= */
-
-const projects =
-document.querySelectorAll(".project");
-
-
-projects.forEach(project => {
-
-project.addEventListener("mousemove",(event)=>{
-
-const rect =
-project.getBoundingClientRect();
-
-const x =
-((event.clientX - rect.left) /
-rect.width - .5) * 10;
-
-const y =
-((event.clientY - rect.top) /
-rect.height - .5) * 10;
-
-const video =
-project.querySelector(".project-video");
-
-if(video){
-
-video.style.transform =
-`scale(1.02) translate(${x}px,${y}px)`;
-
-}
-
-});
-
-
-project.addEventListener("mouseleave",()=>{
-
-const video =
-project.querySelector(".project-video");
-
-if(video){
-
-video.style.transform =
-"scale(1)";
-
-}
-
-});
-
-});
-
-
-</script>
+  </script>
 
 </body>
 </html>
-```
