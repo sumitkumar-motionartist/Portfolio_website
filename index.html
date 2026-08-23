@@ -792,18 +792,39 @@
 
       inset: 0;
 
-      background:
+      background-image:
         linear-gradient(
           145deg,
           #292929,
           #101010
         );
 
+      background-size: cover;
+      background-position: center;
+
       transition:
         transform .6s
         cubic-bezier(
           .2,.8,.2,1
         );
+    }
+
+    .video-thumb.has-thumb,
+    .project-video.has-thumb {
+
+      /* Real YouTube thumbnail loaded — layer a soft dark
+         gradient underneath it so it still reads as a card
+         and not a raw photo, and so hover/scale looks smooth. */
+
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,.15),
+          rgba(0,0,0,.55)
+        ),
+        var(--thumb-url);
+
+      background-blend-mode: darken;
     }
 
 
@@ -988,8 +1009,15 @@
       border-radius:
         16px;
 
-      background:
-        #191919;
+      background-image:
+        linear-gradient(
+          145deg,
+          #232323,
+          #121212
+        );
+
+      background-size: cover;
+      background-position: center;
 
       cursor: pointer;
     }
@@ -4592,6 +4620,94 @@
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
+
+
+
+    /* =========================================================
+       YOUTUBE THUMBNAILS
+    ========================================================= */
+
+    function extractYouTubeId(url) {
+
+      if (!url) return null;
+
+      const match =
+        url.match(/embed\/([a-zA-Z0-9_-]{6,})/);
+
+      return match ? match[1] : null;
+
+    }
+
+
+    function setThumbnail(el, videoId) {
+
+      // hqdefault.jpg exists for essentially every public YouTube
+      // video, so it's used as the reliable base image. maxresdefault
+      // is tried first and swapped in only once it's confirmed to
+      // have actually loaded (not YouTube's tiny grey placeholder).
+
+      const fallback = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+      const hi = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
+      function applyThumb(url) {
+        el.style.setProperty("--thumb-url", `url('${url}')`);
+        el.classList.add("has-thumb");
+      }
+
+      const check = new Image();
+
+      check.onload = () => {
+
+        // hqdefault loaded — show it immediately, then try to
+        // upgrade to the sharper maxresdefault in the background.
+
+        applyThumb(fallback);
+
+        const probe = new Image();
+
+        probe.onload = () => {
+          if (probe.naturalWidth > 120) applyThumb(hi);
+        };
+
+        probe.src = hi;
+
+      };
+
+      check.onerror = () => {
+
+        // hqdefault failed too (private/removed/dummy video ID)
+        // — keep the CSS gradient placeholder, no broken image.
+
+        el.classList.remove("has-thumb");
+
+      };
+
+      check.src = fallback;
+
+    }
+
+
+    document
+      .querySelectorAll("[data-video]")
+      .forEach(card => {
+
+        const videoId =
+          extractYouTubeId(
+            card.getAttribute("data-video")
+          );
+
+        if (!videoId) return;
+
+        // Reel cards keep the thumb on a separate .video-thumb
+        // layer (so overlay/hover-scale still work); project
+        // cards apply it straight to the .project-video element.
+
+        const target =
+          card.querySelector(".video-thumb") || card;
+
+        setThumbnail(target, videoId);
+
+      });
 
 
 
