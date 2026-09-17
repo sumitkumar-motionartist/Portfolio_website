@@ -11,7 +11,7 @@
     content="Sumit Kumar — Motion Artist, Video Editor and Motion Graphics Designer with 4+ years of experience."
   >
 
-  <!-- INTER FONT -->
+  <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -20,34 +20,32 @@
   >
 
   <style>
-
     /* =========================================================
-       ROOT
+       ROOT & THEME VARIABLES (DEEP BLACK GRADIENT + CRISP GOLD)
     ========================================================= */
-
     :root {
-      --bg: #070707;
-      --bg-soft: #0d0d0d;
-      --card: #111111;
-      --card-hover: #171717;
+      --bg: #030406;
+      --bg-soft: #080a0f;
+      --card: #0c0e14;
+      --card-hover: #121620;
 
       --text: #f5f5f5;
-      --muted: #8e8e8e;
+      --muted: #8b929d;
 
-      --border: rgba(255,255,255,0.09);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-light: rgba(255, 255, 255, 0.14);
 
-      /* HIGHLIGHT COLOR */
+      /* HIGHLIGHT COLORS & TEXT GRADIENT */
       --yellow: #FFC100;
       --yellow-light: #FFD34D;
+      --gold-gradient: linear-gradient(135deg, #FFE072 0%, #FFC100 50%, #E59800 100%);
 
       --container: 1240px;
     }
 
-
     /* =========================================================
-       RESET
+       RESET & BASE
     ========================================================= */
-
     * {
       margin: 0;
       padding: 0;
@@ -60,11 +58,12 @@
 
     body {
       font-family: "Inter", sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at 50% 0%, #0c0f17 0%, #030406 55%, #000000 100%);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
       cursor: none;
+      position: relative;
     }
 
     a {
@@ -82,656 +81,623 @@
       width: 100%;
     }
 
-
     /* =========================================================
-       CUSTOM CURSOR
+       FINE TEXT GRADIENTS (NO CROPPED DESCENDERS)
     ========================================================= */
-
-    .cursor {
-      position: fixed;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: var(--yellow);
-      pointer-events: none;
-      z-index: 99999;
-
-      transform: translate(-50%, -50%);
-
-      box-shadow:
-        0 0 10px rgba(255,193,0,.9),
-        0 0 25px rgba(255,193,0,.6),
-        0 0 50px rgba(255,193,0,.25);
-
-      transition:
-        width .25s ease,
-        height .25s ease,
-        background .25s ease;
+    .highlight-text {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      font-weight: 800;
+      line-height: 1.25;
+      padding-bottom: 0.15em;
+      overflow: visible;
+      vertical-align: baseline;
     }
-
-    .cursor-ring {
-      position: fixed;
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255,193,0,.55);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 99998;
-
-      transform: translate(-50%, -50%);
-
-      transition:
-        width .25s ease,
-        height .25s ease,
-        border-color .25s ease;
-    }
-
-    .cursor.active {
-      width: 22px;
-      height: 22px;
-    }
-
-    .cursor-ring.active {
-      width: 65px;
-      height: 65px;
-      border-color: rgba(255,193,0,.9);
-    }
-
-
-    /* =========================================================
-       BACKGROUND
-    ========================================================= */
-
-    .page-glow {
-      position: fixed;
-      width: 600px;
-      height: 600px;
-
-      border-radius: 50%;
-
-      background: rgba(255,193,0,.025);
-
-      filter: blur(120px);
-
-      top: -250px;
-      right: -200px;
-
-      pointer-events: none;
-      z-index: -2;
-
-      animation: glowPulse 8s ease-in-out infinite;
-    }
-
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-
-      pointer-events: none;
-
-      opacity: .025;
-
-      background-image:
-        linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
-
-      background-size: 70px 70px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 75%
-        );
-
-      z-index: -3;
-
-      animation: gridDrift 50s linear infinite;
-    }
-
-
-    /* =========================================================
-       CONTAINER
-    ========================================================= */
-
-    .container {
-      width: min(
-        var(--container),
-        calc(100% - 48px)
-      );
-
-      margin: auto;
-    }
-
 
     .yellow {
       color: var(--yellow);
     }
 
+    /* =========================================================
+       ANIMATED BACKGROUND & BLACK GRADIENT SYSTEM
+    ========================================================= */
+    #spaceCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    .black-gradient-layer {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3,4,6,0.3) 0%, rgba(2,3,5,0.85) 50%, #000000 100%);
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+      z-index: -2;
+      animation: gridDrift 60s linear infinite;
+    }
+
+    @keyframes gridDrift {
+      0% { background-position: 0 0; }
+      100% { background-position: 80px 80px; }
+    }
+
+    /* =========================================================
+       CUSTOM CURSOR
+    ========================================================= */
+    .cursor {
+      position: fixed;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--yellow);
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(255, 193, 0, 0.6);
+      transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 193, 0, 0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+    }
+
+    .cursor.active {
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+    }
+
+    .cursor-ring.active {
+      width: 64px;
+      height: 64px;
+      border-color: var(--yellow);
+      background: rgba(255, 193, 0, 0.05);
+    }
+
+    /* =========================================================
+       LAYOUT CONTAINER
+    ========================================================= */
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin: auto;
+    }
 
     /* =========================================================
        NAVBAR
     ========================================================= */
-
     .navbar {
       position: fixed;
-
-      top: 18px;
+      top: 20px;
       left: 50%;
-
       transform: translateX(-50%);
-
-      width: min(
-        1180px,
-        calc(100% - 32px)
-      );
-
+      width: min(1180px, calc(100% - 32px));
       z-index: 5000;
-
-      background:
-        rgba(10,10,10,.78);
-
-      border:
-        1px solid var(--border);
-
-      backdrop-filter: blur(20px);
-
+      background: rgba(8, 10, 15, 0.85);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
     }
-
 
     .nav-inner {
       height: 68px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
-      padding: 0 22px;
+      padding: 0 24px;
     }
-
 
     .logo {
-      font-size: 20px;
-
+      font-size: 21px;
       font-weight: 800;
-
-      letter-spacing: -.06em;
+      letter-spacing: -0.06em;
     }
-
 
     .logo span {
       color: var(--yellow);
     }
 
-
     .nav-links {
       display: flex;
-
       gap: 28px;
-
       list-style: none;
     }
 
-
     .nav-links a {
-      font-size: 12px;
-
-      color: #aaa;
-
-      transition: .25s ease;
+      font-size: 13px;
+      color: #9aa1a9;
+      transition: 0.25s ease;
+      font-weight: 500;
+      position: relative;
     }
-
 
     .nav-links a:hover {
       color: var(--yellow);
     }
 
-
     .nav-cta {
       background: var(--yellow);
-
       color: #050505;
-
-      padding: 11px 17px;
-
+      padding: 10px 20px;
       border-radius: 10px;
-
       font-size: 12px;
-
       font-weight: 700;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 16px rgba(255, 193, 0, 0.25);
     }
 
+    .nav-cta:hover {
+      background: var(--yellow-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(255, 193, 0, 0.4);
+    }
 
     .menu-btn {
       display: none;
-
       width: 42px;
       height: 42px;
-
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       background: transparent;
-
       color: white;
-
       border-radius: 10px;
     }
 
-
     /* =========================================================
-       HERO
+       HERO (BALANCED GRID & EXPANDED CIRCLE SIZING)
     ========================================================= */
-
     .hero {
       min-height: 100vh;
-
       display: flex;
-
       align-items: center;
-
-      padding:
-        150px 0
-        80px;
+      padding: 150px 0 80px;
+      position: relative;
     }
-
 
     .hero-grid {
       display: grid;
-
-      grid-template-columns:
-        1.1fr
-        .9fr;
-
-      gap: 80px;
-
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
       align-items: center;
     }
-
 
     .hero-eyebrow {
       display: flex;
-
       align-items: center;
-
-      gap: 9px;
-
+      gap: 10px;
       margin-bottom: 25px;
-
       font-size: 11px;
-
       color: var(--muted);
-
       text-transform: uppercase;
-
-      letter-spacing: .14em;
+      letter-spacing: 0.14em;
     }
 
-
     .eyebrow-dot {
-      width: 7px;
-      height: 7px;
-
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-
-      background:
-        var(--yellow);
-
-      box-shadow:
-        0 0 15px
-        rgba(255,193,0,.9);
-
+      background: var(--yellow);
+      box-shadow: 0 0 10px rgba(255, 193, 0, 0.7);
       animation: pulseDot 2.2s ease-in-out infinite;
     }
 
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.35); }
+    }
 
     .hero h1 {
-      font-size:
-        clamp(
-          55px,
-          7.5vw,
-          105px
-        );
-
-      line-height: .92;
-
-      letter-spacing: -.075em;
-
-      font-weight: 800;
+      font-size: clamp(50px, 6.4vw, 94px);
+      line-height: 1.18;
+      letter-spacing: -0.06em;
+      font-weight: 900;
+      padding-bottom: 8px;
+      overflow: visible;
     }
 
+    .hero-tagline {
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 18px;
+      letter-spacing: -0.01em;
+      min-height: 1.3em;
+    }
+
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      margin-left: 2px;
+      background: var(--yellow);
+      animation: blinkCursor 0.85s steps(1) infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
 
     .hero-description {
-      max-width: 620px;
-
-      margin-top: 30px;
-
+      max-width: 580px;
+      margin-top: 25px;
       color: var(--muted);
-
       font-size: 15px;
-
-      line-height: 1.9;
+      line-height: 1.85;
     }
-
 
     .hero-buttons {
       display: flex;
-
-      gap: 12px;
-
-      margin-top: 35px;
+      gap: 14px;
+      margin-top: 36px;
     }
-
 
     .btn {
       display: inline-flex;
-
       align-items: center;
-
       justify-content: center;
-
       gap: 9px;
-
-      padding:
-        14px 20px;
-
-      border-radius: 10px;
-
-      border:
-        1px solid var(--border);
-
-      font-size: 12px;
-
+      padding: 13px 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 13px;
       font-weight: 700;
-
-      transition: .3s ease;
+      transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
 
     .btn-primary {
-      background:
-        var(--yellow);
-
+      background: var(--yellow);
       color: #050505;
-
-      border-color:
-        var(--yellow);
+      border-color: var(--yellow);
+      box-shadow: 0 4px 18px rgba(255, 193, 0, 0.25);
     }
-
 
     .btn-primary:hover {
-      background:
-        var(--yellow-light);
-
-      transform:
-        translateY(-3px);
+      background: var(--yellow-light);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 193, 0, 0.4);
     }
 
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: #eaeaea;
+    }
 
     .btn-secondary:hover {
-      border-color:
-        rgba(255,193,0,.5);
-
-      color:
-        var(--yellow);
-
-      transform:
-        translateY(-3px);
+      border-color: var(--yellow);
+      color: var(--yellow);
+      background: rgba(255, 193, 0, 0.05);
+      transform: translateY(-3px);
     }
-
 
     .hero-stats {
       display: flex;
-
-      gap: 40px;
-
-      margin-top: 55px;
+      gap: 45px;
+      margin-top: 50px;
+      padding-top: 25px;
+      border-top: 1px solid var(--border);
     }
-
 
     .stat strong {
       display: block;
-
-      font-size: 30px;
-
-      line-height: 1;
+      font-size: 32px;
+      line-height: 1.1;
+      font-weight: 800;
+      font-family: inherit;
     }
-
 
     .stat span {
       display: block;
-
       margin-top: 8px;
-
-      font-size: 10px;
-
+      font-size: 11px;
       color: var(--muted);
-
       text-transform: uppercase;
-
-      letter-spacing: .1em;
+      letter-spacing: 0.1em;
     }
 
-
-    /* =========================================================
-       HERO IMAGE
-    ========================================================= */
-
+    /* EXPANDED HERO CIRCULAR PROFILE */
     .hero-visual {
       position: relative;
-
       display: flex;
-
       justify-content: center;
-
       align-items: center;
-
       min-height: 560px;
+      width: 100%;
     }
 
-
-    .hero-frame {
-      width: min(430px,100%);
-
-      aspect-ratio:
-        4 / 5;
-
-      overflow: hidden;
-
-      border-radius: 25px;
-
-      border:
-        1px solid var(--border);
-
-      background:
-        #151515;
-
+    .hero-circle-wrap {
       position: relative;
+      width: min(520px, 90vw);
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      padding: 12px;
+      background: radial-gradient(circle at 50% 35%, rgba(255, 193, 0, 0.22) 0%, rgba(255, 193, 0, 0.03) 65%, transparent 70%);
+      border: 1px solid rgba(255, 193, 0, 0.4);
+      box-shadow: 0 0 65px -10px rgba(255, 193, 0, 0.3), inset 0 0 30px rgba(255, 193, 0, 0.1);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
     }
 
+    .hero-circle-wrap:hover {
+      transform: scale(1.025);
+      border-color: rgba(255, 193, 0, 0.7);
+    }
 
-    .hero-frame img {
+    .hero-circle-inner {
+      width: 100%;
       height: 100%;
-
-      object-fit: cover;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(180deg, #10141e 0%, #06080d 100%);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
+    .hero-circle-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-circle-wrap:hover .hero-circle-inner img {
+      transform: scale(1.06);
+    }
 
     .floating-tag {
       position: absolute;
-
-      padding:
-        11px 14px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 11px;
-
-      background:
-        rgba(10,10,10,.88);
-
-      backdrop-filter:
-        blur(12px);
-
-      font-size: 10px;
-
-      color: #ccc;
-
-      animation: floatShape 5s ease-in-out infinite;
+      padding: 10px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      background: rgba(10, 13, 18, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      font-size: 11px;
+      font-weight: 600;
+      color: #e5e5e5;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      animation: floatShape 6s ease-in-out infinite;
+      z-index: 5;
     }
 
-
     .tag-one {
-      left: -35px;
-
-      top: 100px;
-
+      left: -20px;
+      top: 60px;
       animation-delay: 0s;
     }
 
-
     .tag-two {
-      right: -35px;
-
-      bottom: 110px;
-
-      animation-delay: -2.5s;
+      right: -20px;
+      bottom: 60px;
+      animation-delay: -3s;
     }
 
+    @keyframes floatShape {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
 
     /* =========================================================
-       SECTION
+       SECTION STANDARD
     ========================================================= */
-
     section {
-      padding:
-        110px 0;
-
-      border-top:
-        1px solid
-        rgba(255,255,255,.055);
-    }
-
-
-    .section-heading {
-      display: flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        flex-end;
-
-      gap: 40px;
-
-      margin-bottom:
-        45px;
-    }
-
-
-    .section-number {
-      color:
-        var(--yellow);
-
-      font-size: 10px;
-
-      font-weight: 700;
-
-      letter-spacing: .15em;
-
-      margin-bottom:
-        13px;
-    }
-
-
-    .section-title {
-      font-size:
-        clamp(
-          38px,
-          5vw,
-          68px
-        );
-
-      line-height: .98;
-
-      letter-spacing:
-        -.065em;
-
-      font-weight:
-        800;
-    }
-
-
-    .section-description {
-      max-width: 400px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        13px;
-
-      line-height:
-        1.8;
-    }
-
-
-    /* =========================================================
-       REELS
-    ========================================================= */
-
-    .reel-wrapper {
+      padding: 120px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
       position: relative;
     }
 
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
 
+    .section-number {
+      color: var(--yellow);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 5.2vw, 68px);
+      line-height: 1.15;
+      letter-spacing: -0.065em;
+      font-weight: 900;
+      overflow: visible;
+      padding-bottom: 4px;
+    }
+
+    .section-description {
+      max-width: 440px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       01 / FEATURED SHOWREEL (HOVER TO PLAY)
+    ========================================================= */
+    .featured-showreel-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      min-height: 420px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #090c10;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.95);
+      cursor: pointer;
+      transition: border-color 0.4s ease;
+    }
+
+    .featured-showreel-box:hover {
+      border-color: rgba(255, 193, 0, 0.5);
+    }
+
+    .showreel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3, 4, 6, 0.05) 0%, rgba(3, 4, 6, 0.55) 70%, rgba(3, 4, 6, 0.8) 100%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .featured-showreel-box:hover .showreel-overlay {
+      background: linear-gradient(180deg, rgba(3, 4, 6, 0.02) 0%, rgba(3, 4, 6, 0.4) 70%, rgba(3, 4, 6, 0.65) 100%);
+    }
+
+    .showreel-badge-pill {
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 100px;
+      background: rgba(10, 12, 16, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      z-index: 5;
+    }
+
+    .showreel-badge-pill span {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: livePulse 1.6s infinite;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
+    }
+
+    .showreel-center-hud {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: none;
+      z-index: 4;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .showreel-play-circle {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--yellow);
+      color: #050505;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      padding-left: 4px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .featured-showreel-box:hover .showreel-play-circle {
+      transform: scale(1.12);
+      background: var(--yellow-light);
+    }
+
+    .showreel-bottom-info {
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 5;
+    }
+
+    .showreel-bottom-info h3 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .showreel-bottom-info p {
+      font-size: 13px;
+      color: #b0b8c2;
+      margin-top: 4px;
+    }
+
+    /* =========================================================
+       02 / REELS CAROUSEL
+    ========================================================= */
     .reel-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(10, minmax(270px,1fr));
-
-      gap: 15px;
-
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(280px, 1fr);
+      gap: 18px;
       overflow-x: auto;
-
-      scroll-snap-type:
-        x mandatory;
-
-      padding-bottom:
-        18px;
-
-      scrollbar-width:
-        thin;
-
-      scrollbar-color:
-        var(--yellow)
-        #181818;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 20px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--yellow) #101318;
     }
-
 
     .reel-grid::-webkit-scrollbar {
-      height: 5px;
+      height: 6px;
     }
-
 
     .reel-grid::-webkit-scrollbar-track {
-      background:
-        #151515;
+      background: #0e1117;
+      border-radius: 10px;
     }
-
 
     .reel-grid::-webkit-scrollbar-thumb {
-      background:
-        var(--yellow);
-
-      border-radius:
-        20px;
+      background: var(--yellow);
+      border-radius: 20px;
     }
-
 
     .reel-nav {
       display: flex;
@@ -741,3855 +707,1683 @@
     }
 
     .reel-nav button {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       border: 1px solid var(--border);
-      background: transparent;
+      background: rgba(255, 255, 255, 0.02);
       color: var(--text);
-      font-size: 15px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color .25s ease, background .25s ease, color .25s ease, transform .25s ease;
+      transition: 0.25s ease;
     }
 
     .reel-nav button:hover {
       border-color: var(--yellow);
       color: var(--yellow);
-      background: rgba(255,193,0,.08);
+      background: rgba(255, 193, 0, 0.08);
       transform: translateY(-2px);
     }
 
-
     .video-card {
       position: relative;
-
-      aspect-ratio:
-        9 / 14;
-
+      aspect-ratio: 9 / 14;
       overflow: hidden;
-
-      border-radius: 17px;
-
-      background:
-        #141414;
-
-      border:
-        1px solid var(--border);
-
+      border-radius: 20px;
+      background: #0d1017;
+      border: 1px solid var(--border);
       cursor: pointer;
-
-      scroll-snap-align:
-        start;
-
-      min-width: 270px;
+      scroll-snap-align: start;
+      min-width: 280px;
+      transition: border-color 0.3s ease, transform 0.3s ease;
     }
 
+    .video-card:hover {
+      border-color: rgba(255, 193, 0, 0.4);
+      transform: translateY(-5px);
+    }
 
     .video-thumb {
       position: absolute;
-
       inset: 0;
-
-      background-image:
-        linear-gradient(
-          145deg,
-          #292929,
-          #101010
-        );
-
       background-size: cover;
       background-position: center;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
 
-      transition:
-        transform .6s
-        cubic-bezier(
-          .2,.8,.2,1
-        );
+    .video-preview-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.45s ease;
+    }
+
+    .video-card:hover .video-preview-frame,
+    .project-video:hover .video-preview-frame,
+    .featured-showreel-box:hover .video-preview-frame {
+      opacity: 1;
     }
 
     .video-thumb.has-thumb,
     .project-video.has-thumb {
-
-      /* Real YouTube thumbnail loaded — layer a soft dark
-         gradient underneath it so it still reads as a card
-         and not a raw photo, and so hover/scale looks smooth. */
-
-      background-image:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,.15),
-          rgba(0,0,0,.55)
-        ),
-        var(--thumb-url);
-
-      background-blend-mode: darken;
+      background-image: var(--thumb-url);
+      background-size: cover;
+      background-position: center;
     }
 
-
-    .video-card:hover
-    .video-thumb {
-      transform:
-        scale(1.06);
+    .video-card:hover .video-thumb {
+      transform: scale(1.08);
     }
-
 
     .video-overlay {
       position: absolute;
-
       inset: 0;
-
-      background:
-        linear-gradient(
-          to top,
-          rgba(0,0,0,.9),
-          transparent 60%
-        );
+      background: linear-gradient(to top, rgba(4, 5, 7, 0.8), transparent 60%);
+      pointer-events: none;
     }
-
 
     .play-btn {
       position: absolute;
-
       left: 50%;
       top: 50%;
-
-      transform:
-        translate(-50%,-50%);
-
-      width: 58px;
-      height: 58px;
-
-      border-radius:
-        50%;
-
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
       border: 0;
-
-      background:
-        var(--yellow);
-
-      color:
-        #050505;
-
-      font-size: 17px;
-
+      background: var(--yellow);
+      color: #050505;
+      font-size: 18px;
       display: grid;
-
-      place-items:
-        center;
-
-      padding-left:
-        3px;
-
-      transition:
-        .3s ease;
+      place-items: center;
+      padding-left: 4px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+      transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2;
     }
 
-
-    .video-card:hover
-    .play-btn {
-      transform:
-        translate(-50%,-50%)
-        scale(1.12);
+    .video-card:hover .play-btn {
+      transform: translate(-50%, -50%) scale(1.14);
+      background: var(--yellow-light);
     }
-
 
     .video-info {
       position: absolute;
-
-      left: 17px;
-      right: 17px;
-      bottom: 16px;
-
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
       z-index: 5;
     }
 
-
     .video-info small {
-      color:
-        var(--yellow);
-
-      font-size:
-        9px;
-
-      font-weight:
-        700;
-
-      letter-spacing:
-        .12em;
+      color: var(--yellow);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
     }
-
 
     .video-info h3 {
-      font-size:
-        15px;
-
-      line-height:
-        1.25;
-
-      margin-top:
-        4px;
+      font-size: 16px;
+      line-height: 1.25;
+      margin-top: 4px;
     }
-
-
-    .reel-note {
-      margin-top:
-        18px;
-
-      color:
-        #686868;
-
-      font-size:
-        10px;
-
-      text-align:
-        right;
-    }
-
 
     /* =========================================================
-       SELECTED WORK
+       03 / SELECTED WORK (BRIGHT PREVIEW FIX)
     ========================================================= */
-
     .project-list {
       display: grid;
-
-      gap: 24px;
+      gap: 28px;
     }
-
 
     .project {
       display: grid;
-
-      grid-template-columns:
-        1.25fr
-        .75fr;
-
-      gap: 40px;
-
-      padding:
-        18px;
-
-      background:
-        var(--card);
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        24px;
-
-      transition:
-        .35s ease;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 45px;
+      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      transition: 0.35s ease;
     }
-
 
     .project:hover {
-      background:
-        var(--card-hover);
-
-      border-color:
-        rgba(255,193,0,.25);
-
-      transform:
-        translateY(-3px);
+      background: var(--card-hover);
+      border-color: rgba(255, 193, 0, 0.35);
+      transform: translateY(-4px);
     }
-
 
     .project-video {
       position: relative;
-
-      aspect-ratio:
-        16 / 9;
-
+      aspect-ratio: 16 / 9;
       overflow: hidden;
-
-      border-radius:
-        16px;
-
-      background-image:
-        linear-gradient(
-          145deg,
-          #232323,
-          #121212
-        );
-
+      border-radius: 18px;
+      background: #151821;
       background-size: cover;
       background-position: center;
-
       cursor: pointer;
     }
 
-
-    .project-video img {
-      height: 100%;
-
-      object-fit: cover;
-
-      transition:
-        transform .6s ease;
+    .project-video .video-overlay {
+      background: rgba(0, 0, 0, 0.08);
+      transition: background 0.3s ease;
     }
 
-
-    .project-video:hover img {
-      transform:
-        scale(1.05);
+    .project-video:hover .video-overlay {
+      background: rgba(0, 0, 0, 0.0);
     }
-
 
     .project-content {
-      padding:
-        25px 15px;
-
+      padding: 20px 10px;
       display: flex;
-
-      flex-direction:
-        column;
-
-      justify-content:
-        center;
+      flex-direction: column;
+      justify-content: center;
     }
-
 
     .project-index {
-      color:
-        var(--yellow);
-
-      font-size:
-        10px;
-
-      font-weight:
-        700;
-
-      letter-spacing:
-        .15em;
-
-      margin-bottom:
-        18px;
+      color: var(--yellow);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
     }
-
 
     .project-content h3 {
-      font-size:
-        clamp(
-          27px,
-          3vw,
-          42px
-        );
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -.055em;
+      font-size: clamp(28px, 3.2vw, 42px);
+      line-height: 1.2;
+      letter-spacing: -0.055em;
+      overflow: visible;
+      padding-bottom: 4px;
     }
-
 
     .project-content p {
-      margin:
-        18px 0;
-
-      color:
-        var(--muted);
-
-      font-size:
-        13px;
-
-      line-height:
-        1.8;
+      margin: 18px 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
     }
-
 
     .tags {
       display: flex;
-
       flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-bottom:
-        22px;
+      gap: 8px;
+      margin-bottom: 24px;
     }
-
 
     .tag {
-      padding:
-        6px 10px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        100px;
-
-      font-size:
-        9px;
-
-      color:
-        #aaa;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 500;
+      color: #aeb5be;
+      background: rgba(255, 255, 255, 0.02);
     }
-
 
     .watch-link {
-      color:
-        var(--yellow);
-
-      font-size:
-        11px;
-
-      font-weight:
-        700;
-
-      letter-spacing:
-        .05em;
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
     }
 
+    .watch-link:hover {
+      gap: 10px;
+    }
 
     /* =========================================================
-       ABOUT
+       04 / CLIENT TESTIMONIALS
     ========================================================= */
+    .testimonial-section {
+      background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 75%);
+    }
 
+    .deck-container {
+      position: relative;
+      width: min(540px, 100%);
+      height: 290px;
+      margin: 35px auto 0;
+      perspective: 1000px;
+    }
+
+    .deck-card-layer {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      pointer-events: none;
+      transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .layer-3 {
+      background: rgba(16, 20, 28, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transform: translateY(18px) rotate(3.2deg) scale(0.96);
+      z-index: 1;
+    }
+
+    .layer-2 {
+      background: rgba(16, 20, 28, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transform: translateY(10px) rotate(1.6deg) scale(0.985);
+      z-index: 2;
+    }
+
+    .deck-card-active {
+      position: absolute;
+      inset: 0;
+      background: #0f131a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 3;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.95);
+      transform: translateX(0) scale(1);
+      opacity: 1;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, border-color 0.3s ease;
+    }
+
+    .deck-card-active:hover {
+      border-color: rgba(255, 193, 0, 0.5);
+    }
+
+    .deck-card-active.slide-out-left {
+      transform: translateX(-120px) scale(0.92) rotate(-3deg);
+      opacity: 0;
+    }
+
+    .deck-card-active.slide-in-right {
+      transform: translateX(120px) scale(0.92) rotate(3deg);
+      opacity: 0;
+    }
+
+    .deck-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .deck-badge {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(255, 193, 0, 0.1);
+      border: 1px solid rgba(255, 193, 0, 0.3);
+      color: var(--yellow);
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+
+    .deck-client-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+    }
+
+    .deck-quote {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #f1f5f9;
+      font-weight: 400;
+      margin: 16px 0;
+    }
+
+    .deck-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--yellow);
+      background: #1e2430;
+    }
+
+    .author-meta h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .author-meta p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 45px;
+    }
+
+    .deck-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: 0.25s ease;
+    }
+
+    .deck-btn:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+      background: rgba(255, 193, 0, 0.08);
+      transform: scale(1.08);
+    }
+
+    .deck-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .deck-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .deck-dot.active {
+      width: 24px;
+      border-radius: 10px;
+      background: var(--yellow);
+    }
+
+    /* =========================================================
+       05-09 / ABOUT, SERVICES, EXPERIENCE, STACK & PROCESS
+    ========================================================= */
     .about-grid {
       display: grid;
-
-      grid-template-columns:
-        .75fr
-        1.25fr;
-
-      gap:
-        80px;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 80px;
     }
-
 
     .about-title {
-      font-size:
-        clamp(
-          38px,
-          4vw,
-          58px
-        );
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -.06em;
+      font-size: clamp(38px, 4.2vw, 58px);
+      line-height: 1.15;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+      overflow: visible;
+      padding-bottom: 4px;
     }
-
 
     .about-text {
-      color:
-        var(--muted);
-
-      font-size:
-        15px;
-
-      line-height:
-        1.9;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
     }
-
 
     .about-text p + p {
-      margin-top:
-        20px;
+      margin-top: 20px;
     }
-
 
     .stats-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      margin-top:
-        45px;
-
-      border-top:
-        1px solid
-        var(--border);
-
-      border-bottom:
-        1px solid
-        var(--border);
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 45px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
-
 
     .big-stat {
-      padding:
-        25px 15px;
-
-      border-right:
-        1px solid
-        var(--border);
+      padding: 25px 15px;
+      border-right: 1px solid var(--border);
     }
-
 
     .big-stat:last-child {
       border-right: 0;
     }
 
-
     .big-stat strong {
       display: block;
-
-      color:
-        var(--yellow);
-
-      font-size:
-        40px;
-
-      line-height:
-        1;
-
-      letter-spacing:
-        -.07em;
+      color: var(--yellow);
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 42px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
     }
-
 
     .big-stat span {
       display: block;
-
-      margin-top:
-        8px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        9px;
-
-      text-transform:
-        uppercase;
-
-      letter-spacing:
-        .1em;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
-
-    /* =========================================================
-       SERVICES
-    ========================================================= */
-
-    .services-grid {
+    .services-grid, .skills-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap:
-        15px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
-
-    .service {
-      min-height:
-        250px;
-
-      padding:
-        28px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        20px;
-
-      background:
-        var(--card);
-
-      transition:
-        .3s ease;
+    .service, .skill-box {
+      min-height: 250px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--card);
+      transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-
-    .service:hover {
-      transform:
-        translateY(-5px);
-
-      border-color:
-        rgba(255,193,0,.35);
+    .service:hover, .skill-box:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 193, 0, 0.4);
     }
-
 
     .service-number {
-      color:
-        var(--yellow);
-
-      font-size:
-        10px;
-
-      font-weight:
-        700;
+      color: var(--yellow);
+      font-size: 11px;
+      font-weight: 700;
     }
-
 
     .service h3 {
-      margin-top:
-        65px;
-
-      font-size:
-        21px;
-
-      letter-spacing:
-        -.035em;
+      margin-top: 60px;
+      font-size: 22px;
+      letter-spacing: -0.035em;
     }
-
 
     .service p {
-      margin-top:
-        9px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      line-height:
-        1.7;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
     }
-
-
-    /* =========================================================
-       INDUSTRIES
-    ========================================================= */
 
     .industry-wrapper {
-      padding:
-        50px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        24px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #111,
-          #090909
-        );
+      padding: 50px;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: linear-gradient(145deg, #0d1017, #05070a);
     }
-
 
     .industry-intro {
-      max-width:
-        600px;
-
-      color:
-        var(--muted);
-
-      margin-bottom:
-        30px;
-
-      font-size:
-        14px;
+      max-width: 600px;
+      color: var(--muted);
+      margin-bottom: 30px;
+      font-size: 15px;
     }
-
 
     .industry-list {
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        9px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-
 
     .industry {
-      padding:
-        11px 16px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        100px;
-
-      color:
-        #bbb;
-
-      font-size:
-        11px;
-
-      transition:
-        .25s ease;
+      padding: 10px 18px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: #b7bec7;
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: 0.25s ease;
     }
-
 
     .industry:hover {
-      color:
-        var(--yellow);
-
-      border-color:
-        rgba(255,193,0,.5);
-
-      background:
-        rgba(255,193,0,.04);
+      color: var(--yellow);
+      border-color: rgba(255, 193, 0, 0.5);
+      background: rgba(255, 193, 0, 0.06);
+      transform: translateY(-2px);
     }
-
-
-    /* =========================================================
-       EXPERIENCE
-    ========================================================= */
 
     .experience-list {
-      border-top:
-        1px solid
-        var(--border);
+      border-top: 1px solid var(--border);
     }
-
 
     .experience-item {
       display: grid;
-
-      grid-template-columns:
-        .35fr
-        1fr
-        .8fr;
-
-      gap:
-        30px;
-
-      padding:
-        35px 0;
-
-      border-bottom:
-        1px solid
-        var(--border);
+      grid-template-columns: 0.35fr 1fr 0.8fr;
+      gap: 30px;
+      padding: 35px 0;
+      border-bottom: 1px solid var(--border);
     }
-
 
     .experience-date {
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
+      color: var(--muted);
+      font-size: 12px;
     }
-
 
     .experience-role {
-      font-size:
-        23px;
-
-      font-weight:
-        700;
-
-      letter-spacing:
-        -.04em;
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
     }
-
 
     .experience-company {
-      color:
-        var(--yellow);
-
-      font-size:
-        12px;
-
-      margin-top:
-        5px;
+      color: var(--yellow);
+      font-size: 13px;
+      margin-top: 5px;
     }
-
 
     .experience-description {
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      line-height:
-        1.8;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
     }
-
-
-    /* =========================================================
-       SKILLS
-    ========================================================= */
-
-    .skills-grid {
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap:
-        15px;
-    }
-
-
-    .skill-box {
-      padding:
-        30px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        20px;
-
-      background:
-        var(--card);
-    }
-
 
     .skill-box h3 {
-      color:
-        var(--yellow);
-
-      font-size:
-        10px;
-
-      text-transform:
-        uppercase;
-
-      letter-spacing:
-        .12em;
-
-      margin-bottom:
-        20px;
+      color: var(--yellow);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 22px;
     }
-
 
     .skill-items {
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-
 
     .skill-item {
-      padding:
-        8px 10px;
-
-      background:
-        #191919;
-
-      border-radius:
-        8px;
-
-      color:
-        #c5c5c5;
-
-      font-size:
-        10px;
+      padding: 8px 12px;
+      background: #141822;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #c7cdd6;
+      font-size: 11px;
     }
-
-
-    /* =========================================================
-       PROCESS
-    ========================================================= */
 
     .process-grid {
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        1px;
-
-      background:
-        var(--border);
-
-      border:
-        1px solid
-        var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
     }
-
 
     .process {
-      min-height:
-        180px;
-
-      padding:
-        25px;
-
-      background:
-        var(--bg);
+      min-height: 180px;
+      padding: 28px;
+      background: #080a0f;
     }
-
 
     .process span {
-      color:
-        var(--yellow);
-
-      font-size:
-        10px;
-
-      font-weight:
-        700;
+      color: var(--yellow);
+      font-size: 11px;
+      font-weight: 700;
     }
-
 
     .process h3 {
-      margin-top:
-        60px;
-
-      font-size:
-        17px;
+      margin-top: 50px;
+      font-size: 18px;
     }
-
 
     .process p {
-      color:
-        var(--muted);
-
-      font-size:
-        10px;
-
-      margin-top:
-        5px;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 6px;
     }
-
 
     /* =========================================================
-       CONTACT
+       09 / CONTACT
     ========================================================= */
-
     .contact-box {
-      padding:
-        80px;
-
-      border-radius:
-        30px;
-
-      border:
-        1px solid
-        rgba(255,193,0,.2);
-
+      padding: 80px;
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       background:
-        radial-gradient(
-          circle at 80% 20%,
-          rgba(255,193,0,.1),
-          transparent 30%
-        ),
-        linear-gradient(
-          145deg,
-          #151515,
-          #090909
-        );
+        radial-gradient(circle at 85% 20%, rgba(255, 193, 0, 0.08), transparent 45%),
+        linear-gradient(145deg, #0e121a, #040608);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95);
     }
-
 
     .contact-box h2 {
-      max-width:
-        850px;
-
-      font-size:
-        clamp(
-          45px,
-          7vw,
-          90px
-        );
-
-      line-height:
-        .92;
-
-      letter-spacing:
-        -.075em;
+      max-width: 850px;
+      font-size: clamp(45px, 7vw, 90px);
+      line-height: 1.12;
+      letter-spacing: -0.07em;
+      overflow: visible;
+      padding-bottom: 6px;
     }
-
 
     .contact-box p {
-      max-width:
-        560px;
-
-      margin:
-        25px 0 30px;
-
-      color:
-        var(--muted);
+      max-width: 560px;
+      margin: 25px 0 32px;
+      color: var(--muted);
+      font-size: 16px;
     }
 
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .btn-contact-direct {
+      background: var(--yellow);
+      color: #050505;
+      font-weight: 800;
+      border-color: var(--yellow);
+      box-shadow: 0 4px 18px rgba(255, 193, 0, 0.25);
+    }
+
+    .btn-contact-direct:hover {
+      background: var(--yellow-light);
+      transform: translateY(-3px);
+    }
 
     .contact-details {
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        25px;
-
-      margin-top:
-        45px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      padding-top: 25px;
+      border-top: 1px solid var(--border);
     }
-
 
     .contact-details a {
-      color:
-        #bbb;
-
-      font-size:
-        12px;
+      color: #c4cad3;
+      font-size: 13px;
+      font-weight: 500;
     }
-
 
     .contact-details a:hover {
-      color:
-        var(--yellow);
+      color: var(--yellow);
     }
-
 
     /* =========================================================
        FOOTER
     ========================================================= */
-
     footer {
-      padding:
-        30px 0;
-
-      border-top:
-        1px solid
-        var(--border);
+      padding: 35px 0;
+      border-top: 1px solid var(--border);
     }
-
 
     .footer-inner {
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-
-    .footer-inner p,
-    .footer-links a {
-      color:
-        #666;
-
-      font-size:
-        10px;
+    .footer-inner p, .footer-links a {
+      color: #6d7580;
+      font-size: 11px;
     }
-
 
     .footer-links {
-      display:
-        flex;
-
-      gap:
-        20px;
+      display: flex;
+      gap: 22px;
     }
 
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
 
     /* =========================================================
-       MODAL
+       MODALS
     ========================================================= */
-
     .modal {
-      position:
-        fixed;
-
-      inset:
-        0;
-
-      z-index:
-        9000;
-
-      display:
-        none;
-
-      place-items:
-        center;
-
-      padding:
-        25px;
-
-      background:
-        rgba(0,0,0,.92);
-
-      backdrop-filter:
-        blur(10px);
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: none;
+      place-items: center;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(14px);
     }
-
 
     .modal.active {
-      display:
-        grid;
+      display: grid;
     }
-
 
     .modal-content {
-      position:
-        relative;
-
-      width:
-        min(1000px,100%);
-
-      aspect-ratio:
-        16 / 9;
-
-      background:
-        #000;
-
-      border-radius:
-        15px;
-
-      overflow:
-        hidden;
+      position: relative;
+      width: min(1050px, 100%);
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
-
 
     .modal-content iframe {
-      width:
-        100%;
-
-      height:
-        100%;
-
-      border:
-        0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
-
 
     .close-modal {
-      position:
-        absolute;
-
-      right:
-        0;
-
-      top:
-        -50px;
-
-      width:
-        40px;
-
-      height:
-        40px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        50%;
-
-      background:
-        #111;
-
-      color:
-        white;
-
-      font-size:
-        20px;
+      position: absolute;
+      right: 0;
+      top: -50px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: #11141c;
+      color: white;
+      font-size: 22px;
+      display: grid;
+      place-items: center;
+      transition: 0.2s ease;
     }
 
+    .close-modal:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    .contact-modal-dialog {
+      width: min(440px, 100%);
+      background: #0d1017;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+    }
+
+    .contact-modal-dialog h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .contact-modal-dialog p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .contact-opt-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .contact-opt-btn:hover {
+      border-color: var(--yellow);
+      background: rgba(255, 193, 0, 0.08);
+      color: var(--yellow);
+      transform: translateX(4px);
+    }
 
     /* =========================================================
-       REVEAL
+       TEXT & SLIDE-IN REVEAL ENGINE
     ========================================================= */
-
     .reveal {
-      opacity:
-        0;
-
-      transform:
-        translateY(25px);
-
-      transition:
-        opacity .8s cubic-bezier(.16,.84,.32,1),
-        transform .8s cubic-bezier(.16,.84,.32,1);
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-
-    .reveal.visible {
-      opacity:
-        1;
-
-      transform:
-        translateY(0);
+    .reveal-slide-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    .reveal-slide-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-    /* =========================================================
-       TEXT ANIMATION (split words)
-    ========================================================= */
+    .reveal.visible,
+    .reveal-slide-left.visible,
+    .reveal-slide-right.visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
 
     .split-word {
       display: inline-block;
       opacity: 0;
-      transform: translateY(65%) rotate(3deg);
-      transition:
-        transform .85s cubic-bezier(.16,.84,.32,1),
-        opacity .7s ease;
+      transform: translateY(70%) rotate(2.5deg);
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.75s ease;
       will-change: transform, opacity;
+      overflow: visible;
+      padding-bottom: 0.1em;
     }
 
-    .reveal.visible .split-word {
+    .reveal.visible .split-word,
+    .reveal-slide-left.visible .split-word,
+    .reveal-slide-right.visible .split-word {
       opacity: 1;
       transform: translateY(0) rotate(0deg);
     }
 
-
-    /* =========================================================
-       SHAPE / DECORATIVE ANIMATION
-    ========================================================= */
-
-    @keyframes pulseDot {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(255,193,0,.9);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 26px rgba(255,193,0,1);
-        transform: scale(1.2);
-      }
-    }
-
-    @keyframes floatShape {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-12px) rotate(-1.2deg);
-      }
-    }
-
-    @keyframes glowPulse {
-      0%, 100% {
-        opacity: .55;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.12);
-      }
-    }
-
-    @keyframes gridDrift {
-      0% {
-        background-position: 0 0, 0 0;
-      }
-      100% {
-        background-position: 70px 70px, 70px 70px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .split-word,
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
-      .eyebrow-dot,
-      .floating-tag,
-      .page-glow,
-      .grid-bg {
-        animation: none !important;
-      }
-    }
-
-
     /* =========================================================
        RESPONSIVE
     ========================================================= */
-
-    @media(max-width:1050px) {
-
-      .hero-grid {
-        grid-template-columns:
-          1fr;
-      }
-
-      .hero-visual {
-        min-height:
-          480px;
-      }
-
-      .services-grid,
-      .skills-grid {
-        grid-template-columns:
-          repeat(2,1fr);
-      }
-
-      .process-grid {
-        grid-template-columns:
-          repeat(2,1fr);
-      }
-
-      .experience-item {
-        grid-template-columns:
-          .3fr 1fr;
-      }
-
-      .experience-description {
-        grid-column:
-          2;
-      }
+    @media (max-width: 1050px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 460px; }
+      .hero-circle-wrap { width: min(440px, 85vw); }
+      .services-grid, .skills-grid, .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .experience-item { grid-template-columns: 0.3fr 1fr; }
+      .experience-description { grid-column: 2; }
+      .featured-showreel-box { aspect-ratio: 16 / 9; }
     }
 
-
-    @media(max-width:760px) {
-
-      body {
-        cursor:
-          auto;
-      }
-
-      .cursor,
-      .cursor-ring {
-        display:
-          none;
-      }
-
-      .container {
-        width:
-          calc(100% - 30px);
-      }
-
-      .navbar {
-        top:
-          10px;
-
-        width:
-          calc(100% - 20px);
-      }
-
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+      .container { width: calc(100% - 32px); }
+      .navbar { top: 12px; width: calc(100% - 24px); }
       .nav-links {
-        display:
-          none;
-
-        position:
-          absolute;
-
-        top:
-          68px;
-
-        left:
-          0;
-
-        right:
-          0;
-
-        padding:
-          20px;
-
-        flex-direction:
-          column;
-
-        align-items:
-          flex-start;
-
-        background:
-          #0d0d0d;
-
-        border:
-          1px solid
-          var(--border);
-
-        border-radius:
-          15px;
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        flex-direction: column;
+        background: #090c12;
+        border: 1px solid var(--border);
+        border-radius: 16px;
       }
-
-      .nav-links.active {
-        display:
-          flex;
-      }
-
-      .nav-cta {
-        display:
-          none;
-      }
-
-      .menu-btn {
-        display:
-          block;
-      }
-
-      .hero {
-        padding:
-          120px 0 70px;
-      }
-
-      .hero h1 {
-        font-size:
-          clamp(
-            50px,
-            15vw,
-            75px
-          );
-      }
-
-      .hero-buttons {
-        flex-direction:
-          column;
-      }
-
-      .hero-buttons .btn {
-        width:
-          100%;
-      }
-
-      .hero-stats {
-        gap:
-          25px;
-      }
-
-      .hero-visual {
-        min-height:
-          400px;
-      }
-
-      .hero-frame {
-        width:
-          min(
-            330px,
-            90%
-          );
-      }
-
-      .tag-one {
-        left:
-          0;
-      }
-
-      .tag-two {
-        right:
-          0;
-      }
-
-      section {
-        padding:
-          75px 0;
-      }
-
-      .section-heading {
-        display:
-          block;
-      }
-
-      .section-description {
-        margin-top:
-          20px;
-      }
-
-      .reel-grid {
-        grid-template-columns:
-          repeat(
-            10,
-            minmax(
-              240px,
-              1fr
-            )
-          );
-      }
-
-      .video-card {
-        min-width:
-          240px;
-      }
-
-      .project {
-        grid-template-columns:
-          1fr;
-      }
-
-      .about-grid {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          40px;
-      }
-
-      .services-grid,
-      .skills-grid {
-        grid-template-columns:
-          1fr;
-      }
-
-      .industry-wrapper {
-        padding:
-          25px;
-      }
-
-      .experience-item {
-        grid-template-columns:
-          1fr;
-
-        gap:
-          10px;
-      }
-
-      .experience-description {
-        grid-column:
-          auto;
-      }
-
-      .process-grid {
-        grid-template-columns:
-          1fr 1fr;
-      }
-
-      .contact-box {
-        padding:
-          45px 25px;
-      }
-
-      .contact-details {
-        flex-direction:
-          column;
-
-        gap:
-          12px;
-      }
-
-      .footer-inner {
-        flex-direction:
-          column;
-
-        align-items:
-          flex-start;
-
-        gap:
-          15px;
-      }
+      .nav-links.active { display: flex; }
+      .nav-cta { display: none; }
+      .menu-btn { display: block; }
+      .hero { padding: 120px 0 60px; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { width: 100%; }
+      .hero-circle-wrap { width: min(340px, 85vw); }
+      .about-grid, .project { grid-template-columns: 1fr; }
+      .services-grid, .skills-grid { grid-template-columns: 1fr; }
+      .experience-item { grid-template-columns: 1fr; gap: 10px; }
+      .experience-description { grid-column: auto; }
+      .contact-box { padding: 45px 25px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 18px; }
+      .featured-showreel-box { aspect-ratio: 4 / 3; }
+      .showreel-bottom-info h3 { font-size: 20px; }
+      .deck-container { height: 320px; }
     }
-
-
-    @media(max-width:480px) {
-
-      .stats-grid {
-        grid-template-columns:
-          1fr;
-      }
-
-      .big-stat {
-        border-right:
-          0;
-
-        border-bottom:
-          1px solid
-          var(--border);
-      }
-
-      .big-stat:last-child {
-        border-bottom:
-          0;
-      }
-
-      .process-grid {
-        grid-template-columns:
-          1fr;
-      }
-
-    }
-
   </style>
 </head>
 
-
 <body>
 
-  <!-- =========================================================
-       CUSTOM CURSOR
-  ========================================================= -->
-
+  <!-- CUSTOM CURSOR -->
   <div class="cursor"></div>
   <div class="cursor-ring"></div>
 
-  <div class="page-glow"></div>
+  <!-- AMBIENT MOTION CANVAS & DEEP BLACK GRADIENT OVERLAYS -->
+  <canvas id="spaceCanvas"></canvas>
+  <div class="black-gradient-layer"></div>
   <div class="grid-bg"></div>
 
-
-  <!-- =========================================================
-       NAVBAR
-  ========================================================= -->
-
+  <!-- NAVBAR -->
   <header class="navbar">
-
     <div class="nav-inner">
-
       <a href="#home" class="logo">
         SUMIT<span>.</span>
       </a>
 
-
       <nav>
-
         <ul class="nav-links" id="navLinks">
-
-          <li>
-            <a href="#showreel">
-              Showreel
-            </a>
-          </li>
-
-          <li>
-            <a href="#work">
-              Work
-            </a>
-          </li>
-
-          <li>
-            <a href="#about">
-              About
-            </a>
-          </li>
-
-          <li>
-            <a href="#services">
-              Services
-            </a>
-          </li>
-
-          <li>
-            <a href="#experience">
-              Experience
-            </a>
-          </li>
-
-          <li>
-            <a href="#contact">
-              Contact
-            </a>
-          </li>
-
+          <li><a href="#featured-showreel">Showreel</a></li>
+          <li><a href="#reels">Reels</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-
       </nav>
 
+      <a href="#contact" class="nav-cta">Let's Talk</a>
 
-      <a
-        href="#contact"
-        class="nav-cta"
-      >
-        Let's Talk
-      </a>
-
-
-      <button
-        class="menu-btn"
-        id="menuBtn"
-      >
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">
         ☰
       </button>
-
     </div>
-
   </header>
-
 
   <main>
 
-
-    <!-- =========================================================
-         HERO
-    ========================================================= -->
-
-    <section
-      class="hero"
-      id="home"
-    >
-
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
       <div class="container">
-
         <div class="hero-grid">
 
-
           <div class="hero-content reveal">
-
             <div class="hero-eyebrow">
-
               <span class="eyebrow-dot"></span>
-
-              Open to full-time opportunities
-
+              MOTION DESIGN . VIDEO EDITING . STORYTELLING
             </div>
-
 
             <h1>
-
               Motion that
-
-              <span class="yellow">
-                moves
-              </span>
-
+              <span class="highlight-text">moves</span>
               ideas.
-
             </h1>
 
-
-            <p class="hero-tagline" style="color: var(--yellow); font-size: 14px; font-weight: 600; margin-top: 14px; letter-spacing: -.01em;">
-              Frame by frame, building better stories.
+            <p class="hero-tagline">
+              <span class="highlight-text" id="typewriterText"></span><span class="typewriter-cursor">&nbsp;</span>
             </p>
-
 
             <p class="hero-description">
-
-              I'm <strong>Sumit Kumar</strong> —
-              a Motion Artist, Video Editor and
-              Motion Graphics Designer creating
-              product videos, explainers, motion
-              graphics and visual stories for brands
-              and businesses.
-
+              I'm <strong>Sumit Kumar</strong> — a Motion Artist, Video Editor and Motion Graphics Designer creating product videos, explainers, kinetic typography, and high-retention visual stories for top-tier SaaS and consumer brands.
             </p>
 
-
             <div class="hero-buttons">
-
-              <a
-                href="#showreel"
-                class="btn btn-primary"
-              >
-                Watch Showreel
-                ↗
+              <a href="#featured-showreel" class="btn btn-primary">
+                Watch Showreel ↗
               </a>
-
-
-              <a
-                href="#work"
-                class="btn btn-secondary"
-              >
+              <a href="#work" class="btn btn-secondary">
                 Selected Work
               </a>
-
             </div>
-
 
             <div class="hero-stats">
-
               <div class="stat">
-
-                <strong class="yellow">
-                  4+
-                </strong>
-
-                <span>
-                  Years Experience
-                </span>
-
+                <strong class="highlight-text">4+</strong>
+                <span>Years Experience</span>
               </div>
-
-
               <div class="stat">
-
-                <strong>
-                  150+
-                </strong>
-
-                <span>
-                  Projects
-                </span>
-
+                <strong>150+</strong>
+                <span>Projects</span>
               </div>
-
-
               <div class="stat">
-
-                <strong>
-                  25+
-                </strong>
-
-                <span>
-                  Categories
-                </span>
-
+                <strong>18+</strong>
+                <span>Clients</span>
               </div>
-
             </div>
-
           </div>
 
-
-          <!-- HERO IMAGE -->
-
-          <div class="hero-visual reveal">
-
+          <!-- HERO PROFILE (LARGER PROPORTIONAL CIRCULAR FRAME) -->
+          <div class="hero-visual reveal-slide-right">
             <div class="floating-tag tag-one">
               Motion Graphics
             </div>
 
-
-            <div class="hero-frame">
-
-              <img
-                src="https://lh3.googleusercontent.com/d/1580N2ol3GwooAgRDfq3IBaZPslrGIQYj"
-                alt="Sumit Kumar"
-              >
-
+            <div class="hero-circle-wrap">
+              <div class="hero-circle-inner">
+                <img
+                  src="https://lh3.googleusercontent.com/d/1R0rC8hdCjwpnKzmLeCc1cj5CTgptps_K"
+                  alt="Sumit Kumar"
+                  loading="eager"
+                  onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1R0rC8hdCjwpnKzmLeCc1cj5CTgptps_K&sz=w1200';"
+                >
+              </div>
             </div>
-
 
             <div class="floating-tag tag-two">
               Video Editor · Motion Artist
             </div>
-
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 / FEATURED SHOWREEL (HOVER TO AUTO-PLAY) -->
+    <section id="featured-showreel">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-number">01 / CINEMATIC REEL</div>
+            <h2 class="section-title">
+              2026 <span class="highlight-text">Showreel.</span>
+            </h2>
+          </div>
+          <p class="section-description">
+            Hover over the card to preview video motion instantly. Click anywhere to watch in high definition.
+          </p>
+        </div>
+
+        <div
+          class="featured-showreel-box reveal"
+          id="hoverShowreel"
+          data-video="https://www.youtube.com/embed/VPpF-jIV-sM"
+        >
+          <div class="video-thumb"></div>
+          <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
+
+          <div class="showreel-overlay"></div>
+
+          <div class="showreel-badge-pill">
+            <span></span> Live Hover Reel
+          </div>
+
+          <div class="showreel-center-hud">
+            <div class="showreel-play-circle">▶</div>
+          </div>
+
+          <div class="showreel-bottom-info">
+            <div>
+              <h3>Sumit Kumar — Master Reel 2026</h3>
+              <p>Commercial Motion, SaaS Interfaces, 3D Product Demos & Sound Design</p>
+            </div>
+            <span class="watch-link">EXPAND FULL VIDEO ↗</span>
+          </div>
         </div>
 
       </div>
-
     </section>
 
-
-
-    <!-- =========================================================
-         SHOWREEL
-    ========================================================= -->
-
-    <section id="showreel">
-
+    <!-- 02 / REELS -->
+    <section id="reels">
       <div class="container">
 
-
         <div class="section-heading reveal">
-
           <div>
-
-            <div class="section-number">
-              01 / SHOWREEL
-            </div>
-
+            <div class="section-number">02 / VERTICAL REELS</div>
             <h2 class="section-title">
-
-              Selected
-
-              <span class="yellow">
-                Reels.
-              </span>
-
+              Selected <span class="highlight-text">Reels.</span>
             </h2>
-
           </div>
-
 
           <div>
-
             <p class="section-description">
-
-              Motion graphics, editing,
-              product videos, UI animation
-              and visual storytelling.
-
+              Motion graphics, editing, UGC, AI avatars and high-converting short-form storytelling.
             </p>
-
-
             <div class="reel-nav">
-
-              <button
-                type="button"
-                id="reelPrev"
-                aria-label="Scroll reels left"
-              >
-                ←
-              </button>
-
-              <button
-                type="button"
-                id="reelNext"
-                aria-label="Scroll reels right"
-              >
-                →
-              </button>
-
+              <button type="button" id="reelPrev" aria-label="Scroll reels left">←</button>
+              <button type="button" id="reelNext" aria-label="Scroll reels right">→</button>
             </div>
-
           </div>
-
         </div>
-
 
         <div class="reel-wrapper">
-
-
-          <!-- NOTE: Reels 02, 09 and 10 still share the same video
-               (UJFius7nz0g). Swap in a dedicated video ID for each
-               once available so no two reels repeat. -->
-
-          <div
-            class="reel-grid"
-            id="reelGrid"
-          >
-
-
+          <div class="reel-grid" id="reelGrid">
             <!-- REEL 01 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/QeFAH9szcsQ"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
-
+            <article class="video-card reveal" data-video="https://www.youtube.com/embed/QeFAH9szcsQ">
+              <div class="video-thumb"></div>
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-
-              <button class="play-btn">
-                ▶
-              </button>
-
-
+              <button class="play-btn">▶</button>
               <div class="video-info">
-
-                <small>
-                  01 / REEL
-                </small>
-
-                <h3>
-                  Professional UGC Ad
-                </h3>
-
+                <small>01 / REEL</small>
+                <h3>Professional UGC Ad</h3>
               </div>
-
             </article>
-
-
 
             <!-- REEL 02 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/UJFius7nz0g"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
+            <article class="video-card reveal" data-video="https://www.youtube.com/embed/UJFius7nz0g">
+              <div class="video-thumb"></div>
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
               <div class="video-info">
-
-                <small>
-                  02 / REEL
-                </small>
-
-                <h3>
-                  Realistic AI Avatar
-                </h3>
-
+                <small>02 / REEL</small>
+                <h3>Realistic AI Avatar</h3>
               </div>
-
             </article>
-
-
 
             <!-- REEL 03 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/CMl0SUvVJE0"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
+            <article class="video-card reveal" data-video="https://www.youtube.com/embed/CMl0SUvVJE0">
+              <div class="video-thumb"></div>
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
               <div class="video-info">
-
-                <small>
-                  03 / REEL
-                </small>
-
-                <h3>
-                  Explainer Video
-                </h3>
-
+                <small>03 / REEL</small>
+                <h3>Explainer Video</h3>
               </div>
-
             </article>
-
-
 
             <!-- REEL 04 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/v7XyyMkzNnc"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
+            <article class="video-card reveal" data-video="https://www.youtube.com/embed/v7XyyMkzNnc">
+              <div class="video-thumb"></div>
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
               <div class="video-info">
-
-                <small>
-                  04 / REEL
-                </small>
-
-                <h3>
-                  UGC Style Ad
-                </h3>
-
+                <small>04 / REEL</small>
+                <h3>UGC Style Ad</h3>
               </div>
-
             </article>
-
-
 
             <!-- REEL 05 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/Jg2VGXIPlHo"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
+            <article class="video-card reveal" data-video="https://www.youtube.com/embed/Jg2VGXIPlHo">
+              <div class="video-thumb"></div>
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
               <div class="video-info">
-
-                <small>
-                  05 / REEL
-                </small>
-
-                <h3>
-                  Ad Webinar Edit
-                </h3>
-
+                <small>05 / REEL</small>
+                <h3>Ad Webinar Edit</h3>
               </div>
-
             </article>
-
-
 
             <!-- REEL 06 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/4Nd5pBfBB9U"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
+            <article class="video-card reveal" data-video="https://www.youtube.com/embed/4Nd5pBfBB9U">
+              <div class="video-thumb"></div>
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
               <div class="video-info">
-
-                <small>
-                  06 / REEL
-                </small>
-
-                <h3>
-                  Engaging Ad Edit
-                </h3>
-
+                <small>06 / REEL</small>
+                <h3>Engaging Ad Edit</h3>
               </div>
-
             </article>
-
-
 
             <!-- REEL 07 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/LQmeLK5sssQ"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
+            <article class="video-card reveal" data-video="https://www.youtube.com/embed/LQmeLK5sssQ">
+              <div class="video-thumb"></div>
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
               <div class="video-info">
-
-                <small>
-                  07 / REEL
-                </small>
-
-                <h3>
-                  Ad Edit for Studio
-                </h3>
-
+                <small>07 / REEL</small>
+                <h3>Ad Edit for Studio</h3>
               </div>
-
             </article>
-
-
 
             <!-- REEL 08 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/ibdctgHZAtw"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
+            <article class="video-card reveal" data-video="https://www.youtube.com/embed/ibdctgHZAtw">
+              <div class="video-thumb"></div>
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
               <div class="video-info">
-
-                <small>
-                  08 / REEL
-                </small>
-
-                <h3>
-                  Nature Cinematic
-                </h3>
-
+                <small>08 / REEL</small>
+                <h3>Nature Cinematic</h3>
               </div>
-
             </article>
-
-
-
-            <!-- REEL 09 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/UJFius7nz0g"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
-              <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
-              <div class="video-info">
-
-                <small>
-                  09 / REEL
-                </small>
-
-                <h3>
-                  Marketing Video
-                </h3>
-
-              </div>
-
-            </article>
-
-
-
-            <!-- REEL 10 -->
-
-            <article
-              class="video-card reveal"
-              data-video="https://www.youtube.com/embed/UJFius7nz0g"
-            >
-
-              <div class="video-thumb">
-
-              </div>
-
-              <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
-              <div class="video-info">
-
-                <small>
-                  10 / REEL
-                </small>
-
-                <h3>
-                  Showcase Reel
-                </h3>
-
-              </div>
-
-            </article>
-
 
           </div>
-
-
-          <div class="reel-note">
-            ← Drag / Scroll to explore all 10 reels →
-          </div>
-
         </div>
 
       </div>
-
     </section>
 
-
-
-    <!-- =========================================================
-         SELECTED WORK
-    ========================================================= -->
-
+    <!-- 03 / SELECTED WORK -->
     <section id="work">
-
       <div class="container">
 
-
         <div class="section-heading reveal">
-
           <div>
-
-            <div class="section-number">
-              02 / SELECTED WORK
-            </div>
-
+            <div class="section-number">03 / SELECTED WORK</div>
             <h2 class="section-title">
-
-              Work that
-
-              <span class="yellow">
-                speaks.
-              </span>
-
+              Work that <span class="highlight-text">speaks.</span>
             </h2>
-
           </div>
-
-
           <p class="section-description">
-
-            Featured long-form projects
-            showcasing editing, motion design,
-            product videos and storytelling.
-
+            Featured long-form projects showcasing editing, motion design, product videos and brand storytelling.
           </p>
-
         </div>
-
-
 
         <div class="project-list">
-
-
           <!-- PROJECT 01 -->
-
-          <article class="project reveal">
-
-
-            <div
-              class="project-video"
-              data-video="https://www.youtube.com/embed/Az28xI2jtO0"
-            >
-
+          <article class="project reveal-slide-left">
+            <div class="project-video" data-video="https://www.youtube.com/embed/XkFy-DlO2RE">
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
             </div>
-
-
             <div class="project-content">
-
-              <div class="project-index">
-                PROJECT 01
-              </div>
-
-
-              <h3>
-
-                SaaS Product
-
-                <span class="yellow">
-                  Demo
-                </span>
-
-              </h3>
-
-
-              <p>
-
-                UI-focused product videos that
-                translate complex software features
-                into intuitive and engaging visual
-                walkthroughs.
-
-              </p>
-
-
+              <div class="project-index">PROJECT 01</div>
+              <h3>SaaS Product <span class="highlight-text">Demo</span></h3>
+              <p>UI-focused product videos that translate complex software features into intuitive and engaging visual walkthroughs.</p>
               <div class="tags">
-
-                <span class="tag">
-                  Motion Design
-                </span>
-
-                <span class="tag">
-                  UI Animation
-                </span>
-
-                <span class="tag">
-                  Video Editing
-                </span>
-
+                <span class="tag">Motion Design</span>
+                <span class="tag">UI Animation</span>
+                <span class="tag">Video Editing</span>
               </div>
-
-
-              <a
-                href="https://youtu.be/Az28xI2jtO0"
-                target="_blank"
-                class="watch-link"
-              >
-                WATCH PROJECT ↗
-              </a>
-
+              <a href="https://youtu.be/XkFy-DlO2RE" target="_blank" class="watch-link">WATCH PROJECT ↗</a>
             </div>
-
           </article>
-
-
 
           <!-- PROJECT 02 -->
-
-                   <article class="project reveal">
- 
-            <div
-              class="project-video"
-              data-video="https://www.youtube.com/embed/jdKeGuJD_uA"
-            >
- 
+          <article class="project reveal-slide-right">
+            <div class="project-video" data-video="https://www.youtube.com/embed/jdKeGuJD_uA">
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
- 
-              <button class="play-btn">
-                ▶
-              </button>
- 
+              <button class="play-btn">▶</button>
             </div>
- 
- 
             <div class="project-content">
- 
-              <div class="project-index">
-                PROJECT 02
-              </div>
- 
- 
-              <h3>
- 
-                Explainer
- 
-                <span class="yellow">
-                  Video
-                </span>
- 
-              </h3>
- 
- 
-              <p>
- 
-                Animated storytelling created
-                to simplify complex B2B concepts
-                for customers and internal teams.
- 
-              </p>
- 
- 
+              <div class="project-index">PROJECT 02</div>
+              <h3>Explainer <span class="highlight-text">Video</span></h3>
+              <p>Animated storytelling created to simplify complex B2B concepts for customers and internal teams.</p>
               <div class="tags">
- 
-                <span class="tag">
-                  2D Animation
-                </span>
- 
-                <span class="tag">
-                  Storytelling
-                </span>
- 
-                <span class="tag">
-                  Kinetic Type
-                </span>
- 
+                <span class="tag">2D Animation</span>
+                <span class="tag">Storytelling</span>
+                <span class="tag">Kinetic Type</span>
               </div>
- 
- 
-              <a
-                href="https://youtu.be/jdKeGuJD_uA"
-                target="_blank"
-                class="watch-link"
-              >
-                WATCH PROJECT ↗
-              </a>
- 
+              <a href="https://youtu.be/jdKeGuJD_uA" target="_blank" class="watch-link">WATCH PROJECT ↗</a>
             </div>
- 
           </article>
-
-
 
           <!-- PROJECT 03 -->
-
-          <article class="project reveal">
-
-            <div
-              class="project-video"
-              data-video="https://www.youtube.com/embed/bBdNwX9jjZg"
-            >
-
+          <article class="project reveal-slide-left">
+            <div class="project-video" data-video="https://www.youtube.com/embed/bBdNwX9jjZg">
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
             </div>
-
-
             <div class="project-content">
-
-              <div class="project-index">
-                PROJECT 03
-              </div>
-
-
-              <h3>
-
-                Corporate &
-
-                <span class="yellow">
-                  Marketing
-                </span>
-
-              </h3>
-
-
-              <p>
-
-                Promotional campaigns, social
-                media content and motion-heavy
-                brand stories for digital audiences.
-
-              </p>
-
-
+              <div class="project-index">PROJECT 03</div>
+              <h3>Corporate & <span class="highlight-text">Marketing</span></h3>
+              <p>Promotional campaigns, social media content and motion-heavy brand stories for digital audiences.</p>
               <div class="tags">
-
-                <span class="tag">
-                  Marketing
-                </span>
-
-                <span class="tag">
-                  Motion Graphics
-                </span>
-
-                <span class="tag">
-                  Editing
-                </span>
-
+                <span class="tag">Marketing</span>
+                <span class="tag">Motion Graphics</span>
+                <span class="tag">Editing</span>
               </div>
-
-
-              <a
-                href="https://youtu.be/bBdNwX9jjZg"
-                target="_blank"
-                class="watch-link"
-              >
-                WATCH PROJECT ↗
-              </a>
-
+              <a href="https://youtu.be/bBdNwX9jjZg" target="_blank" class="watch-link">WATCH PROJECT ↗</a>
             </div>
-
           </article>
-
-
 
           <!-- PROJECT 04 -->
-
-          <article class="project reveal">
-
-            <div
-              class="project-video"
-              data-video="https://www.youtube.com/embed/Agtvg3Rje7A"
-            >
-
+          <article class="project reveal-slide-right">
+            <div class="project-video" data-video="https://www.youtube.com/embed/Agtvg3Rje7A">
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
             </div>
-
-
             <div class="project-content">
-
-              <div class="project-index">
-                PROJECT 04
-              </div>
-
-
-              <h3>
-
-                Product Saas
-
-                <span class="yellow">
-                  Explainer
-                </span>
-
-              </h3>
-
-
-              <p>
-
-                High-impact motion graphics combining
-                typography, transitions, visual effects
-                and sound design.
-
-              </p>
-
-
+              <div class="project-index">PROJECT 04</div>
+              <h3>Product SaaS <span class="highlight-text">Explainer</span></h3>
+              <p>High-impact motion graphics combining typography, transitions, visual effects and sound design.</p>
               <div class="tags">
-
-                <span class="tag">
-                  After Effects
-                </span>
-
-                <span class="tag">
-                  Motion Design
-                </span>
-
-                <span class="tag">
-                  Sound Design
-                </span>
-
+                <span class="tag">After Effects</span>
+                <span class="tag">Motion Design</span>
+                <span class="tag">Sound Design</span>
               </div>
-
-
-              <a
-                href="https://youtu.be/Agtvg3Rje7A"
-                target="_blank"
-                class="watch-link"
-              >
-                WATCH PROJECT ↗
-              </a>
-
+              <a href="https://youtu.be/Agtvg3Rje7A" target="_blank" class="watch-link">WATCH PROJECT ↗</a>
             </div>
-
           </article>
-
-
 
           <!-- PROJECT 05 -->
-
-          <article class="project reveal">
-
-            <div
-              class="project-video"
-              data-video="https://www.youtube.com/embed/0AgwLTUyLG4"
-            >
-
+          <article class="project reveal-slide-left">
+            <div class="project-video" data-video="https://www.youtube.com/embed/zLmkNvqzNlc">
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
             </div>
-
-
             <div class="project-content">
-
-              <div class="project-index">
-                PROJECT 05
-              </div>
-
-
-              <h3>
-
-                Saas
-
-                <span class="yellow">
-                  Explainer
-                </span>
-
-              </h3>
-
-
-              <p>
-
-                Fast-paced brand reels built for social
-                platforms, combining bold typography with
-                punchy cuts to hold attention.
-
-              </p>
-
-
+              <div class="project-index">PROJECT 05</div>
+              <h3>SaaS <span class="highlight-text">Explainer</span></h3>
+              <p>Rhythmic, type-driven edits that turn scripts and voiceovers into fast, high-retention visual hooks.</p>
               <div class="tags">
-
-                <span class="tag">
-                  Social Media
-                </span>
-
-                <span class="tag">
-                  Motion Design
-                </span>
-
-                <span class="tag">
-                  Editing
-                </span>
-
+                <span class="tag">Kinetic Type</span>
+                <span class="tag">Sound Design</span>
+                <span class="tag">Editing</span>
               </div>
-
-
-              <a
-                href="https://youtu.be/0AgwLTUyLG4"
-                target="_blank"
-                class="watch-link"
-              >
-                WATCH PROJECT ↗
-              </a>
-
+              <a href="https://youtu.be/zLmkNvqzNlc" target="_blank" class="watch-link">WATCH PROJECT ↗</a>
             </div>
-
           </article>
-
-
 
           <!-- PROJECT 06 -->
-
-          <article class="project reveal">
-
-            <div
-              class="project-video"
-              data-video="https://www.youtube.com/embed/lywnLV5mGRM"
-            >
-
+          <article class="project reveal-slide-right">
+            <div class="project-video" data-video="https://www.youtube.com/embed/Rzq4NyBQSrE">
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
             </div>
-
-
             <div class="project-content">
-
-              <div class="project-index">
-                PROJECT 06
-              </div>
-
-
-              <h3>
-
-                Social Media 
-
-                <span class="yellow">
-                  Ad
-                </span>
-
-              </h3>
-
-
-              <p>
-
-                Interface-driven motion work that brings
-                app flows, transitions and micro-interactions
-                to life for product teams.
-
-              </p>
-
-
+              <div class="project-index">PROJECT 06</div>
+              <h3>Case Study <span class="highlight-text">Explainer</span></h3>
+              <p>Cinematic brand storytelling combining color grading, sound design and motion for a memorable launch moment.</p>
               <div class="tags">
-
-                <span class="tag">
-                  UI Animation
-                </span>
-
-                <span class="tag">
-                  Prototyping
-                </span>
-
-                <span class="tag">
-                  After Effects
-                </span>
-
+                <span class="tag">Brand Film</span>
+                <span class="tag">Color Grading</span>
+                <span class="tag">Storytelling</span>
               </div>
-
-
-              <a
-                href="https://youtu.be/lywnLV5mGRM"
-                target="_blank"
-                class="watch-link"
-              >
-                WATCH PROJECT ↗
-              </a>
-
+              <a href="https://youtu.be/Rzq4NyBQSrE" target="_blank" class="watch-link">WATCH PROJECT ↗</a>
             </div>
-
           </article>
-
-
 
           <!-- PROJECT 07 -->
-
-          <article class="project reveal">
-
-            <div
-              class="project-video"
-              data-video="https://www.youtube.com/embed/Rzq4NyBQSrE"
-            >
-
+          <article class="project reveal-slide-left">
+            <div class="project-video" data-video="https://www.youtube.com/embed/JQvqIqSqD1s">
+              <iframe class="video-preview-frame" loading="lazy" title="Video preview" tabindex="-1"></iframe>
               <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
+              <button class="play-btn">▶</button>
             </div>
-
-
             <div class="project-content">
-
-              <div class="project-index">
-                PROJECT 07
-              </div>
-
-
-              <h3>
-
-                Case Study 
-
-                <span class="yellow">
-                  Explainer
-                </span>
-
-              </h3>
-
-
-              <p>
-
-                Polished corporate storytelling for
-                internal communications, recruitment
-                and company culture content.
-
-              </p>
-
-
+              <div class="project-index">PROJECT 07</div>
+              <h3>Logo <span class="highlight-text">Animation</span></h3>
+              <p>Clean, brand-driven logo reveals designed for intros, outros and social stings.</p>
               <div class="tags">
-
-                <span class="tag">
-                  Corporate
-                </span>
-
-                <span class="tag">
-                  Video Editing
-                </span>
-
-                <span class="tag">
-                  Color Grading
-                </span>
-
+                <span class="tag">Logo Animation</span>
+                <span class="tag">Motion Design</span>
+                <span class="tag">After Effects</span>
               </div>
-
-
-              <a
-                href="https://youtu.be/Rzq4NyBQSrE"
-                target="_blank"
-                class="watch-link"
-              >
-                WATCH PROJECT ↗
-              </a>
-
+              <a href="https://youtu.be/JQvqIqSqD1s" target="_blank" class="watch-link">WATCH PROJECT ↗</a>
             </div>
-
           </article>
-
-
-
-          <!-- PROJECT 08 -->
-
-          <article class="project reveal">
-
-            <div
-              class="project-video"
-              data-video="https://www.youtube.com/embed/JQvqIqSqD1s"
-            >
-
-              <div class="video-overlay"></div>
-
-              <button class="play-btn">
-                ▶
-              </button>
-
-            </div>
-
-
-            <div class="project-content">
-
-              <div class="project-index">
-                PROJECT 08
-              </div>
-
-
-              <h3>
-
-                Logo
-
-                <span class="yellow">
-                  Animation
-                </span>
-
-              </h3>
-
-
-              <p>
-
-                Creative logo animations that bring brand
-                identities to life through smooth transitions,
-                dynamic motion, and polished visual effects.
-
-              </p>
-
-
-              <div class="tags">
-
-                <span class="tag">
-                  Campaign
-                </span>
-
-                <span class="tag">
-                  Storytelling
-                </span>
-
-                <span class="tag">
-                  Post Production
-                </span>
-
-              </div>
-
-
-              <a
-                href="https://youtu.be/JQvqIqSqD1s"
-                target="_blank"
-                class="watch-link"
-              >
-                WATCH PROJECT ↗
-              </a>
-
-            </div>
-
-          </article>
-
         </div>
 
       </div>
-
     </section>
 
-
-
-    <!-- =========================================================
-         ABOUT
-    ========================================================= -->
-
+    <!-- 05 / ABOUT ME -->
     <section id="about">
-
       <div class="container">
-
-
         <div class="about-grid">
 
-
-          <div class="reveal">
-
-            <div class="section-number">
-              03 / ABOUT ME
-            </div>
-
-
+          <div class="reveal-slide-left">
+            <div class="section-number">04 / ABOUT ME</div>
             <h2 class="about-title">
-
-              Making ideas
-
-              <span class="yellow">
-                move.
-              </span>
-
+              The person <span class="highlight-text">behind the frames.</span>
             </h2>
-
           </div>
 
-
-          <div class="reveal">
-
+          <div class="reveal-slide-right">
             <div class="about-text">
-
               <p>
-
-                I'm a
-                <strong>
-                  Motion Artist and Video Editor
-                </strong>
-                with 4+ years of experience creating
-                motion graphics, product videos,
-                explainers, promotional campaigns,
-                corporate videos and digital content.
-
+                I'm a <strong>Motion Artist and Video Editor</strong> with 4+ years of experience creating motion graphics, product videos, explainers, promotional campaigns, corporate videos and digital content.
               </p>
-
-
               <p>
-
-                I work across the complete production
-                process — from
-
-                <span class="yellow">
-                  concept development and storyboarding
-                </span>
-
-                to animation, editing, sound design,
-                color grading and final delivery.
-
+                I work across the complete production process — from <span class="highlight-text">concept development and storyboarding</span> to animation, editing, sound design, color grading and final delivery.
               </p>
-
-
               <p>
-
-                My focus is simple:
-                turn complex ideas into compelling
-                visual stories that communicate clearly
-                and keep audiences engaged.
-
+                My focus is simple: turn complex ideas into compelling visual stories that communicate clearly and keep audiences hooked frame by frame.
               </p>
-
             </div>
-
 
             <div class="stats-grid">
-
               <div class="big-stat">
-
-                <strong>
-                  4+
-                </strong>
-
-                <span>
-                  Years Experience
-                </span>
-
+                <strong class="highlight-text">4+</strong>
+                <span>Years Experience</span>
               </div>
-
-
               <div class="big-stat">
-
-                <strong>
-                  150+
-                </strong>
-
-                <span>
-                  Creative Projects
-                </span>
-
+                <strong>150+</strong>
+                <span>Creative Projects</span>
               </div>
-
-
               <div class="big-stat">
-
-                <strong>
-                  25+
-                </strong>
-
-                <span>
-                  Client Categories
-                </span>
-
+                <strong>18+</strong>
+                <span>Clients Served</span>
               </div>
-
             </div>
-
           </div>
 
         </div>
-
       </div>
-
     </section>
 
-
-
-    <!-- =========================================================
-         SERVICES
-    ========================================================= -->
-
+    <!-- 05 / SERVICES -->
     <section id="services">
-
       <div class="container">
 
-
         <div class="section-heading reveal">
-
           <div>
-
-            <div class="section-number">
-              04 / SERVICES
-            </div>
-
+            <div class="section-number">05 / SERVICES</div>
             <h2 class="section-title">
-
-              What I
-
-              <span class="yellow">
-                do.
-              </span>
-
+              What I <span class="highlight-text">do.</span>
             </h2>
-
           </div>
-
-
           <p class="section-description">
-
-            From concept to final frame,
-            I create visual content designed
-            to communicate and engage.
-
+            From raw concept to final render, I create visual motion assets crafted to generate conversions.
           </p>
-
         </div>
-
 
         <div class="services-grid">
-
-
           <article class="service reveal">
-
-            <span class="service-number">
-              01
-            </span>
-
-            <h3>
-              Motion Graphics
-            </h3>
-
-            <p>
-              2D animation, kinetic typography,
-              logo animation and visual storytelling.
-            </p>
-
+            <span class="service-number">01</span>
+            <h3>Motion Graphics</h3>
+            <p>2D animation, kinetic typography, logo animation and visual storytelling.</p>
           </article>
 
-
           <article class="service reveal">
-
-            <span class="service-number">
-              02
-            </span>
-
-            <h3>
-              Video Editing
-            </h3>
-
-            <p>
-              Professional editing, pacing,
-              color correction, sound design
-              and post-production.
-            </p>
-
+            <span class="service-number">02</span>
+            <h3>Video Editing</h3>
+            <p>Professional pacing, audio design, dynamic jump cuts, color grading, and finish.</p>
           </article>
 
-
           <article class="service reveal">
-
-            <span class="service-number">
-              03
-            </span>
-
-            <h3>
-              SaaS Product Videos
-            </h3>
-
-            <p>
-              Product demos, feature launches,
-              UI animations and software walkthroughs.
-            </p>
-
+            <span class="service-number">03</span>
+            <h3>SaaS Product Videos</h3>
+            <p>UI walk-throughs, hero page visual assets, onboarding and feature rollouts.</p>
           </article>
 
-
           <article class="service reveal">
-
-            <span class="service-number">
-              04
-            </span>
-
-            <h3>
-              Explainer Videos
-            </h3>
-
-            <p>
-              Complex concepts transformed
-              into simple animated stories.
-            </p>
-
+            <span class="service-number">04</span>
+            <h3>Explainer Videos</h3>
+            <p>Complex tech stacks and business workflows distilled into crystal clear visual sequences.</p>
           </article>
 
-
           <article class="service reveal">
-
-            <span class="service-number">
-              05
-            </span>
-
-            <h3>
-              Corporate & Marketing
-            </h3>
-
-            <p>
-              Promotional campaigns, corporate
-              films and social media content.
-            </p>
-
+            <span class="service-number">05</span>
+            <h3>Corporate & Marketing</h3>
+            <p>Investor decks, brand launches, digital advertising reels and keynotes.</p>
           </article>
 
-
           <article class="service reveal">
-
-            <span class="service-number">
-              06
-            </span>
-
-            <h3>
-              AI Video Content
-            </h3>
-
-            <p>
-              AI-assisted ideation, visuals,
-              voice generation and content creation.
-            </p>
-
+            <span class="service-number">06</span>
+            <h3>AI-Assisted Video</h3>
+            <p>Faster turnarounds using AI tools for scripting, voiceover and visual generation.</p>
           </article>
-
-
         </div>
 
       </div>
-
     </section>
 
-
-
-    <!-- =========================================================
-         INDUSTRIES
-    ========================================================= -->
-
-    <section>
-
-      <div class="container">
-
-
-        <div class="section-heading reveal">
-
-          <div>
-
-            <div class="section-number">
-              05 / INDUSTRIES
-            </div>
-
-            <h2 class="section-title">
-
-              Built for
-
-              <span class="yellow">
-                different
-              </span>
-
-              worlds.
-
-            </h2>
-
-          </div>
-
-        </div>
-
-
-        <div class="industry-wrapper reveal">
-
-          <p class="industry-intro">
-
-            I've created visual content for
-            clients and projects across 25+
-            categories and industries.
-
-          </p>
-
-
-          <div class="industry-list">
-
-            <span class="industry">SaaS</span>
-            <span class="industry">Technology</span>
-            <span class="industry">AI</span>
-            <span class="industry">Healthcare</span>
-            <span class="industry">Fitness</span>
-            <span class="industry">Education</span>
-            <span class="industry">Finance</span>
-            <span class="industry">Real Estate</span>
-            <span class="industry">E-commerce</span>
-            <span class="industry">Marketing</span>
-            <span class="industry">Construction</span>
-            <span class="industry">Legal</span>
-            <span class="industry">Travel</span>
-            <span class="industry">Food</span>
-            <span class="industry">Automotive</span>
-            <span class="industry">Corporate</span>
-            <span class="industry">Social Media</span>
-            <span class="industry">E-learning</span>
-            <span class="industry">Startups</span>
-            <span class="industry">B2B</span>
-            <span class="industry">B2C</span>
-            <span class="industry">Product</span>
-            <span class="industry">Digital Marketing</span>
-            <span class="industry">Branding</span>
-            <span class="industry">Entertainment</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         EXPERIENCE
-    ========================================================= -->
-
+    <!-- 06 / EXPERIENCE -->
     <section id="experience">
-
       <div class="container">
 
-
         <div class="section-heading reveal">
-
           <div>
-
-            <div class="section-number">
-              06 / EXPERIENCE
-            </div>
-
+            <div class="section-number">06 / EXPERIENCE</div>
             <h2 class="section-title">
-
-              Where I've
-
-              <span class="yellow">
-                worked.
-              </span>
-
+              Where I've <span class="highlight-text">worked.</span>
             </h2>
-
           </div>
-
         </div>
-
 
         <div class="experience-list">
-
-
           <article class="experience-item reveal">
-
-            <div class="experience-date">
-              JUN 2025 — PRESENT
-            </div>
-
-
+            <div class="experience-date">JUN 2025 — PRESENT</div>
             <div>
-
-              <div class="experience-role">
-                Motion Artist & Video Editor
-              </div>
-
-              <div class="experience-company">
-                Vinove Software & Services Pvt. Ltd.
-              </div>
-
+              <div class="experience-role">Motion Artist & Video Editor</div>
+              <div class="experience-company">Vinove Software & Services Pvt. Ltd.</div>
             </div>
-
-
             <div class="experience-description">
-
-              Motion graphics, SaaS product videos,
-              product demos, explainers, promotional
-              content, UI animations and end-to-end
-              video production.
-
+              Motion graphics, SaaS product videos, product demos, explainers, promotional content, UI animations and end-to-end video production.
             </div>
-
           </article>
 
-
-
           <article class="experience-item reveal">
-
-            <div class="experience-date">
-              JAN 2023 — MAY 2025
-            </div>
-
-
+            <div class="experience-date">JAN 2023 — MAY 2025</div>
             <div>
-
-              <div class="experience-role">
-                Graphic Designer & Motion Artist
-              </div>
-
-              <div class="experience-company">
-                Cynna Technologies Pvt. Ltd.
-              </div>
-
+              <div class="experience-role">Graphic Designer & Motion Artist</div>
+              <div class="experience-company">Cynna Technologies Pvt. Ltd.</div>
             </div>
-
-
             <div class="experience-description">
-
-              Motion graphics, social media creatives,
-              promotional materials, branding and
-              digital campaigns for multiple clients.
-
+              Motion graphics, social media creatives, promotional materials, branding and digital campaigns for global clients.
             </div>
-
           </article>
 
-
-
           <article class="experience-item reveal">
-
-            <div class="experience-date">
-              JAN 2022 — JAN 2023
-            </div>
-
-
+            <div class="experience-date">JAN 2022 — JAN 2023</div>
             <div>
-
-              <div class="experience-role">
-                Graphic Designer & Motion Artist
-              </div>
-
-              <div class="experience-company">
-                AK Technology Pvt. Ltd.
-              </div>
-
+              <div class="experience-role">Graphic Designer & Motion Artist</div>
+              <div class="experience-company">AK Technology Pvt. Ltd.</div>
             </div>
-
-
             <div class="experience-description">
-
-              Explainer videos, motion graphics,
-              UI animations, e-learning content,
-              social media videos and post-production.
-
+              Explainer videos, motion graphics, UI animations, e-learning content, social media videos and post-production.
             </div>
-
           </article>
-
-
         </div>
 
       </div>
-
     </section>
 
-
-
-    <!-- =========================================================
-         TOOLKIT
-    ========================================================= -->
-
+    <!-- 07 / TOOLKIT -->
     <section>
-
       <div class="container">
 
-
         <div class="section-heading reveal">
-
           <div>
-
-            <div class="section-number">
-              07 / TOOLKIT
-            </div>
-
+            <div class="section-number">07 / TOOLKIT</div>
             <h2 class="section-title">
-
-              My creative
-
-              <span class="yellow">
-                stack.
-              </span>
-
+              My creative <span class="highlight-text">stack.</span>
             </h2>
-
           </div>
-
         </div>
-
 
         <div class="skills-grid">
-
-
           <div class="skill-box reveal">
-
-            <h3>
-              Adobe Creative Suite
-            </h3>
-
+            <h3>Adobe Creative Suite</h3>
             <div class="skill-items">
-
-              <span class="skill-item">
-                After Effects
-              </span>
-
-              <span class="skill-item">
-                Premiere Pro
-              </span>
-
-              <span class="skill-item">
-                Photoshop
-              </span>
-
-              <span class="skill-item">
-                Illustrator
-              </span>
-
-              <span class="skill-item">
-                Audition
-              </span>
-
-              <span class="skill-item">
-                Media Encoder
-              </span>
-
-              <span class="skill-item">
-                XD
-              </span>
-
+              <span class="skill-item">After Effects</span>
+              <span class="skill-item">Premiere Pro</span>
+              <span class="skill-item">Photoshop</span>
+              <span class="skill-item">Illustrator</span>
+              <span class="skill-item">Audition</span>
+              <span class="skill-item">Media Encoder</span>
             </div>
-
           </div>
 
-
-
           <div class="skill-box reveal">
-
-            <h3>
-              Motion & Video
-            </h3>
-
+            <h3>Motion & Video</h3>
             <div class="skill-items">
-
-              <span class="skill-item">
-                Motion Graphics
-              </span>
-
-              <span class="skill-item">
-                2D Animation
-              </span>
-
-              <span class="skill-item">
-                Kinetic Typography
-              </span>
-
-              <span class="skill-item">
-                UI Animation
-              </span>
-
-              <span class="skill-item">
-                Video Editing
-              </span>
-
-              <span class="skill-item">
-                Color Grading
-              </span>
-
-              <span class="skill-item">
-                Sound Design
-              </span>
-
+              <span class="skill-item">Motion Graphics</span>
+              <span class="skill-item">2D Animation</span>
+              <span class="skill-item">Kinetic Typography</span>
+              <span class="skill-item">UI Animation</span>
+              <span class="skill-item">Color Grading</span>
+              <span class="skill-item">Sound Design</span>
             </div>
-
           </div>
 
-
-
           <div class="skill-box reveal">
-
-            <h3>
-              AI Creative Tools
-            </h3>
-
+            <h3>AI Creative Tools</h3>
             <div class="skill-items">
-
-              <span class="skill-item">
-                ChatGPT
-              </span>
-
-              <span class="skill-item">
-                Google Veo
-              </span>
-
-              <span class="skill-item">
-                Sora
-              </span>
-
-              <span class="skill-item">
-                ElevenLabs
-              </span>
-
-              <span class="skill-item">
-                Gemini
-              </span>
-
-              <span class="skill-item">
-                Firefly
-              </span>
-
-              <span class="skill-item">
-                Kling AI
-              </span>
-
-              <span class="skill-item">
-                Leonardo AI
-              </span>
-
+              <span class="skill-item">ChatGPT</span>
+              <span class="skill-item">Google Veo</span>
+              <span class="skill-item">Sora</span>
+              <span class="skill-item">ElevenLabs</span>
+              <span class="skill-item">Gemini</span>
+              <span class="skill-item">Adobe Firefly</span>
+              <span class="skill-item">Kling AI</span>
+              <span class="skill-item">Leonardo AI</span>
+              <span class="skill-item">Runway</span>
+              <span class="skill-item">Claude</span>
             </div>
-
           </div>
-
-
         </div>
 
       </div>
-
     </section>
 
-
-
-    <!-- =========================================================
-         PROCESS
-    ========================================================= -->
-
+    <!-- 08 / PROCESS -->
     <section>
-
       <div class="container">
-
 
         <div class="section-heading reveal">
-
           <div>
-
-            <div class="section-number">
-              08 / PROCESS
-            </div>
-
+            <div class="section-number">08 / PROCESS</div>
             <h2 class="section-title">
-
-              From idea to
-
-              <span class="yellow">
-                final frame.
-              </span>
-
+              From idea to <span class="highlight-text">final frame.</span>
             </h2>
-
           </div>
-
         </div>
-
 
         <div class="process-grid">
-
-
-          <div class="process reveal">
-            <span>01</span>
-            <h3>Discover</h3>
-            <p>Understand the goal and audience.</p>
-          </div>
-
-
-          <div class="process reveal">
-            <span>02</span>
-            <h3>Concept</h3>
-            <p>Develop the creative direction.</p>
-          </div>
-
-
-          <div class="process reveal">
-            <span>03</span>
-            <h3>Storyboard</h3>
-            <p>Plan the visual sequence.</p>
-          </div>
-
-
-          <div class="process reveal">
-            <span>04</span>
-            <h3>Design</h3>
-            <p>Create the visual language.</p>
-          </div>
-
-
-          <div class="process reveal">
-            <span>05</span>
-            <h3>Animate</h3>
-            <p>Bring designs to life.</p>
-          </div>
-
-
-          <div class="process reveal">
-            <span>06</span>
-            <h3>Edit</h3>
-            <p>Build the final sequence.</p>
-          </div>
-
-
-          <div class="process reveal">
-            <span>07</span>
-            <h3>Sound + Color</h3>
-            <p>Polish audio and visuals.</p>
-          </div>
-
-
-          <div class="process reveal">
-            <span>08</span>
-            <h3>Deliver</h3>
-            <p>Export production-ready content.</p>
-          </div>
-
-
+          <div class="process reveal"><span>01</span><h3>Discover</h3><p>Understand the target audience & conversion KPI.</p></div>
+          <div class="process reveal"><span>02</span><h3>Concept</h3><p>Scripting and visual art direction.</p></div>
+          <div class="process reveal"><span>03</span><h3>Storyboard</h3><p>Keyframes and timing breakdown.</p></div>
+          <div class="process reveal"><span>04</span><h3>Design</h3><p>Styleframes and vector asset creation.</p></div>
+          <div class="process reveal"><span>05</span><h3>Animate</h3><p>Keyframe animation, easing and physics.</p></div>
+          <div class="process reveal"><span>06</span><h3>Edit</h3><p>Rhythm, pacing, and visual continuity.</p></div>
+          <div class="process reveal"><span>07</span><h3>Sound & Color</h3><p>Foley, mixed score, sound effects and color grading.</p></div>
+          <div class="process reveal"><span>08</span><h3>Deliver</h3><p>Master exports for Web, YouTube & Socials.</p></div>
         </div>
 
       </div>
-
     </section>
 
-
-
-    <!-- =========================================================
-         CONTACT
-    ========================================================= -->
-
-    <section
-      id="contact"
-      class="contact-section"
-    >
-
+    <!-- 09 / CONTACT -->
+    <section id="contact" class="contact-section">
       <div class="container">
 
-
         <div class="contact-box reveal">
-
-
-          <div class="section-number">
-            09 / CONTACT
-          </div>
-
-
+          <div class="section-number">09 / CONTACT</div>
           <h2>
-
             Have an idea?
-
-            <span class="yellow">
-              Let's make it move.
-            </span>
-
+            <span class="highlight-text">Let's make it move.</span>
           </h2>
 
-
           <p>
-
-            Need a SaaS product video,
-            motion graphics, explainer,
-            marketing video or professional
-            editing?
-
-            Let's create something impactful.
-
+            Need a SaaS product video, motion graphics, explainer, commercial or high-converting short-form reels? Let's bring it to life.
           </p>
 
-
-          <a
-            href="mailto:doneguru5@gmail.com"
-            class="btn btn-primary"
-          >
-            Start a Project ↗
-          </a>
-
-
-          <div class="contact-details">
-
-            <a href="mailto:doneguru5@gmail.com">
-              doneguru5@gmail.com
+          <div class="contact-actions">
+            <button type="button" class="btn btn-contact-direct" id="openContactDialog">
+              Contact Directly ⚡
+            </button>
+            <a href="mailto:doneguru5@gmail.com" class="btn btn-secondary">
+              Send Email ↗
             </a>
-
-            <a href="tel:+919718735122">
-              +91 9718735122
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/sumit-kumar-3b448b231"
-              target="_blank"
-              rel="noopener"
-            >
-              LinkedIn ↗
-            </a>
-
-            <a
-              href="https://www.behance.net/doneguru"
-              target="_blank"
-              rel="noopener"
-            >
-              Behance ↗
-            </a>
-
-            <a
-              href="https://www.youtube.com/playlist?list=PLWs5JlEksOaI"
-              target="_blank"
-              rel="noopener"
-            >
-              YouTube ↗
-            </a>
-
           </div>
 
+          <div class="contact-details">
+            <a href="mailto:doneguru5@gmail.com">doneguru5@gmail.com</a>
+            <a href="https://www.linkedin.com/in/sumit-kumar-3b448b231" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://www.behance.net/doneguru" target="_blank" rel="noopener">Behance ↗</a>
+            <a href="https://www.youtube.com/playlist?list=PLWs5JlEksOaI" target="_blank" rel="noopener">YouTube ↗</a>
+          </div>
         </div>
 
       </div>
-
     </section>
-
 
   </main>
 
-
-
-  <!-- =========================================================
-       FOOTER
-  ========================================================= -->
-
+  <!-- FOOTER -->
   <footer>
-
     <div class="container">
-
       <div class="footer-inner">
-
-        <p>
-          © 2026 Sumit Kumar. All rights reserved.
-        </p>
-
-
+        <p>© 2026 Sumit Kumar. All rights reserved.</p>
         <div class="footer-links">
-
-          <a
-            href="https://www.linkedin.com/in/sumit-kumar-3b448b231"
-            target="_blank"
-          >
-            LinkedIn
-          </a>
-
-          <a
-            href="https://www.behance.net/doneguru"
-            target="_blank"
-          >
-            Behance
-          </a>
-
-          <a
-            href="https://www.youtube.com/playlist?list=PLWs5JlEksOaI"
-            target="_blank"
-          >
-            YouTube
-          </a>
-
+          <a href="https://www.linkedin.com/in/sumit-kumar-3b448b231" target="_blank">LinkedIn</a>
+          <a href="https://www.behance.net/doneguru" target="_blank">Behance</a>
+          <a href="https://www.youtube.com/playlist?list=PLWs5JlEksOaI" target="_blank">YouTube</a>
         </div>
-
       </div>
-
     </div>
-
   </footer>
 
-
-
-  <!-- =========================================================
-       VIDEO MODAL
-  ========================================================= -->
-
-  <div
-    class="modal"
-    id="videoModal"
-  >
-
+  <!-- VIDEO MODAL -->
+  <div class="modal" id="videoModal">
     <div class="modal-content">
-
-      <button
-        class="close-modal"
-        id="closeModal"
-      >
-        ×
-      </button>
-
-
+      <button class="close-modal" id="closeModal" aria-label="Close modal">×</button>
       <iframe
         id="videoFrame"
         src=""
@@ -4597,54 +2391,105 @@
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen
       ></iframe>
-
     </div>
-
   </div>
 
+  <!-- DIRECT CONTACT MODAL -->
+  <div class="modal" id="directContactModal">
+    <div class="contact-modal-dialog">
+      <button class="close-modal" id="closeContactModal" aria-label="Close dialog">×</button>
+      <h3>Direct Contact</h3>
+      <p>Choose your preferred communication channel:</p>
 
+      <a href="mailto:doneguru5@gmail.com" class="contact-opt-btn">
+        <span>Email Directly</span>
+        <span>doneguru5@gmail.com ↗</span>
+      </a>
 
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================= -->
+      <a href="https://api.whatsapp.com/send?phone=919718735122" target="_blank" rel="noopener" class="contact-opt-btn">
+        <span>WhatsApp Chat</span>
+        <span>Message ↗</span>
+      </a>
 
+      <a href="https://www.linkedin.com/in/sumit-kumar-3b448b231" target="_blank" rel="noopener" class="contact-opt-btn">
+        <span>LinkedIn Message</span>
+        <span>Connect ↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- SCRIPT ENGINE -->
   <script>
+    /* ---------------------------------------------------------
+       1. AMBIENT STAR / PARTICLE ENGINE
+    --------------------------------------------------------- */
+    const canvas = document.getElementById("spaceCanvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
 
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
 
-    /* =========================================================
-       SHARED FLAGS
-    ========================================================= */
+    class StarParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1.8 + 0.6;
+        this.baseAlpha = Math.random() * 0.45 + 0.12;
+        this.alpha = this.baseAlpha;
+        this.speedX = (Math.random() - 0.5) * 0.28;
+        this.speedY = (Math.random() - 0.5) * 0.28;
+        this.pulseSpeed = Math.random() * 0.025 + 0.006;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.alpha = this.baseAlpha + Math.sin(Date.now() * this.pulseSpeed) * 0.25;
 
-    const prefersReducedMotion =
-      window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
-
-
-    /* =========================================================
-       YOUTUBE THUMBNAILS
-    ========================================================= */
-
-    function extractYouTubeId(url) {
-
-      if (!url) return null;
-
-      const match =
-        url.match(/embed\/([a-zA-Z0-9_-]{6,})/);
-
-      return match ? match[1] : null;
-
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, this.alpha)})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
 
+    const starCount = Math.min(85, Math.floor(window.innerWidth / 14));
+    for (let i = 0; i < starCount; i++) {
+      particles.push(new StarParticle());
+    }
+
+    function renderStarfield() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(renderStarfield);
+    }
+    renderStarfield();
+
+    /* ---------------------------------------------------------
+       4. YOUTUBE THUMBNAILS & MODALS
+    --------------------------------------------------------- */
+    function extractYouTubeId(url) {
+      if (!url) return null;
+      const match = url.match(/embed\/([a-zA-Z0-9_-]{6,})/);
+      return match ? match[1] : null;
+    }
 
     function setThumbnail(el, videoId) {
-
-      // hqdefault.jpg exists for essentially every public YouTube
-      // video, so it's used as the reliable base image. maxresdefault
-      // is tried first and swapped in only once it's confirmed to
-      // have actually loaded (not YouTube's tiny grey placeholder).
-
       const fallback = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
       const hi = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
@@ -4654,568 +2499,284 @@
       }
 
       const check = new Image();
-
       check.onload = () => {
-
-        // hqdefault loaded — show it immediately, then try to
-        // upgrade to the sharper maxresdefault in the background.
-
         applyThumb(fallback);
-
         const probe = new Image();
-
         probe.onload = () => {
           if (probe.naturalWidth > 120) applyThumb(hi);
         };
-
         probe.src = hi;
-
       };
-
       check.onerror = () => {
-
-        // hqdefault failed too (private/removed/dummy video ID)
-        // — keep the CSS gradient placeholder, no broken image.
-
         el.classList.remove("has-thumb");
-
       };
-
       check.src = fallback;
-
     }
 
+    document.querySelectorAll("[data-video]").forEach(card => {
+      const videoId = extractYouTubeId(card.getAttribute("data-video"));
+      if (!videoId) return;
+      const target = card.querySelector(".video-thumb") || card;
+      setThumbnail(target, videoId);
+    });
 
-    document
-      .querySelectorAll("[data-video]")
-      .forEach(card => {
+    const modal = document.getElementById("videoModal");
+    const videoFrame = document.getElementById("videoFrame");
+    const closeModal = document.getElementById("closeModal");
 
-        const videoId =
-          extractYouTubeId(
-            card.getAttribute("data-video")
-          );
-
-        if (!videoId) return;
-
-        // Reel cards keep the thumb on a separate .video-thumb
-        // layer (so overlay/hover-scale still work); project
-        // cards apply it straight to the .project-video element.
-
-        const target =
-          card.querySelector(".video-thumb") || card;
-
-        setThumbnail(target, videoId);
-
+    document.querySelectorAll("[data-video]").forEach(card => {
+      card.addEventListener("click", (e) => {
+        if (e.target.tagName.toLowerCase() === 'a') return;
+        const video = card.getAttribute("data-video");
+        if (!video) return;
+        videoFrame.src = video + "?autoplay=1";
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
       });
+    });
 
+    function closeVideo() {
+      modal.classList.remove("active");
+      videoFrame.src = "";
+      document.body.style.overflow = "";
+    }
 
+    if (closeModal) closeModal.addEventListener("click", closeVideo);
+    if (modal) {
+      modal.addEventListener("click", e => {
+        if (e.target === modal) closeVideo();
+      });
+    }
 
-    /* =========================================================
-       REELS MANUAL NAV
-    ========================================================= */
+    /* ---------------------------------------------------------
+       4.5 HOVER PREVIEWS
+    --------------------------------------------------------- */
+    document.querySelectorAll(".video-card[data-video], .project-video[data-video], .featured-showreel-box[data-video]").forEach(card => {
+      const frame = card.querySelector(".video-preview-frame");
+      if (!frame) return;
+      const videoId = extractYouTubeId(card.getAttribute("data-video"));
+      if (!videoId) return;
 
-    const reelGrid =
-      document.getElementById("reelGrid");
+      let hoverDelay;
+      card.addEventListener("mouseenter", () => {
+        hoverDelay = setTimeout(() => {
+          frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&modestbranding=1&rel=0&showinfo=0`;
+        }, 160);
+      });
+      card.addEventListener("mouseleave", () => {
+        clearTimeout(hoverDelay);
+        frame.src = "";
+      });
+    });
 
-    const reelPrev =
-      document.getElementById("reelPrev");
+    /* ---------------------------------------------------------
+       5. CONTACT DIALOG TRIGGER
+    --------------------------------------------------------- */
+    const directContactModal = document.getElementById("directContactModal");
+    const openContactDialog = document.getElementById("openContactDialog");
+    const closeContactModal = document.getElementById("closeContactModal");
 
-    const reelNext =
-      document.getElementById("reelNext");
+    if (openContactDialog) {
+      openContactDialog.addEventListener("click", () => {
+        directContactModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    }
 
+    function closeContactDialog() {
+      directContactModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    if (closeContactModal) closeContactModal.addEventListener("click", closeContactDialog);
+    if (directContactModal) {
+      directContactModal.addEventListener("click", (e) => {
+        if (e.target === directContactModal) closeContactDialog();
+      });
+    }
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        closeVideo();
+        closeContactDialog();
+      }
+    });
+
+    /* ---------------------------------------------------------
+       6. REELS NAVIGATION
+    --------------------------------------------------------- */
+    const reelGrid = document.getElementById("reelGrid");
+    const reelPrev = document.getElementById("reelPrev");
+    const reelNext = document.getElementById("reelNext");
 
     function scrollReels(dir) {
-
       if (!reelGrid) return;
-
       const card = reelGrid.querySelector(".video-card");
-
-      const step =
-        card
-          ? card.getBoundingClientRect().width + 15
-          : 290;
-
-      reelGrid.scrollBy({
-        left: dir * step,
-        behavior: "smooth"
-      });
-
+      const step = card ? card.getBoundingClientRect().width + 18 : 300;
+      reelGrid.scrollBy({ left: dir * step, behavior: "smooth" });
     }
 
+    if (reelPrev) reelPrev.addEventListener("click", () => scrollReels(-1));
+    if (reelNext) reelNext.addEventListener("click", () => scrollReels(1));
 
-    if (reelPrev) {
-      reelPrev.addEventListener("click", () => scrollReels(-1));
-    }
-
-    if (reelNext) {
-      reelNext.addEventListener("click", () => scrollReels(1));
-    }
-
-
-
-    /* =========================================================
-       STAT COUNT-UP ANIMATION
-    ========================================================= */
-
+    /* ---------------------------------------------------------
+       7. STAT NUMBER COUNT-UP
+    --------------------------------------------------------- */
     function animateCount(el) {
-
       const raw = el.textContent.trim();
-
       const match = raw.match(/[\d,.]+/);
-
       if (!match) return;
-
       const suffix = raw.slice(match.index + match[0].length);
       const prefix = raw.slice(0, match.index);
-
-      const target =
-        parseFloat(match[0].replace(/,/g, ""));
-
-      const duration = 1300;
+      const target = parseFloat(match[0].replace(/,/g, ""));
+      const duration = 1200;
       const start = performance.now();
 
       function tick(now) {
-
         const p = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - p, 3);
         const val = Math.round(target * eased);
-
         el.textContent = prefix + val + suffix;
-
         if (p < 1) requestAnimationFrame(tick);
-
       }
-
       requestAnimationFrame(tick);
-
     }
 
-
-    const countTargets =
-      document.querySelectorAll(
-        ".stat strong, .big-stat strong"
-      );
-
-
-    if ("IntersectionObserver" in window && !prefersReducedMotion) {
-
-      const countObserver =
-        new IntersectionObserver(
-          entries => {
-
-            entries.forEach(entry => {
-
-              if (entry.isIntersecting) {
-
-                animateCount(entry.target);
-
-                countObserver.unobserve(entry.target);
-
-              }
-
-            });
-
-          },
-          { threshold: .6 }
-        );
-
-      countTargets.forEach(
-        el => countObserver.observe(el)
-      );
-
+    const countTargets = document.querySelectorAll(".stat strong, .big-stat strong");
+    if ("IntersectionObserver" in window) {
+      const countObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.6 });
+      countTargets.forEach(el => countObserver.observe(el));
     }
 
+    /* ---------------------------------------------------------
+       8. CURSOR TRACKING
+    --------------------------------------------------------- */
+    const cursor = document.querySelector(".cursor");
+    const cursorRing = document.querySelector(".cursor-ring");
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
 
-
-    /* =========================================================
-       CUSTOM GLOW CURSOR
-    ========================================================= */
-
-    const cursor =
-      document.querySelector(".cursor");
-
-    const cursorRing =
-      document.querySelector(".cursor-ring");
-
-
-    let mouseX = 0;
-    let mouseY = 0;
-
-    let ringX = 0;
-    let ringY = 0;
-
-
-    document.addEventListener(
-      "mousemove",
-      (e) => {
-
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        cursor.style.left =
-          mouseX + "px";
-
-        cursor.style.top =
-          mouseY + "px";
-
-      }
-    );
-
+    document.addEventListener("mousemove", e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + "px";
+      cursor.style.top = mouseY + "px";
+    });
 
     function animateCursor() {
-
-      ringX +=
-        (mouseX - ringX) * .14;
-
-      ringY +=
-        (mouseY - ringY) * .14;
-
-
-      cursorRing.style.left =
-        ringX + "px";
-
-      cursorRing.style.top =
-        ringY + "px";
-
-
-      requestAnimationFrame(
-        animateCursor
-      );
+      ringX += (mouseX - ringX) * 0.16;
+      ringY += (mouseY - ringY) * 0.16;
+      cursorRing.style.left = ringX + "px";
+      cursorRing.style.top = ringY + "px";
+      requestAnimationFrame(animateCursor);
     }
-
-
     animateCursor();
 
+    const hoverItems = document.querySelectorAll("a, button, .video-card, .project, .service, .industry, .featured-showreel-box, .deck-card-active, .hero-circle-wrap");
+    hoverItems.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        cursor.classList.add("active");
+        cursorRing.classList.add("active");
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.classList.remove("active");
+        cursorRing.classList.remove("active");
+      });
+    });
 
-    const interactiveElements =
-      document.querySelectorAll(
-        "a, button, .video-card, .project-video, .industry, .service"
-      );
-
-
-    interactiveElements.forEach(
-      element => {
-
-        element.addEventListener(
-          "mouseenter",
-          () => {
-
-            cursor.classList.add(
-              "active"
-            );
-
-            cursorRing.classList.add(
-              "active"
-            );
-
-          }
-        );
-
-
-        element.addEventListener(
-          "mouseleave",
-          () => {
-
-            cursor.classList.remove(
-              "active"
-            );
-
-            cursorRing.classList.remove(
-              "active"
-            );
-
-          }
-        );
-
-      }
-    );
-
-
-
-    /* =========================================================
-       MOBILE MENU
-    ========================================================= */
-
-    const menuBtn =
-      document.getElementById(
-        "menuBtn"
-      );
-
-    const navLinks =
-      document.getElementById(
-        "navLinks"
-      );
-
-
-    menuBtn.addEventListener(
-      "click",
-      () => {
-
-        navLinks.classList.toggle(
-          "active"
-        );
-
-      }
-    );
-
-
-    document
-      .querySelectorAll(
-        ".nav-links a"
-      )
-      .forEach(
-        link => {
-
-          link.addEventListener(
-            "click",
-            () => {
-
-              navLinks.classList.remove(
-                "active"
-              );
-
-            }
-          );
-
-        }
-      );
-
-
-
-    /* =========================================================
-       VIDEO MODAL
-    ========================================================= */
-
-    const modal =
-      document.getElementById(
-        "videoModal"
-      );
-
-    const videoFrame =
-      document.getElementById(
-        "videoFrame"
-      );
-
-    const closeModal =
-      document.getElementById(
-        "closeModal"
-      );
-
-
-    document
-      .querySelectorAll(
-        "[data-video]"
-      )
-      .forEach(
-        card => {
-
-          card.addEventListener(
-            "click",
-            () => {
-
-              const video =
-                card.getAttribute(
-                  "data-video"
-                );
-
-
-              videoFrame.src =
-                video +
-                "?autoplay=1";
-
-
-              modal.classList.add(
-                "active"
-              );
-
-              document.body.style.overflow =
-                "hidden";
-
-            }
-          );
-
-        }
-      );
-
-
-    function closeVideo() {
-
-      modal.classList.remove(
-        "active"
-      );
-
-      videoFrame.src =
-        "";
-
-      document.body.style.overflow =
-        "";
-
+    /* ---------------------------------------------------------
+       9. MOBILE NAV
+    --------------------------------------------------------- */
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener("click", () => navLinks.classList.toggle("active"));
+      navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("active")));
     }
 
-
-    closeModal.addEventListener(
-      "click",
-      closeVideo
-    );
-
-
-    modal.addEventListener(
-      "click",
-      e => {
-
-        if (
-          e.target === modal
-        ) {
-
-          closeVideo();
-
-        }
-
-      }
-    );
-
-
-    document.addEventListener(
-      "keydown",
-      e => {
-
-        if (
-          e.key === "Escape"
-        ) {
-
-          closeVideo();
-
-        }
-
-      }
-    );
-
-
-
-    /* =========================================================
-       TEXT SPLIT (word-by-word reveal)
-    ========================================================= */
-
+    /* ---------------------------------------------------------
+       10. TEXT SPLIT & SCROLL ANIMATION SYSTEM (PREVENTS CROPPING)
+    --------------------------------------------------------- */
     function splitWords(root) {
-
       let i = 0;
-
-      function walk(node) {
-
-        Array.from(node.childNodes).forEach(child => {
-
-          if (child.nodeType === Node.TEXT_NODE) {
-
-            const text = child.textContent;
-
-            if (!text.trim()) return;
-
-            const parts = text.split(/(\s+)/);
-
-            const frag = document.createDocumentFragment();
-
-            parts.forEach(part => {
-
-              if (part === "") return;
-
-              if (/^\s+$/.test(part)) {
-
-                frag.appendChild(document.createTextNode(part));
-
-              } else {
-
-                const span = document.createElement("span");
-
-                span.className = "split-word";
-
-                span.textContent = part;
-
-                span.style.transitionDelay = (i * 0.045) + "s";
-
-                i++;
-
-                frag.appendChild(span);
-
-              }
-
-            });
-
-            node.replaceChild(frag, child);
-
-          } else if (child.nodeType === Node.ELEMENT_NODE) {
-
-            walk(child);
-
-          }
-
-        });
-
+      function tagAsWord(el) {
+        el.classList.add("split-word");
+        el.style.transitionDelay = (i * 0.04) + "s";
+        i++;
       }
-
+      function walk(node) {
+        Array.from(node.childNodes).forEach(child => {
+          if (child.nodeType === Node.TEXT_NODE) {
+            const text = child.textContent;
+            if (!text.trim()) return;
+            const parts = text.split(/(\s+)/);
+            const frag = document.createDocumentFragment();
+            parts.forEach(part => {
+              if (part === "") return;
+              if (/^\s+$/.test(part)) {
+                frag.appendChild(document.createTextNode(part));
+              } else {
+                const span = document.createElement("span");
+                span.className = "split-word";
+                span.textContent = part;
+                span.style.transitionDelay = (i * 0.04) + "s";
+                i++;
+                frag.appendChild(span);
+              }
+            });
+            node.replaceChild(frag, child);
+          } else if (child.nodeType === Node.ELEMENT_NODE) {
+            if (child.classList && child.classList.contains("highlight-text")) {
+              tagAsWord(child);
+            } else {
+              walk(child);
+            }
+          }
+        });
+      }
       walk(root);
-
     }
 
+    document.querySelectorAll("h1, .section-title, .contact-box h2, .about-title, .project-content h3, .showreel-bottom-info h3").forEach(el => splitWords(el));
 
-    document
-      .querySelectorAll("h1, .section-title, .contact-box h2")
-      .forEach(el => splitWords(el));
-
-
-
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================= */
-
-    const revealElements =
-      document.querySelectorAll(
-        ".reveal"
-      );
-
-
-    const observer =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(
-            entry => {
-
-              if (
-                entry.isIntersecting
-              ) {
-
-                entry.target.classList.add(
-                  "visible"
-                );
-
-                observer.unobserve(
-                  entry.target
-                );
-
-              }
-
-            }
-          );
-
-        },
-        {
-          threshold: .12
+    /* ---------------------------------------------------------
+       11. HOME PAGE TYPEWRITER EFFECT
+    --------------------------------------------------------- */
+    function typeWriter(el, text, speed) {
+      if (!el) return;
+      el.textContent = "";
+      let i = 0;
+      (function step() {
+        if (i <= text.length) {
+          el.textContent = text.slice(0, i);
+          i++;
+          setTimeout(step, speed);
         }
-      );
+      })();
+    }
 
+    const typewriterEl = document.getElementById("typewriterText");
+    if (typewriterEl) {
+      typeWriter(typewriterEl, "Frame by frame, crafting high-impact visual stories.", 32);
+    }
 
-    revealElements.forEach(
-      element => {
+    const revealElements = document.querySelectorAll(".reveal, .reveal-slide-left, .reveal-slide-right");
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-        observer.observe(
-          element
-        );
-
-      }
-    );
-
-
+    revealElements.forEach(el => revealObserver.observe(el));
   </script>
-
 </body>
 </html>
